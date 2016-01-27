@@ -4,5 +4,7 @@ import Hakyll
 
 main :: IO ()
 main = hakyll $ do
-    match "data/index.html" $ do
+    match "markdown/home.md" $ do
         route idRoute
+        compile copyFileCompiler
+
