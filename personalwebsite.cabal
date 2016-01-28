@@ -18,3 +18,10 @@ executable website
   ghc-options:         -threaded
   build-depends:       base == 4.*,
                        hakyll == 4.7.*
+
+executable cssgen
+  main-is:             css.hs
+  default-language:    Haskell2010
+  ghc-options:         -threaded
+  build-depends:       base == 4.*,
+                       clay == 0.*
