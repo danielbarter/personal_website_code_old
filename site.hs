@@ -10,6 +10,9 @@ main = hakyll $ do
     route idRoute
     compile compressCssCompiler
 -}
+
+
+
   match "html_templates/*" $ compile templateCompiler
 
 -- build index.html from markdown/home.md
