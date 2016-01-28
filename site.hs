@@ -4,7 +4,16 @@ import Hakyll
 
 main :: IO ()
 main = hakyll $ do
-    match "markdown/home.md" $ do
-        route idRoute
-        compile copyFileCompiler
 
+
+  match "css/*" $ do
+    route idRoute
+    compile compressCssCompiler
+
+  match "html_templates/*" $ compile templateCompiler
+
+-- build index.html from markdown/home.md
+  match "danielbarter.md" $ do
+    route   $ constRoute "index.html"
+    compile $ pandocCompiler 
+        >>= loadAndApplyTemplate "html_templates/basic.html" defaultContext
