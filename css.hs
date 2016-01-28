@@ -2,9 +2,18 @@
 
 import Clay
 
-main = putCss $
-  body ?
-    do background  black
-       color       green
-       border      dashed (px 2) yellow
+import Clay
+
+main = putCss theStylesheet
+
+
+
+
+theStylesheet = 
+
+  do
+    body ?
+      do background  black
+         color       green
+         border      dashed (px 2) yellow
 

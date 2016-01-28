@@ -5,13 +5,10 @@ import Hakyll
 main :: IO ()
 main = hakyll $ do
 
-{-|
-  match "css/*" $ do
+
+  match "style.css" $ do
     route idRoute
     compile compressCssCompiler
--}
-
-
 
   match "html_templates/*" $ compile templateCompiler
 
@@ -19,4 +16,4 @@ main = hakyll $ do
   match "danielbarter.md" $ do
     route   $ constRoute "index.html"
     compile $ pandocCompiler 
-        >>= loadAndApplyTemplate "html_templates/basic.html" defaultContext
+        >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
