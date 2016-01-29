@@ -6,11 +6,12 @@ title: DANIEL BARTER
 
 I live!
 
-```{.code}
+<div class="code">
+```
 int main()
 {
   int i = 1;
   return i;
 }
 ```
-
+</div>
