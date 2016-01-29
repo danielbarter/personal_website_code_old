@@ -21,11 +21,17 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
         >>= relativizeUrls
 
+  match "CV.md" $ do
+    route $ setExtension "html"
+    compile $
+        pandocCompiler
+        >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
+        >>= relativizeUrls
+
   match "posts/*" $ do
     route $ setExtension "html"
     compile $ 
           pandocCompiler
-          >>= loadAndApplyTemplate "html_templates/post.html" defaultContext
           >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
           >>= relativizeUrls
 

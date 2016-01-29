@@ -6,8 +6,9 @@ import Prelude hiding (div, span)
 bodyStyle :: Css
 bodyStyle = body ? do
   fontFamily  ["Helvetica Neue","Helvetica","Arial"] [sansSerif]
-  lineHeight  (px 18)
-  padding     (px 20) (px 20) (px 20) (px 20)
+  fontSize    (px 20)
+  lineHeight  (px 28)
+  padding     (px 28) (px 28) (px 28) (px 28)
 
 linkStyle :: Css
 linkStyle = a ? do
@@ -16,8 +17,8 @@ linkStyle = a ? do
 codeStyle :: Css
 codeStyle = code ?
   do fontFamily  ["Monaco", "Inconsolata"] [monospace]
-     fontSize    (px 14)
-     lineHeight  (px 18)
+     fontSize    (px 20)
+     lineHeight  (px 28)
 
 softStyle :: Css
 softStyle = ".soft" ? do
