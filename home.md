@@ -2,7 +2,6 @@
 title: home
 ---
 
-#hello world
 
 I live!
 

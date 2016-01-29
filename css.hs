@@ -33,7 +33,6 @@ codeContainerStyle = codeContainer ?
      borderRadius (px 5) (px 5) (px 5) (px 5)
      paddingLeft (px 5)
 
-
 -- please don't judge me. There must be a better way to do this
 codeHighlight :: Css
 codeHighlight = do
@@ -81,6 +80,8 @@ codeHighlight = do
                             fontWeight bold 
                             fontStyle italic
   
+
+
 
 main :: IO ()
 main = putCss $ do
