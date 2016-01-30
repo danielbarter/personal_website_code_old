@@ -1,9 +1,9 @@
 ---
-title: Building The Site.
+title: Building The Site
 date: 2016-01-29
 ---
 
-#Building The Site.
+#Building The Site
 
 This [website](https://github.com/danielbarter/personal_website_code) is built using [Hakyll](https://jaspervdj.be/hakyll/) and [Clay](http://fvisser.nl/clay/). 
 
