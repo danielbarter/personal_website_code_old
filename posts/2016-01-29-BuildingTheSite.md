@@ -15,5 +15,5 @@ $ cd ./personal_website_code
 $ make build
 $ ./website watch
 ```
-For this to work, you need to install stack which is a build system for the haskell platform. If your terminal prints **Success**, then point your browser to `localhost:8000` and you 
-should see the website.
+For this to work, you need to install [stack](http://docs.haskellstack.org/en/stable/) which is a build system for the haskell platform. If your terminal prints **Success**, then 
+point your browser to `localhost:8000` and you should see the website.
