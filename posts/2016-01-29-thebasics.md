@@ -1,9 +1,9 @@
 ---
-title: The Basics
+title: the basics
 date: 2016-01-29 
 ---
 
-#The Basics
+#The basics
 
 I am going to use this blog to record some of my mathematical thoughts. Modern mathematics has a pretty steep learning curve and I don\'t really want to spend my time writing about 
 the *basics*. What are the *basics*? I could say something like *everything you learn in a standard mathematics undergraduate degree*, but that is vague. On this site we shall use 

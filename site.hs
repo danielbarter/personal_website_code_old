@@ -23,6 +23,10 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
         >>= relativizeUrls
 
+  match "img/*" $ do
+    route $ idRoute
+    compile copyFileCompiler
+
   match "CV.md" $ do
     route $ setExtension "html"
     compile $
