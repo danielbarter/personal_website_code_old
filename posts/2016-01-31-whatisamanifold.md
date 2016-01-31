@@ -26,12 +26,12 @@ system of polynomial equations whose solutions are the points in your space. In 
 The primary way in which humans understand the objects around them is by interpreting the light which bounces off them. If you stand still and look at a stationary object, your brain 
 associates a color (which we identify with its frequency as an electromagnetic wave) to each point on the surface of the object. If we think of the surface of our object as a space, 
 then color defines a partial real valued function on this space (it is only a partial function because we can\'t see the back of the object!) The second property of spaces: **A 
-space has an algebra of observables which are partial functions from the set of points into a [field](https://en.wikipedia.org/wiki/Field_%28mathematics%29)**. Often the field is 
-just the real numbers. In many branches of mathematics, 
+space has an algebra of observables which are partial functions from the set of points into a [field](https://en.wikipedia.org/wiki/Field_%28mathematics%29)**. By *algebra*, all I 
+mean is that you can add observables and multiply observables. Often the field is just the real numbers. In many branches of mathematics, 
 the set of points is suppressed and all focus is directed at the algebra of observables. It is important to note that every observable is a partial function from points into the real 
 numbers but not every partial function from the points to the real numbers is an observable. Usually observables are required to have nice properties which allow us to study them 
 mathematically. For example, in algebraic geometry, all the observables are required to be polynomial functions and in differential geometry all the observables are required to be 
-smooth functions. We shall always require our observables to be [continuious](https://en.wikipedia.org/wiki/Continuous_function). For this to even make sense, our set of points 
+smooth functions. We shall always require our observables to be [continuous](https://en.wikipedia.org/wiki/Continuous_function). For this to even make sense, our set of points 
 needs to be equipped with a [topology](https://en.wikipedia.org/wiki/Topological_space). From now on, whenever we talk about the set of points of a space, it comes equipped with a 
 topology and whenever we talk about observables, they are continuous.
 
