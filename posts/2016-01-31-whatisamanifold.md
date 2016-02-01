@@ -80,6 +80,10 @@ though $X_0$ is not a well defined function on $\mathbb{P}(V)$, the condition $X
 $$ X_i/X_j = \frac{1}{X_j/X_i}$$
 ![](/img/2016-01-31-projectivespace.PNG)
 
+In later posts we will see many more examples. We have defined manifolds and seen our first examples (the circle, euclidean space and the projective plane), but we still haven\'t 
+explained why we can do calculus on a manifold. I will explain this in the next post about the tangent bundle.
+
+
 ###Exercises
 
 I will always try and include some exercises in these posts.
@@ -89,5 +93,3 @@ I will always try and include some exercises in these posts.
 3. **(harder)** Prove that every manifold has a well defined dimension. [hint](https://en.wikipedia.org/wiki/Singular_homology).
 4. **(harder)** Prove that the only two 1-dimensional manifolds are $\mathbb{R}$ and $S^1$. 
 
-In later posts we will see many more examples. We have defined manifolds and seen our first example (the circle), but we still haven\'t 
-explained why we can do calculus on a manifold. I will explain this in the next post about the tangent bundle.
