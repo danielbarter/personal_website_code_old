@@ -59,11 +59,35 @@ functions.
 ![](/img/2016-01-31-changingcoordinates.PNG)
 
 If $f:X \to \mathbb{R}$ is a function, then we say that $f$ is smooth if $f(x_1,\dots,x_n) : U \to \mathbb{R}$ is smooth for every choice of coordinate chart. Since changing 
-coordinates is smooth, in order to check that $f$ is smooth, you only need to check that $f(x_1,\dots,x_n)$ is smooth in one set of coordinates around each point. Lets see an example. 
-Take the circle $S^1$ which is depicted above. Write $N = (0,1)$ and $S = (0,-1)$. Then define 
+coordinates is smooth, in order to check that $f$ is smooth, you only need to check that $f(x_1,\dots,x_n)$ is smooth in one set of coordinates around each point. 
+
+###Examples
+
+Manifolds are everywhere, so lets see some examples.
+ 
+1. Take the circle $S^1$ which is depicted above. Write $N = (0,1)$ and $S = (0,-1)$. Then define 
 $$\alpha : S^1 \backslash \{ N \} \to (\pi/2,5 \pi/2)$$
 $$\beta : S^1 \backslash \{ S \} \to (-\pi/2,3\pi/2)$$
 to be the functions which take a point on the circle to the corresponding angle. Then
 $$\alpha = \beta + 2 \pi$$
-so $\alpha$ is a smooth function of $\beta$. In later posts we will see many more examples. We have defined manifolds and seen our first example (the circle), but we still haven\'t 
+so $\alpha$ is a smooth function of $\beta$.
+2. Let $V$ be a vector space over $\mathbb{R}$. Choose a basis $x_1,\dots,x_n$ for $V^*$. Then $x_1,\dots,x_n$ is a coordinate chart which covers $V$. We call $\{x_i\}$ a linear 
+coordinate chart. 
+3. Let $V$ be a 3-dimensional vector space and let $\mathbb{P}(V)$ be the set of lines in $V$ which pass through the origin. Let $X_0,X_1,X_2$ be a basis for $V^*$. The functions 
+$X_i$ are not well defined on $\mathbb{P}(V)$, but the ratios $X_i/X_j$ are. The functions $X_1/X_0, X_2/X_0$ are a coordinate chart on $\{L : X_0(L) \not= 0 \}$. Note that even 
+though $X_0$ is not a well defined function on $\mathbb{P}(V)$, the condition $X_0(L) = 0$ is well defined. Similarly, $X_0/X_1, X_2/X_1$ are coordinates on $\{ L : X_1(L) \not= 
+0\}$ and $X_0/X_2, X_1/X_2$ are coordinates on $\{L : X_2(L) \not= 0 \}$. Therefore we can cover $\mathbb{P}(V)$ with three coordinate charts. Changing coordinates is easy:
+$$ X_i/X_j = \frac{1}{X_j/X_i}$$
+![](/img/2016-01-31-projectivespace.PNG)
+
+###Exercises
+
+I will always try and include some exercises in these posts.
+
+1. Let $L$ be the set of all lines in $\mathbb{R}^3$ (not just those passing through the origin). Prove that $L$ is a manifold.
+2. For any vector space $V$, prove that $\mathbb{P}(V)$ is a manifold.
+3. **(harder)** Prove that every manifold has a well defined dimension. [hint](https://en.wikipedia.org/wiki/Singular_homology).
+4. **(harder)** Prove that the only two 1-dimensional manifolds are $\mathbb{R}$ and $S^1$. 
+
+In later posts we will see many more examples. We have defined manifolds and seen our first example (the circle), but we still haven\'t 
 explained why we can do calculus on a manifold. I will explain this in the next post about the tangent bundle.
