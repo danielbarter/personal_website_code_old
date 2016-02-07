@@ -5,7 +5,7 @@ date: 2016-01-31
 
 #What is a manifold?
 
-*A Manifold is a space on which one can do calculus.* This is what I usually say when asked about manifolds. In this post, I want to explain what this phrase means.
+*A Manifold is a space on which one can do calculus.* This is what I usually say when asked about manifolds. In this post, I want to start explaining what this phrase means.
 
 ###What is a space?
 
@@ -82,7 +82,7 @@ $$ X_i/X_j = \frac{1}{X_j/X_i}$$
 ![](/img/2016-01-31-projectivespace.PNG)
 
 In later posts we will see many more examples. We have defined manifolds and seen our first examples (the circle, euclidean space and the projective plane), but we still haven\'t 
-explained why we can do calculus on a manifold. I will explain this in the next post about the tangent bundle.
+explained why we can do calculus on a manifold. We will start to see why in the next post about tangent spaces.
 
 
 ###Exercises
