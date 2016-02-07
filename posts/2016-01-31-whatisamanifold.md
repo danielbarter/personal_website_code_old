@@ -59,7 +59,8 @@ functions.
 ![](/img/2016-01-31-changingcoordinates.PNG)
 
 If $f:X \to \mathbb{R}$ is a function, then we say that $f$ is smooth if $f(x_1,\dots,x_n) : U \to \mathbb{R}$ is smooth for every choice of coordinate chart. Since changing 
-coordinates is smooth, in order to check that $f$ is smooth, you only need to check that $f(x_1,\dots,x_n)$ is smooth in one set of coordinates around each point. 
+coordinates is smooth, in order to check that $f$ is smooth, you only need to check that $f(x_1,\dots,x_n)$ is smooth in one set of coordinates around each point. We can define a 
+smooth map $F : X \to Y$ between manifolds. For each coordinate chart $V \subseteq Y$ and each coordinate chart $U \subseteq F^{-1}(V)$, $F : U \to V$ is smooth in coordinates.
 
 ###Examples
 
