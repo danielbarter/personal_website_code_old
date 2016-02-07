@@ -138,10 +138,11 @@ where $\partial / \partial y_i \lvert_x$ takes $f$, differentiates with respect 
 
 1. We can describe tangent vectors in two ways: they can be presented by germs of curves or they can be presented by differential operators. We will be switching between these two 
    perspectives often. You should study the above proof until the translation becomes transparent. Maybe try and rewrite the proof in your own words!
-2. On the upper half plane $\mathbb{H}^2 = \{ (a,b) : b > 0 \}$ we have two coordinate charts $(x,y)$ and $(r,\theta)$. They are related by $x = r \cos \theta$ and $y = r \sin 
+2. On a 1-dimensional manifold, what is the change of basis matrix from $\partial / \partial x \lvert_p$ to $\partial / \partial y \lvert_p$ 
+3. On the upper half plane $\mathbb{H}^2 = \{ (a,b) : b > 0 \}$ we have two coordinate charts $(x,y)$ and $(r,\theta)$. They are related by $x = r \cos \theta$ and $y = r \sin 
    \theta$. At a point $p \in \mathbb{H}^2$, we have two bases for the tangent space: $\partial / \partial x \lvert_p, \partial / \partial y \lvert_p$ and $\partial / \partial r 
    \lvert_p, \partial / \partial \theta \lvert_p$. Write down the change of basis matrix.
-3. Can you describe the change of basis matrix from $\partial / \partial x_1 \lvert_p, \dots, \partial / \partial x_d \lvert_p$ to $\partial / \partial y_1 \lvert_p, 
+4. Can you describe the change of basis matrix from $\partial / \partial x_1 \lvert_p, \dots, \partial / \partial x_d \lvert_p$ to $\partial / \partial y_1 \lvert_p, 
    \dots, \partial / \partial y_d \lvert_p$?
-4. **(harder)** The chain rule implies that $\gamma'(0) = \delta'(0)$ is independent of coordinates. Prove that $\gamma^{(i)}(0) = \delta^{(i)}(0)$ for all $i \leq n$ is also 
+5. **(harder)** The chain rule implies that $\gamma'(0) = \delta'(0)$ is independent of coordinates. Prove that $\gamma^{(i)}(0) = \delta^{(i)}(0)$ for all $i \leq n$ is also 
    independent of coordinates. 
