@@ -14,7 +14,7 @@ title: CV
 - Indipendent Study, 2008-2015. I know a lot about
   differential/algebraic geometry, representation theory,
   category theory. I am also interested in algebraic topology,
-  functional programming, systems programming (*nix and C).
+  functional programming, systems programming.
 
 ## Papers
 - Noetherianity and rooted trees. [arXiv:1509.04228](http://arxiv.org/abs/1509.04228)
