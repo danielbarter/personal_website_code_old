@@ -6,7 +6,8 @@ date:  2016-02-07
 #Tangent spaces
 
 In [the last post](2016-01-31-whatisamanifold.html), we defined manifolds. In 
-this post we shall start doing calculus on manifolds. 
+this post we shall start building the infrastructure required to do calculus on 
+manifolds. 
 
 ###Not sheaves again\.\.\.\.
 

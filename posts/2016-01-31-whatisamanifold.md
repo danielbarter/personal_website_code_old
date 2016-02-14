@@ -80,6 +80,11 @@ though $X_0$ is not a well defined function on $\mathbb{P}(V)$, the condition $X
 0\}$ and $X_0/X_2, X_1/X_2$ are coordinates on $\{L : X_2(L) \not= 0 \}$. Therefore we can cover $\mathbb{P}(V)$ with three coordinate charts. Changing coordinates is easy:
 $$ X_i/X_j = \frac{1}{X_j/X_i}$$
 ![](/img/2016-01-31-projectivespace.PNG)
+4. Define ${\rm GL}_r(\mathbb{R})$ to be the set of $r \times r$ invertible matricies. 
+A matrix is invertible iff its determinant is nonzero, therefore ${\rm 
+GL}_r(\mathbb{R}) \subseteq {\rm Mat}_{r \times r}(\mathbb{R}) \cong \mathbb{R}^{r^2}$ 
+is an open subset. We have a coordinate chart on ${\rm GL}_r(\mathbb{R})$ given by 
+the restriction of the matrix coefficients.
 
 In later posts we will see many more examples. We have defined manifolds and seen our first examples (the circle, euclidean space and the projective plane), but we still haven\'t 
 explained why we can do calculus on a manifold. We will start to see why in the next post about tangent spaces.
