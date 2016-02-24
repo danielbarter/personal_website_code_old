@@ -141,7 +141,35 @@ $$ f = \left(a \frac{X}{Y} + b\right) \text{ over $D(Y)$}$$
 
 ### Locally free sheaves
 
+So far we have been describing vector bundles as manifolds over some base $X$ where 
+all the fibers are vector spaces. There is also a sheaf theoretic definition of vector 
+bundles which we shall explore in this section.
 
+Let $X = \mathbb{R}$ and consider the vector bundle $E = X \times \mathbb{R}$. We have 
+a vector bundle map $f : E \to E$ defined by $(x,\lambda) \mapsto (x, x \lambda)$. We 
+can think of $f$ as the matrix $(x)$. If we try and take the kernel of $f$, something 
+bad happens: The map $f$ is injective when $x \not= 0$ and zero when $x=0$. Therefore 
+the kernel should be like a vector bundle which is zero dimensional over $\mathbb{R} 
+\backslash \{ 0 \}$ and one dimensional over $\{ 0 \}$. Obviously, no such vector 
+bundle exists. The reason we need the sheaf theoretic definition of vector bundle is 
+because it gives us a meaningful way to assign kernels and cokernels to all vector 
+bundle maps, not just those with constant rank.
+
+Let $X$ be a manifold. Recall that $\mathscr{C}$ is the sheaf of smooth functions on 
+$X$. A $\mathscr{C}$-module is a sheaf of abelian groups $\mathscr{F}$ such that each 
+$\mathscr{F}(U)$ is a $\mathscr{C}(U)$-module and the restriction maps are compatible 
+with the $\mathscr{C}$-action: $(s v) \lvert_V = s \lvert_V v \lvert_V$. Let $\pi : E 
+\to X$ be a vector bundle. We can build a $\mathscr{C}$-module $\mathscr{E}$ called 
+the *sheaf of sections* as 
+follows. If $U \subseteq X$ is open, then $\mathscr{E}(U)$ is the sections of $E$ over 
+$U$:
+$$\mathscr{E}(U) = \{ s : U \to E : \pi s = {\rm id}_U \}$$
+If $s,t \in \mathscr{E}(U)$ then we define $(s+t)(x) = s(x) + t(x)$. This makes sense 
+because both $s(x)$ and $t(x)$ are vectors in the fiber $\pi^{-1}(x)$. Therefore 
+$\mathscr{E}$ is a presheaf of abelian groups. To check that $\mathscr{E}$ is a sheaf, 
+you just need to unravel the definitions. If $f \in \mathscr{C}(U)$ and $s \in 
+\mathscr{E}(U)$, then we define $(fs)(x) = f(x) s(x)$. Therefore $\mathscr{E}$ is a 
+$\mathscr{C}$-module.
 
 ###Exercises
 1. write down gluing data for the tautological line bundle on $\mathbb{RP}^n$.
