@@ -132,9 +132,17 @@ m), [1/m:1]) \mapsto (m \lambda, 1/m)$$
 Therefore the change of coordinate map from $D(X)$ to $D(Y)$ is $Y/X : D(X) \cap D(Y) 
 \to \mathbb{R}^{\times}$. We don\'t need to worry about the cocycle condition because 
 there are only two coordinate charts. We call $L$ the *tautological line bundle* over 
-$\mathbb{RP}^1$.
+$\mathbb{RP}^1$. Suppose that $f : \mathbb{R}^2 \to \mathbb{R}$ is a linear function. 
+Then we have a bundle map $f : L \to \mathbb{R} \times \mathbb{RP}^1$ defined by 
+$(p,L) \mapsto (f(p),L)$. If $f = aX + bY$, then we have
+$$ f = \left(a + b \frac{Y}{X}\right) \text{ over $D(X)$}$$
+$$ f = \left(a \frac{X}{Y} + b\right) \text{ over $D(Y)$}$$
+
+
+### Locally free sheaves
+
 
 
 ###Exercises
-
-1. **(Harder)** Prove that every vector bundle over $\mathbb{R}^d$ is trivial.
+1. write down gluing data for the tautological line bundle on $\mathbb{RP}^n$.
+2. **(Harder)** Prove that every vector bundle over $\mathbb{R}^d$ is trivial.

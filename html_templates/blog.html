@@ -1,7 +1,18 @@
 $body$
 
+<h3> Computers </h3>
 <ul>
-    $for(posts)$
+    $for(computerPosts)$
+    <li>
+        <a href="$url$">$title$</a>
+        <span class="soft">$date$</span>
+    </li>
+    $endfor$
+</ul>
+
+<h3> Mathematics </h3>
+<ul>
+    $for(mathPosts)$
     <li>
         <a href="$url$">$title$</a>
         <span class="soft">$date$</span>
