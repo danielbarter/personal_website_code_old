@@ -169,8 +169,37 @@ because both $s(x)$ and $t(x)$ are vectors in the fiber $\pi^{-1}(x)$. Therefore
 $\mathscr{E}$ is a presheaf of abelian groups. To check that $\mathscr{E}$ is a sheaf, 
 you just need to unravel the definitions. If $f \in \mathscr{C}(U)$ and $s \in 
 \mathscr{E}(U)$, then we define $(fs)(x) = f(x) s(x)$. Therefore $\mathscr{E}$ is a 
-$\mathscr{C}$-module.
+$\mathscr{C}$-module. The sheaf of sections $\mathscr{E}$ is much nicer than an 
+arbitrary $\mathscr{C}$-module. Indeed, $\mathscr{E}$ is a locally free 
+$\mathscr{C}$-module! This means that for each point $p \in X$, there is a 
+neighbourhood $p \in U$ such that $\mathscr{E}\lvert_U \cong \mathscr{C}_{U}^{\oplus 
+r}$. To see this, choose a bundle chart $\pi^{-1}(U) = U \times \mathbb{R}^r$. Write 
+$e_1,\dots,e_r$ for the standard basis of $\mathbb{R}^r$. Then
+$$\mathscr{E}(U) = \{ f_1 e_1 + \dots + f_r e_r : f_i \in \mathscr{C}(U) \} \cong 
+\mathscr{C}(U)^{\oplus r}.$$
+To denote this, we shall write $\mathscr{E}\lvert_U = \mathscr{C} \lvert_U \{ 
+e_1,\dots,e_r \}$. The map $E \mapsto \mathscr{E}$ sends vector bundles to locally 
+free sheaves. It is an amazing fact that every locally free sheaf arises this way! 
+Suppose that $\mathscr{F}$ is a locally free sheaf. Suppose that $\mathscr{F}\lvert_U 
+= \mathscr{C} \lvert_U \{ s_1,\dots,s_r \}$ and $\mathscr{F} \lvert_V = \mathscr{C} 
+\lvert_U \{ t_1,\dots,t_r \}$. Then the change of basis matrix from $s_1,\dots,s_r$ to 
+$t_1,\dots,t_r$ is a smooth map $\phi : U \cap V \to {\rm GL}_r(\mathbb{R})$. 
+Moreover, if you do this over three open sets, then the cocycle condition is 
+satisfied, so we can construct a vector bundle $F$ such that $F \mapsto \mathscr{F}$. 
+We can capture all of this in the following precise statement: The functor $E \mapsto 
+\mathscr{E}$ from the category of vector bundles to the category of locally free 
+sheaves is an [equivalence of 
+categories](https://en.wikipedia.org/wiki/Equivalence_of_categories). Lets explore the 
+map $f : E \to E$ from the start of the section using our new sheaf theoretic 
+langauge. The sheaf of sections $\mathscr{E}$ is just $\mathscr{C}$, the sheaf of 
+smooth functions on $X$. The induced map $\mathscr{C} \to \mathscr{C}$ is given by 
+multiplication by $x$. 
+
+
+
 
 ###Exercises
 1. write down gluing data for the tautological line bundle on $\mathbb{RP}^n$.
-2. **(Harder)** Prove that every vector bundle over $\mathbb{R}^d$ is trivial.
+2. Prove that $E \mapsto \mathscr{E}$ is an equivalence of categories between vector 
+bundles and locally free sheaves.
+3. **(Harder)** Prove that every vector bundle over $\mathbb{R}^d$ is trivial.
