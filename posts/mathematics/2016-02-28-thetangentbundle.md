@@ -79,7 +79,7 @@ U_{\beta} \cap U_{\gamma}$.
 We call $(\phi_{\beta\alpha}, U_{\alpha})$ gluing data for the vector bundle $E$. From 
 the gluing data we can reconstruct $E$: The gluing data tells us where the vector 
 bundle charts are and how to change coordinates between them. We can also describe 
-vector bundle maps interms of gluing data. Suppose that we have two vector bundles $E$ 
+vector bundle maps in terms of gluing data. Suppose that we have two vector bundles $E$ 
 and $F$ described by gluing data $(\phi_{\beta\alpha},U_{\alpha})$ and 
 $(\psi_{\beta\alpha},U_{\alpha})$. Then a vector bundle morphism $f : E \to F$ 
 consists of maps $f_{\alpha} : U_{\alpha} \to {\rm Mat}_{s \times r}(\mathbb{R})$ 
@@ -172,7 +172,7 @@ you just need to unravel the definitions. If $f \in \mathscr{C}(U)$ and $s \in
 $\mathscr{C}$-module. The sheaf of sections $\mathscr{E}$ is much nicer than an 
 arbitrary $\mathscr{C}$-module. Indeed, $\mathscr{E}$ is a locally free 
 $\mathscr{C}$-module! This means that for each point $p \in X$, there is a 
-neighbourhood $p \in U$ such that $\mathscr{E}\lvert_U \cong \mathscr{C}_{U}^{\oplus 
+neighborhood $p \in U$ such that $\mathscr{E}\lvert_U \cong \mathscr{C}_{U}^{\oplus 
 r}$. To see this, choose a bundle chart $\pi^{-1}(U) = U \times \mathbb{R}^r$. Write 
 $e_1,\dots,e_r$ for the standard basis of $\mathbb{R}^r$. Then
 $$\mathscr{E}(U) = \{ f_1 e_1 + \dots + f_r e_r : f_i \in \mathscr{C}(U) \} \cong 
@@ -191,10 +191,44 @@ We can capture all of this in the following precise statement: The functor $E \m
 sheaves is an [equivalence of 
 categories](https://en.wikipedia.org/wiki/Equivalence_of_categories). Lets explore the 
 map $f : E \to E$ from the start of the section using our new sheaf theoretic 
-langauge. The sheaf of sections $\mathscr{E}$ is just $\mathscr{C}$, the sheaf of 
+language. The sheaf of sections $\mathscr{E}$ is just $\mathscr{C}$, the sheaf of 
 smooth functions on $X$. The induced map $\mathscr{C} \to \mathscr{C}$ is given by 
-multiplication by $x$. 
+multiplication by $x$. If $f$ is a smooth map and $fx = 0$ then $f = 0$ by continuity. 
+Therefore the kernel of $f$ is the zero sheaf! What the heck? Shouldn\'t the kernel 
+somehow represent a \"vector bundle\" which is zero over $\mathbb{R} \backslash \{ 0 
+\}$ and one dimensional over $0$? The answer is no. We are simply taking the 
+[kernel](https://en.wikipedia.org/wiki/Kernel_%28category_theory) in the category of 
+$\mathscr{C}$-modules. If it doesn\'t behave how we expect, it is not the categories 
+fault, it is our fault for working inside the wrong category. On the bright side, the 
+cokernel of $f$ will represent a \"vector bundle\" which is 1-dimensional over $0$ and 
+zero over $\mathbb{R} \backslash \{ 0 \}$, but we need to talk about sheafification 
+before we can talk about cokernels (we will do this in a later post).
 
+
+###Sections of the tangent bundle
+
+Let $X$ be a manifold. Write $T$ for the tangent bundle and $\mathscr{T}$ for the 
+associated sheaf of sections. Elements in $\mathscr{T}(X)$ assign tangent vectors to 
+each point in $X$, so they are vector fields on $X$. In [the last 
+post](2016-02-07-tangentspaces.html), we proved that if $x_i$ are coordinates on $U 
+\subseteq X$, then
+$$\mathscr{T} \lvert_U = \mathscr{C} \lvert_U \left\{ \frac{\partial}{\partial x_1}, 
+\dots, \frac{\partial}{\partial x_d} \right\} $$
+where $\partial / \partial x_i$ represents the section which sends $x$ to 
+$\partial / \partial x_i \lvert_x$. There is another way to describe the locally free 
+sheaf $\mathscr{T}$ which is important. We can define a sheaf ${\rm 
+Hom}_{\mathbb{R}}(\mathscr{C},\mathscr{C})$ as follows: The sections over $U$ are the
+$\mathbb{R}$-linear sheaf homomorphisms $\mathscr{C} \lvert_U \to \mathscr{C} 
+\lvert_U$. It is routine to check that the sheaf axioms are satisfied. Define
+$$\mathscr{D} = \{ D \in {\rm Hom}_{\mathbb{R}}(\mathscr{C},\mathscr{C}) : D(fg) = f 
+D(g) + g D(f) \}$$
+This is the sheaf of first order differential operators. Pointwise multiplication 
+turns $\mathscr{D}$ into a $\mathscr{C}$-module. There is a map $\mathscr{T} 
+\to \mathscr{D}$ defined by $V \mapsto f \mapsto (x \mapsto V_x(f))$. Under this map, 
+the vector field $\partial / \partial x_i$ is sent to partial differentiation with 
+respect to $x_i$. We can define the inverse map $\mathscr{D} \to \mathscr{T}$ by $D 
+\mapsto x \mapsto f \mapsto D(f)(x)$. It is routine to check that these maps establish 
+an isomorphism of $\mathscr{C}$-modules.
 
 
 
@@ -202,4 +236,5 @@ multiplication by $x$.
 1. write down gluing data for the tautological line bundle on $\mathbb{RP}^n$.
 2. Prove that $E \mapsto \mathscr{E}$ is an equivalence of categories between vector 
 bundles and locally free sheaves.
+4. Check that ${\rm Hom}(\mathscr{F},\mathscr{G})$ is actually a sheaf.
 3. **(Harder)** Prove that every vector bundle over $\mathbb{R}^d$ is trivial.
