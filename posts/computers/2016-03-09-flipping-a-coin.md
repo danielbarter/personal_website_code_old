@@ -14,11 +14,13 @@ What can you say about the coin?
 ### The Frequentist Approach
 
 The coin has some fixed unknown probability $\phi$ of landing heads. Consider the 
-following experiment: flip the coin $n$ times. Let $H$ be the number of heads. We 
-want to find functions $f,g$ such that
+following experiment: flip the coin $n$ times. Let $H$ be the number of heads. We want 
+to estimate bounds on $\phi$. One way to do this is by finding functions $f,g$ such 
+that
 $${\bf P}(\phi \in [f(H),g(H)]) \geq 0.95 \qquad \text{for all $\phi$}$$
 In English, this says that we are 95% sure that $\phi$ lies between $f(H)$ and $g(H)$. 
-It follows from [Hoeffding\'s 
+We call $[f(H),g(H)]$ a **confidence interval**. The value $0.95$ was chosen to make 
+things more concrete. It follows from [Hoeffding\'s 
 Inequality](https://en.wikipedia.org/wiki/Hoeffding's_inequality) that if 
 $X_1,\dots,X_n \sim {\rm Bernoulli}(\phi)$ are independent, then for any $\epsilon > 
 0$, 
@@ -32,8 +34,10 @@ If we set $\epsilon = \sqrt{log(40)/2n}$, then we get
 $${\bf P} \left( \phi \in \left[ \frac{\sum X_i}{n} - \sqrt{log(40)/2n}, \frac{\sum 
 X_i}{n} + \sqrt{log(40)/2n} \right] \right) \geq 0.95.$$
 Since $H = \sum X_i$, we are 95% sure that $\phi$ lies between $H / n - 
-\sqrt{log(40)/2n}$ and $H / n + \sqrt{log(40)/2n}$. 
-
+\sqrt{log(40)/2n}$ and $H / n + \sqrt{log(40)/2n}$. There are many other ways to 
+calculate confidence intervals. We have chosen to use Hoeffding\'s Inequality because 
+it does not place any restrictions on the sample size. 
+ 
 ### The Bayesian Approach
 
 Write $\Phi$ for the probability that the coin lands heads. Since we do not know the 
