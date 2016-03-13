@@ -70,7 +70,7 @@ $$\widehat{\theta}_n = \int_{\mathbb{R}} a(x) d \widehat{F}_n(x) = \frac{1}{n}
 The [weak law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers) 
 tells us that $\widehat{\theta}_n$ converges in 
 probability to $\theta$. We say that $\widehat{\theta}_n$ is a **consistent 
-estimator** This says that if $n$ 
+estimator**. Intuitively, this says that if $n$ 
 is large, the probability of 
 $\widehat{\theta}_n$ and $\theta$ being far apart is small. We can produce a 
 confidence interval using the [central limit 
