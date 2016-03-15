@@ -44,15 +44,18 @@ main = hakyll $ do
   match "blog.md" $ do
     route $ setExtension "html"
     compile $ do 
-      computerPosts <- loadAll "posts/computers/*"
+      compPosts     <- loadAll "posts/computers/*"
       mathPosts     <- loadAll "posts/mathematics/*"
-      computerPostsOrdered <- recentFirst computerPosts
+      statPosts     <- loadAll "posts/statistics/*"
+      compPostsOrdered     <- recentFirst compPosts
       mathPostsOrdered     <- recentFirst mathPosts
+      statPostsOrdered     <- recentFirst statPosts
       -- this relies on posts being titled YYYY-MM-DD-title.extension
       -- also, need a date field at the top of each blog post for the blog.html template
       let blogContext = 
-              listField "computerPosts" defaultContext (return computerPostsOrdered) 
+              listField "compPosts" defaultContext (return compPostsOrdered) 
            <> listField "mathPosts" defaultContext (return mathPostsOrdered)
+           <> listField "statPosts" defaultContext (return statPostsOrdered)
            <> defaultContext
       pandocCompiler
         >>= loadAndApplyTemplate "html_templates/blog.html" blogContext

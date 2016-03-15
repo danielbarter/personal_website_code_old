@@ -2,7 +2,17 @@ $body$
 
 <h3> Computers </h3>
 <ul>
-    $for(computerPosts)$
+    $for(compPosts)$
+    <li>
+        <a href="$url$">$title$</a>
+        <span class="soft">$date$</span>
+    </li>
+    $endfor$
+</ul>
+
+<h3> Statistics </h3>
+<ul>
+    $for(statPosts)$
     <li>
         <a href="$url$">$title$</a>
         <span class="soft">$date$</span>
