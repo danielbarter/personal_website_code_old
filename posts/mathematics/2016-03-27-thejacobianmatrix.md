@@ -120,8 +120,33 @@ coordinate chart $(f_1,\dots,f_r,x_{r+1},\dots,x_m)$ on $U$ and
 $(y_1,\dots,y_r,w_{r+1},\dots,w_n)$ on $V$, $f$ is given by the following linear map:
 $$\begin{pmatrix} I & 0 \\ 0 & 0 \end{pmatrix}$$
 This result is often called the implicit function theorem or the rank theorem. It 
-tells us that $x_{r+1},\dots,x_m$ are coordinates around $p$ in $f^{-1}(f(p))$. 
+tells us that $x_{r+1},\dots,x_m$ are coordinates around $p$ in $f^{-1}(f(p))$. The 
+implicit function theorem is best demonstrated with a simple example: Consider the map 
+$f : \mathbb{R}^2 \to \mathbb{R}$ defined by $f(x,y) = x^2 + y^2$. 
+The derivative is given by 
+$$f' = \begin{pmatrix} 2x & 2y \end{pmatrix}$$
+which implies that $f : \mathbb{R}^2 \backslash \{ 0 \} \to \mathbb{R}$ has constant 
+rank $1$. Consider the point $(1,0)$. The jacobian at this point is $\begin{pmatrix} 2 
+& 0 \end{pmatrix}$. Therefore $y$ is a coordinate on $f^{-1}(1) = \{ (x,y) : x^2 + y^2 
+= 1 \}$ in a neighbourhood of $(1,0)$. This is easy to see geometrically:
 
-### Examples
+![](/img/2016-03-27-implicitfunctionthmcoordinatechart.PNG)
+
+Similarly, $x$ is a coordinate on $\{ (x,y) : x^2 + y^2 = 1 \}$ in some neighbourhood 
+of $(0,1)$. These two coordinate charts intersect in the first quadrant and on the 
+intersection, $y = \sqrt{1-x^2}$. 
+
+A very similar argument proves that $x,y$ are coordinates around $(0,0,1)$ on the 
+2-sphere $S^2 = \{ (x,y,z) : x^2 + y^2 + z^2 = 1 \}$.
+
+![](/img/2016-03-27-spherenorthpolechart.PNG)
+
+ Now consider the function $z : S^2 \to \mathbb{R}$ which gives the height above the $x,y$-plane. In a neighbourhood 
+of $(0,0,1)$, we have $z = \sqrt{1-x^2-y^2}$. The derivative of $z$ is
+$$z' = \left(\frac{-x}{\sqrt{1-x^2-y^2}},\frac{-y}{\sqrt{1-x^2-y^2}}\right)$$
+Therefore, $z$ has rank $0$ at $(0,0,1)$ and rank $1$ in the rest of the neighbourhood 
+of $(0,0,1)$. Notice that $z^{-1}(1)$ is $0$-dimensional and $z^{-1}(1-\epsilon)$ is 
+$1$ dimensional. This shows that the constant rank hypothesis we used to prove the 
+implicit function theorem is necessary. 
 
 
