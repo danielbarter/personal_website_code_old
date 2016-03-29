@@ -6,7 +6,7 @@ date: 2016-03-27
 # The Jacobian Matrix
 
 In the [last post](2016-02-28-thetangentbundle.html), we defined the tangent bundle. 
-We have finally developed enough machineary to start seriously doing calculus on 
+We have finally developed enough machinery to start seriously doing calculus on 
 manifolds. In this post, we shall define the derivative of a smooth map between 
 manifolds and translate the [implicit function theorem](https://en.wikipedia.org/wiki/Implicit_function_theorem) into the language 
 of differential geometry. 
@@ -51,18 +51,18 @@ matrix](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant).
 
 Suppose that $f : X \to Y$ is a smooth map with derivative $f' : TX \to f^* TY$. The 
 [inverse function theorem](https://en.wikipedia.org/wiki/Inverse_function_theorem) 
-says that if $p \in X$ and $f'_p$ is an isomorphism, then there are neighbourhoods $p 
+says that if $p \in X$ and $f'_p$ is an isomorphism, then there are neighborhoods $p 
 \in U$ and $f(p) \in V$ such that $U \subseteq f^{-1}(V)$ and $f : U \to V$ is a 
-diffeomorphism. The inverse function theorem is plausable: If you 
+diffeomorphism. The inverse function theorem is plausible: If you 
 take $p \in X$ and start zooming in around $p$, the smooth map $f$ starts to look like 
 the linear map $f'_p$. Once you have zoomed in to inspect an extremely small open 
-neighbourhood around $p$, $f$ and $f'_p$ are indistinguishable to the naked eye, so 
-you expect $f$ to be invertible on this open neighbourhood. 
+neighborhood around $p$, $f$ and $f'_p$ are indistinguishable to the naked eye, so 
+you expect $f$ to be invertible on this open neighborhood. 
 
 Let\'s try and make this rigorous. Since $f'_p$ is invertible and the determinant not vanishing is an open 
-condition, we can choose open neighbourhoods $p \in U$ and $f(p) \in V$ such that 
+condition, we can choose open neighborhoods $p \in U$ and $f(p) \in V$ such that 
 $f(U) \subseteq V$ and $f' : TU \to f^*TV$ is an isomorphism. By shrinking these open 
-neighbourhoods, we can assume that $U = \mathbb{R}^d$, $V = \mathbb{R}^d$ and both 
+neighborhoods, we can assume that $U = \mathbb{R}^d$, $V = \mathbb{R}^d$ and both 
 $p,f(p)$ are equal to zero in their respective coordinate charts. Now $f$ is a 
 smooth map $\mathbb{R}^d \to \mathbb{R}^d$ sending $0$ to $0$ and $f' : \mathbb{R}^d 
 \to {\rm GL}_d(\mathbb{R})$. We want to construct a germ $g$ around $0 \in 
@@ -76,7 +76,7 @@ problems are the heart of differential geometry and we will see many examples
 later. Proving the inverse function theorem is equivalent to solving this 
 integrability problem. If you want to solve integrability problems, you need to use 
 advanced tools from analysis. Many famous open problems in differential geometry can 
-be translated into integrability problems (for example, the existance of a complex 
+be translated into integrability problems (for example, the existence of a complex 
 structure on the 6-sphere). 
 
 ### The Implicit Function Theorem
@@ -128,12 +128,14 @@ $$f' = \begin{pmatrix} 2x & 2y \end{pmatrix}$$
 which implies that $f : \mathbb{R}^2 \backslash \{ 0 \} \to \mathbb{R}$ has constant 
 rank $1$. Consider the point $(1,0)$. The jacobian at this point is $\begin{pmatrix} 2 
 & 0 \end{pmatrix}$. Therefore $y$ is a coordinate on $f^{-1}(1) = \{ (x,y) : x^2 + y^2 
-= 1 \}$ in a neighbourhood of $(1,0)$. This is easy to see geometrically:
+= 1 \}$ in a neighborhood of $(1,0)$. This is easy to see geometrically:
 
 ![](/img/2016-03-27-implicitfunctionthmcoordinatechart.PNG)
 
-Similarly, $x$ is a coordinate on $\{ (x,y) : x^2 + y^2 = 1 \}$ in some neighbourhood 
-of $(0,1)$. These two coordinate charts intersect in the first quadrant and on the 
+Despite the simplicity of this example, it really captures what is going on. 
+The implicit function theorem allows us to locally realize fibers of smooth maps as 
+graphs. Similarly, $x$ is a coordinate on $\{ (x,y) : x^2 + y^2 = 1 \}$ in some 
+neighborhood of $(0,1)$. These two coordinate charts intersect in the first quadrant and on the 
 intersection, $y = \sqrt{1-x^2}$. 
 
 A very similar argument proves that $x,y$ are coordinates around $(0,0,1)$ on the 
@@ -144,9 +146,17 @@ A very similar argument proves that $x,y$ are coordinates around $(0,0,1)$ on th
  Now consider the function $z : S^2 \to \mathbb{R}$ which gives the height above the $x,y$-plane. In a neighbourhood 
 of $(0,0,1)$, we have $z = \sqrt{1-x^2-y^2}$. The derivative of $z$ is
 $$z' = \left(\frac{-x}{\sqrt{1-x^2-y^2}},\frac{-y}{\sqrt{1-x^2-y^2}}\right)$$
-Therefore, $z$ has rank $0$ at $(0,0,1)$ and rank $1$ in the rest of the neighbourhood 
+Therefore, $z$ has rank $0$ at $(0,0,1)$ and rank $1$ in the rest of the neighborhood 
 of $(0,0,1)$. Notice that $z^{-1}(1)$ is $0$-dimensional and $z^{-1}(1-\epsilon)$ is 
 $1$ dimensional. This shows that the constant rank hypothesis we used to prove the 
 implicit function theorem is necessary. 
 
 
+### Exercises
+
+- Let $A$ be a matrix. What is the jacobian of $x \mapsto Ax + b$?
+- Using the implicit function theorem, carefully construct coordinates on $$S^n = \{ 
+(x_0,x_1,\dots,x_n) : x_0^2 + \dots + x_n^2 = 1 \}$$
+- when is the solution set of a polynomial $f(x_1,\dots,x_n)$ a smooth manifold?
+- **(Harder)** Compute the Jacobian of the determinant map ${\rm det} : {\rm 
+GL}_n(\mathbb{R}) \to \mathbb{R}^{\times}$.
