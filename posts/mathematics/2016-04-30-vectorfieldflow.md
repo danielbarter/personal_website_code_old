@@ -139,3 +139,8 @@ implies that $t,x_1,\dots,x_{d-1}$ are coordinates in a small neighbourhood of $
 via the map $(t,x_1,\dots,x_{d-1}) \mapsto a(t,x_1,\dots,x_{d-1},0)$. Then $V = 
 \partial / \partial t$ in this coordinate chart. Since our choice of $p$ was 
 arbitrary, we can cover $X$ with charts adapted to $E$.
+
+Now assume that $E \subseteq TX$ is a rank $r$ subbundle. Fix $p \in X$. We can choose 
+an open subset $p \in U \subseteq X$ and vector fields $V_1,\dots,V_r$ on $U$ which 
+are a basis for $E$ at each point in $U$. By shinking $U$, we can choose coordinates 
+$x^1,\dots,x^d$ around $p$ such that $V_r = \partial / \partial x_1$.
