@@ -1,6 +1,6 @@
 ---
 title: vector field flow
-date: 2016-04-30
+date: 2016-04-24
 ---
 
 # Vector Field Flow
@@ -20,7 +20,7 @@ they change coordinates correctly. For example, consider the coordinates $\theta
 \backslash \{ (1,0) \} \to (0,2 \pi)$ and $\phi : S^1 \backslash \{ (-1,0) \} \to 
 (-\pi,\pi)$. 
 
-![](/img/2016-04-30-circlecoordinates.PNG)
+![](/img/2016-04-24-circlecoordinates.PNG)
 
 Then $d \phi / d \theta = 1$ so $d / d 
 \theta = d / d \phi$ where both vector fields are defined. Therefore we have a 
