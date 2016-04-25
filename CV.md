@@ -11,10 +11,7 @@ title: CV
 ## Education
 - B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney, 2008-2011.
 - PhD, Pure Mathematics, University of Michigan, 2012 - 2017. Specialized in category theory and representation theory.
-- Indipendent Study, 2008-2015. I know a lot about
-  differential/algebraic geometry, representation theory,
-  category theory. I am also interested in algebraic topology,
-  functional programming, systems programming.
+- Indipendent Study, 2008-2015. I know a lot about differential geometry, representation theory and category theory. I am also interested in statistical inference and computers.
 
 ## Papers
 - Noetherianity and rooted trees. [arXiv:1509.04228](http://arxiv.org/abs/1509.04228)
