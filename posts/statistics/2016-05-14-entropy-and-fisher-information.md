@@ -7,10 +7,50 @@ date: 2016-05-14
 
 *No one really knows what entropy really is\.\.\.\.*
 
-This famous quote is due to Von Neumann and still holds true today. In this post, we 
-are going to explore some of the places where entropy shows up in probability theory and 
-statistics.
+This famous quote is due to Von Neumann. In this dense post, we are going to record 
+some of the places where entropy shows up in probability theory and statistics.
 
+### Information
+
+Suppose that we have a device which has a finite set of possible configurations $C$. 
+Suppose that we also have a function $X : C \to S$ where $S$ is another finite set. If 
+we have no information about the current configuration of the device, then $X$ is a 
+random variable with distribution
+$$p(s) = \frac{ \lvert X^{-1}(s) \lvert}{\lvert C \lvert}.$$
+If we measure the random variable $X$ and we see $s$, then we know that the 
+configuration 
+must be in the subset $X^{-1}(s)$. If we are encoding the possible configurations in 
+binary, then we just learned the value of 
+$$\log \lvert C \lvert - \log \lvert X^{-1}(s)  \lvert = \log \frac{1}{p(s)}$$
+bits. Motivated by this, we call this number the **information content** of the 
+measurement $s$. 
+
+### Source coding theorem
+
+Suppose that $S$ is a finite set and $X_1,X_2,\dots,X_n \in S$ are independent 
+identically distributed random variables with distribution $p(s)$. The random variable 
+$(X_1,\dots,X_n) \in S^n$ has distribution $p(s_1) p(s_2) \cdots p(s_n)$. We want to 
+understand how localized this distribution is. The trick is to apply the weak law of 
+large numbers in the following sneaky way:
+$$\forall \epsilon > 0 \quad \lim_{n \to \infty} {\bf P}\left( \left\lvert \frac{\log 
+p(X_1) \cdots p(X_n) }{n} - {\bf E}(\log p(X)) \right\lvert < \epsilon \right) = 1$$
+We define
+$$H(X) = \sum_{s \in S} p(s) \log \frac{1}{p(s)} = - {\bf E}(\log p(X))$$
+This quantity is called the **entropy** of the random variable $X$. We have
+$$\forall \epsilon > 0 \quad \lim_{n \to \infty}  
+{\bf P} \left( 2^{-n(H+\epsilon)} < \prod_i p(X_i) < 2^{-n(H-\epsilon)} \right) = 1.$$
+If we define
+$$A_n^{\epsilon} = \left\{ (s_1,\dots,s_n) \in S^n : 2^{-n(H+\epsilon)} < \prod_i 
+p(s_i) < 2^{-n(H-\epsilon)}  \right\}$$
+then we have
+$$\forall \epsilon > 0 \quad \lim_{n \to \infty} {\bf P}( (X_1,\dots,X_n) \in 
+A_n^{\epsilon} 
+) = 1$$
+We call $A_n^{\epsilon}$ the **typical set**. Its size is less than $2^{n(H+\epsilon)}$. 
+Informally, with high probability, we can record the string $(X_1,\dots,X_n)$ in $n(H+\epsilon)$ 
+bits. If we run through the proof again using the central limit theorem instead of the 
+weak law of large numbers, we can get quantitative information about the typical set.
+ 
 ### Bayesian inference with a large amount of data
 
 Suppose that $S$ is a finite set and $X \in S$ is a random variable. The set of 

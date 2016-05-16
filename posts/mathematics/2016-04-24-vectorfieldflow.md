@@ -112,9 +112,14 @@ direction of $V$*. This is not correct. The vector $[V,U]_x$ is not determined b
 $V_x$ and $U$. You need to know both $V$ and $U$ in an open neighborhood of $x$. 
 In fact, without further structure, there is no way to define the rate of change of 
 $U$ along $V$ in a coordinate independent way. What $[V,U]$ really measures is the 
-obstruction to the local group actions for $V$ and $U$ commuting with each other. I am 
-not sure how to phrase this precisely using currently available tools, but it will 
-become clear once we start thinking more seriously about Lie groups.
+obstruction to the local group actions for $V$ and $U$ commuting with each other. We 
+will make this precise when we start thinking about Lie theory, but we can understand 
+it intuitively now. From the definition of the Lie derivative, we have
+$$[tV,sU] = sU - L'_{t,V}(sU) \qquad \mod t^2,s^2.$$
+This equation is encoded in the following cartoon:
+
+![](/img/2016-05-13-Lie-derivative-cartoon.PNG)
+
 
 ### Frobenius\'s Theorem
 
