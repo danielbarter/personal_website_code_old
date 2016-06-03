@@ -25,3 +25,7 @@ style.css
 
 ### ipython checkpoints
 .ipynb_checkpoints
+
+
+### data files
+.cleaned_data*
