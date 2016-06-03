@@ -6,7 +6,10 @@ cabal-version:       >=1.10
 executable simple-exe
   hs-source-dirs:      app
   main-is:             Main.hs
-  other-modules:       Parse
-  build-depends:       base
+  other-modules:       DataPath,
+                       Parse
+  build-depends:       base,
+                       bytestring,
+                       attoparsec
   default-language:    Haskell2010
 
