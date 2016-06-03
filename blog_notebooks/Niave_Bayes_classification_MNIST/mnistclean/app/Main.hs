@@ -6,7 +6,7 @@ import qualified Text.PrettyPrint.HughesPJ as P
 
 printLabelMatrixPair :: (Integer,[[Integer]]) -> P.Doc
 printLabelMatrixPair (l,m) = 
-  (P.integer l) P.$$ (foldr1 (\x y -> x P.<> P.comma P.<> y) $ P.integer <$> concat m)
+  (P.integer l) P.<> P.comma P.<> (foldr1 (\x y -> x P.<> P.comma P.<> y) $ P.integer <$> concat m)
 
 trainCSV =  fmap P.vcat $ (fmap . fmap) printLabelMatrixPair train
 testCSV = fmap P.vcat $ (fmap . fmap) printLabelMatrixPair test
