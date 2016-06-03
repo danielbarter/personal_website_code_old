@@ -22,3 +22,6 @@ _site/
 website
 cssgen
 style.css
+
+### ipython checkpoints
+.ipynb_checkpoints
