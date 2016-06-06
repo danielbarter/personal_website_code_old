@@ -57,7 +57,7 @@ test' = do labels' <- (P.parseOnly parseLabels) <$> (B.readFile testLabelPath)
 
 -- pixels above 100 go to 1
 -- pixels below 100 go to 0
-threshhold = 175
+threshhold = 127
 f x = if x < threshhold then 0 else 1
 removeGreyScale (x,y) = (x, (fmap . fmap) f y)
 

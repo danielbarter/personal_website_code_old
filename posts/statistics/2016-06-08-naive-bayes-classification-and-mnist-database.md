@@ -1,21 +1,21 @@
 ---
-title: niave bayes classification and the mnist database
+title: naive bayes classification and the mnist database
 date: 2016-06-08
 ---
 
-# Niave Bayes and the MNIST Database
+# Naive Bayes and the MNIST Database
 
 The [MNIST database](http://yann.lecun.com/exdb/mnist/) consists of handwritten 
 digits stored as $28 \times 28$ bit maps. In this post, we are going to use the 
-database to train a niave Bayesian classifier to classify handwritten digits.
+database to train a naive Bayesian classifier.
 
 ### The Model
 
 Our model has the following random variables:
 
-- $c \in \{ 0,1,2,\dots,9\}$: the digit label. Each bitmap in the dataset is labeled 
+- $c \in \{ 0,1,2,\dots,9\}$: the digit label. Each bitmap in the data set is labeled 
 by the digit it is trying to represent.
-- $x \in \{0,1\}^{28 \times 28}$: the bit map. Although the database consists of grey 
+- $x \in \{0,1\}^{28 \times 28}$: the bit map. Although the database consists of Gray 
 scale bit maps, we have transformed them into black and white. This reduces the number 
 of parameters in our model.
 - $\theta \in [0,1]^{28 \times 28 \times 10}$: the activation probability. The random 
@@ -24,24 +24,24 @@ bitmap which is labeled $c$.
 - $\pi \in [0,1]^{10}$: the label probability. The random variable $\pi_c$ represents 
 the probability that a given bitmap has label $c$.
 
-We are using a niave Bayesian model. Therefore
+We are using a naive Bayesian model. Therefore
 
-- $x_i \perp x_j | c,\theta,\pi$: This is what we mean by niave Bayesian. If the label 
-is fixed, then different pixels are indipendent.
+- $x_i \perp x_j | c,\theta,\pi$: This is what we mean by naive Bayesian. If the label 
+is fixed, then different pixels are independent.
 
-The joint distrubution is given by
+The joint distribution is given by
 
 $$p(c,x,\theta,\pi) = p(c,x | \theta,\pi) p(\theta,\pi) = p(x | c,\theta,\pi) p(c | 
 \theta,\pi) p(\theta,\pi) = p(\theta,\pi) \pi_c \prod_{i} p(x_i \lvert c,\theta)$$
 
 The MNIST database is $\mathcal{D} = \left\{ c^{(n)},x^{(n)} \right\}_{n=1,\dots,N}$ 
-and we are interested in computing the distrubution $p(c | x, \mathcal{D})$. The 
-joint posterior distrubution is
+and we are interested in computing the distribution $p(c | x, \mathcal{D})$. The 
+joint posterior distribution is
 $$p(c,x,\theta,\pi | \mathcal{D}) = p(c,x|\theta,\pi,\mathcal{D}) 
 p(\theta,\pi|\mathcal{D}) = p(c,x | \theta,\pi) p(\theta,\pi|\mathcal{D})$$
-We use the prior distrubution
+We use the prior distribution
 $$p(\theta,\pi) = {\rm Dirichlet}(\pi,1) \prod_{i,c} {\rm Beta}(\theta_{i,c},1,1).$$ 
-Then the posterior distrubution is
+Then the posterior distribution is
 $$p(\theta,\pi \lvert \mathcal{D}) = {\rm Dirichlet}(\pi,N_c+1) \prod_{i,c} 
 {\rm Beta}(\theta_{i,c},N_{ic} + 1,N_c - N_{ic} + 1)$$
 where
@@ -60,3 +60,10 @@ p(c,x| \widehat{\theta},\widehat{\pi})$$
 which implies that
 $$p(c \lvert x, \mathcal{D}) \varpropto p(x | c,\widehat{\theta},\widehat{\pi}) 
 \widehat{\pi}_c$$
+
+### The implementation
+
+The MNIST bit maps are in gray scale. Firstly, we flatten them to black and white and 
+translate the raw byte files into CSV files [using Haskell](https://github.com/danielbarter/personal_website_code/tree/master/blog_notebooks/Niave_Bayes_classification_MNIST/mnistclean).
+We then implement the above model [in Python](https://github.com/danielbarter/personal_website_code/blob/master/blog_notebooks/Niave_Bayes_classification_MNIST/Niave_Bayes_Classification_MNIST_MLE.ipynb).
+The trained NBC correctly identifies $85\%$ of the test set.
