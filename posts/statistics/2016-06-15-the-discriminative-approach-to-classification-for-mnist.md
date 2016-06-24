@@ -33,7 +33,3 @@ $$(f_1,\dots,f_c)(W,b,x) = {\rm softmax}(Wx + b)$$
 where $W$ is a $c \times f$ matrix, $b \in \mathbb{R}^c$ and 
 [softmax](https://en.wikipedia.org/wiki/Softmax_function) transforms the output into a 
 probability distribution.
-
-### The implementation
-
-We can minimize the cross entropy using gradient descent.

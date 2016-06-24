@@ -48,7 +48,9 @@ A_n^{\epsilon}
 ) = 1$$
 We call $A_n^{\epsilon}$ the **typical set**. Its size is less than $2^{n(H+\epsilon)}$. 
 Informally, with high probability, we can record the string $(X_1,\dots,X_n)$ in $n(H+\epsilon)$ 
-bits. If we run through the proof again using the central limit theorem instead of the 
+bits. Even more informally, if $\epsilon$ is small and $n$ is large, the set 
+$A_n^{\epsilon}$ has $2^{n H}$ elements and each element has probability $2^{-nH}$. 
+If we run through the proof again using the central limit theorem instead of the 
 weak law of large numbers, we can get quantitative information about the typical set.
  
 ### Bayesian inference with a large amount of data
@@ -65,12 +67,31 @@ $$ \log (x!) = x \log x - x$$
 which gives 
 $$\log {\bf P}(q | P = p) = -n \left( \sum_s q_s \log \frac{q_s}{p_s} \right).$$
 Define
-$$H(p \to q) = \sum_{s} q_s \log \frac{q_s}{p_s}.$$
-This quantity is called the **relative entropy**. From Bayes theorem, we have
+$$D(q || p) = H(p \to q) = \sum_{s} q_s \log \frac{q_s}{p_s}.$$
+This quantity is called the **relative entropy** or **KL-divergence**. From Bayes 
+theorem, we have
 $${\bf P}(P = p | q) \propto {\bf P}(q | P = p) {\bf P}(P = p) = e^{-n H(p \to q)} 
 {\bf P}(P = p)$$
 As a function of $p$, $H(p \to q)$ is non negative, convex and minimized when $p = q$. 
 Therefore, the posterior distribution is maximized when $p = q$.
+
+### The relative source coding theorem
+
+The KL-divergence also shows up in the relative source coding theorem. Assume that $x 
+\in S$ is a random variable with true distribution $p$. Furthermore, suppose that we 
+think the distribution of $x$ is $q$. Let $x^1,\dots,x^N$ be independent samples from 
+$p$ where $N$ is large. By the weak law of large numbers
+$$\log p \left( x^1,\dots,x^N \right) = \sum_i \log p \left( x^i \right) \approx - NH(p)$$
+so the true probability is
+$$p \left( x^1,\dots,x^N \right) = 2^{- N H(p)}.$$
+On the other hand,
+$$\log q \left( x^1,\dots,x^N \right) = \sum_i \log q \left( x^i \right) \approx - N {\bf E}(q(x)) = - N H(p,q)$$
+so we compute the probability
+$$q \left( x^1, \dots, x^N \right) = 2^{-N H(p,q)}.$$
+We call $H(p,q)$ the **cross entropy**. We have
+$$\frac{q \left(x^1,\dots,x^N \right)}{ p \left( x^1,\dots,x^N \right)} = 
+2^{-N(H(p,q) - H(q))} = 2^{-N D(p || q)}.$$
+
 
 ### Parametric inference and Fisher information
 
