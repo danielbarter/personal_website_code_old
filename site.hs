@@ -5,8 +5,10 @@ import Data.Monoid ((<>))
 import Data.Set (insert)
 import Text.Pandoc.Options
 
-main :: IO ()
-main = hakyll $ do
+main = buildSite
+
+buildSite :: IO ()
+buildSite =  hakyll $ do
 
 
   match "style.css" $ do
@@ -80,3 +82,7 @@ pandocMathCompiler =
                           writerHTMLMathMethod = MathJax ""
                         }
     in pandocCompilerWith defaultHakyllReaderOptions writerOptions
+
+
+
+

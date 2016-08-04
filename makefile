@@ -3,7 +3,16 @@ build:
 	cp .stack-work/install/x86_64-linux/lts-4.2/7.10.3/bin/* .
 	./cssgen > style.css
 	./website build
+	./cvPDF
+	cd ./texCV && pdflatex danielbarter.tex
+	cp ./texCV/danielbarter.pdf ./_site/cv.pdf
 
 clean:
 	./website clean
-	rm -f style.css cssgen website
+	rm style.css cssgen website cvPDF
+	rm ./texCV/*.aux
+	rm ./texCV/*.log
+	rm ./texCV/*.pdf
+	rm ./texCV/*.out
+	rm ./texCV/CV.tex
+
