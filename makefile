@@ -5,7 +5,7 @@ build:
 	./website build
 	./cvPDF
 	cd ./texCV && pdflatex danielbarter.tex
-	cp ./texCV/danielbarter.pdf ./_site/cv.pdf
+	cp ./texCV/danielbarter.pdf ./_site/CV.pdf
 
 clean:
 	./website clean

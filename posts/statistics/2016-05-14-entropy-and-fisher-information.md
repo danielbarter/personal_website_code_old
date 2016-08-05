@@ -52,45 +52,24 @@ bits. Even more informally, if $\epsilon$ is small and $n$ is large, the set
 $A_n^{\epsilon}$ has $2^{n H}$ elements and each element has probability $2^{-nH}$. 
 If we run through the proof again using the central limit theorem instead of the 
 weak law of large numbers, we can get quantitative information about the typical set.
- 
-### Bayesian inference with a large amount of data
 
-Suppose that $S$ is a finite set and $X \in S$ is a random variable. The set of 
-possible density functions for $X$ is 
-$$\Delta^S = \left\{ (p_s) : \text{each $p_s \geq 0$ and $\sum_s p_s = 1$} \right\}$$
-In Bayesian inference, we let the density function of $X$ be another random variable 
-$P \in \Delta^S$ which represents our knowledge about the distribution of $X$. Suppose 
-that we take $n$ samples from $X$ and $s$ shows up $n q_s$ times. Then
-$${\bf P}(q | P = p) = \frac{n!}{\prod_s (nq_s)!} \prod_s p_s^{nq_s}$$
-If $n$ is very large, then we can use Stirling\'s formula
-$$ \log (x!) = x \log x - x$$
-which gives 
-$$\log {\bf P}(q | P = p) = -n \left( \sum_s q_s \log \frac{q_s}{p_s} \right).$$
-Define
-$$D(q || p) = H(p \to q) = \sum_{s} q_s \log \frac{q_s}{p_s}.$$
-This quantity is called the **relative entropy** or **KL-divergence**. From Bayes 
-theorem, we have
-$${\bf P}(P = p | q) \propto {\bf P}(q | P = p) {\bf P}(P = p) = e^{-n H(p \to q)} 
-{\bf P}(P = p)$$
-As a function of $p$, $H(p \to q)$ is non negative, convex and minimized when $p = q$. 
-Therefore, the posterior distribution is maximized when $p = q$.
+### KL-divergence and maximum likelihood estimation
 
-### The relative source coding theorem
-
-The KL-divergence also shows up in the relative source coding theorem. Assume that $x 
-\in S$ is a random variable with true distribution $p$. Furthermore, suppose that we 
-think the distribution of $x$ is $q$. Let $x^1,\dots,x^N$ be independent samples from 
-$p$ where $N$ is large. By the weak law of large numbers
-$$\log p \left( x^1,\dots,x^N \right) = \sum_i \log p \left( x^i \right) \approx - NH(p)$$
-so the true probability is
-$$p \left( x^1,\dots,x^N \right) = 2^{- N H(p)}.$$
-On the other hand,
-$$\log q \left( x^1,\dots,x^N \right) = \sum_i \log q \left( x^i \right) \approx - N {\bf E}(q(x)) = - N H(p,q)$$
-so we compute the probability
-$$q \left( x^1, \dots, x^N \right) = 2^{-N H(p,q)}.$$
-We call $H(p,q)$ the **cross entropy**. We have
-$$\frac{q \left(x^1,\dots,x^N \right)}{ p \left( x^1,\dots,x^N \right)} = 
-2^{-N(H(p,q) - H(q))} = 2^{-N D(p || q)}.$$
+Suppose that $x^1,x^2,...,x^N$ are independent, identically distributed samples from a 
+probability distribution $p(x)$. Suppose we have a parameterized model $p(x|\theta)$ 
+for the data. Then the maximum likelihood is given by
+$$\theta_{\rm ML} = {\rm argmax}_{\theta} \frac{1}{N} \sum_{n=1}^N \log q(x^i | \theta).$$
+If $N$ is large, then by the weak law of large numbers, with high probability, we have
+$$\theta_{\rm ML} = {\rm argmax}_{\theta} {\bf E}_p(\log q(x | \theta)) 
+= {\rm argmin}_{\theta} - {\bf E}_p(\log q(x | \theta))$$
+Therefore, if $N$ is large, then maximum likelihood estimation is the same as 
+minimizing the cross entropy
+$$H(p,q) = - {\bf E}_p(\log q(x|\theta)) = \sum_x p(x) \log \frac{1}{q(x|\theta)}$$
+We define
+$$D(p || q) = H(p,q) - H(p) = \sum_x p(x) \log \frac{p(x)}{q(x|\theta)}.$$
+Then maximum likelihood estimation is the same as minimizing $D(p || q(\cdot | 
+\theta))$ as a function of $\theta$. As a function of $q$, $D(p || q)$ is non 
+negative, convex and minimized when $p=q$. 
 
 
 ### Parametric inference and Fisher information
