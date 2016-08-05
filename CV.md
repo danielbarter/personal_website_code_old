@@ -14,7 +14,7 @@ title: CV
 - Independent Study. 
     - Pure Mathematics: differential geometry, representation theory and category theory. 
     - Statistical Inference: discriminative and generative models, inference algorithms (MAP estimation, MCMC, variational methods).
-    - Computer Science: applicative language (LISP, Scheme) interpreters, categorical design patterns for functional programming.
+    - Computer Science: interpreters (LISP, Scheme), categorical design patterns for functional programming.
 
 
 ## Papers
