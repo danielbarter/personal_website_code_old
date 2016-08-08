@@ -11,10 +11,10 @@ title: CV
 ## Education
 - B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney, 2008-2011.
 - PhD, Pure Mathematics, University of Michigan, 2012 - 2017. Specialized in category theory and representation theory.
-- Independent Study. 
+- I spend a lot of time learning indipendently. Here are some things I like to think about: 
     - Pure Mathematics: differential geometry, representation theory and category theory. 
     - Statistical Inference: discriminative and generative models, inference algorithms (MAP estimation, MCMC, variational methods).
-    - Computer Science: interpreters (LISP, Scheme), categorical design patterns for functional programming.
+    - Computer Science: interpreters and compilers, categorical design patterns for functional programming.
 
 
 ## Papers
