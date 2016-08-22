@@ -48,3 +48,16 @@ problems can be expressed and solved inside probabilistic programming languages,
 it is good to understand the basic idea, even if the technology doesn\'t scale well 
 at this point.
 
+- [Hal Abelson, Jerry Sussman and Julie Sussman. The Structure and Interpretation of 
+Computer Programs:](https://mitpress.mit.edu/sicp/)
+In statistical inference, you spend time extracting useful information
+from data. For example, if you have a ton of patient records from a
+clinical trial, you want to decide if the drug works or not. Maybe you
+have a lot of user data from a website and you want to increase the
+number of sales. On the other hand, machine learning is about using statistical tools
+to solve problems which we know can be done by a computer in theory,
+but are hard to do in a conventional logic based programming language,
+for example image classification, image generation or sentiment
+analysis. Computation if a fundamental part of machine learning and my favourite 
+computer science book is Structure and Interpretation of Computer Programs. It teaches 
+you about how we compute rather than teaching you the syntax of a popular language. 
