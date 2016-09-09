@@ -38,3 +38,9 @@ Using the Riemannian metric g, we can identify $TM$ and $T^*M$ via the isomorphi
 $$m \frac{d p_i}{dt} = - \frac{\partial V}{\partial x^i}.$$
 From the equation $v^i = g^{ij} p_j$ we have that
 $$ \frac{d x^i}{dt} = g^{ij} p_j$$
+where $g^{ij}$ is the induced metric on $T^*M$. Therefore, on the cotangent bundle, the Euler-Lagrange equations specify the flow curves of the vector field 
+$$\left( g^{ij}p_j, - \frac{\partial V}{\partial x^i} \right).$$
+
+### The Symplectic Structure on the Cotangent Bundle
+
+
