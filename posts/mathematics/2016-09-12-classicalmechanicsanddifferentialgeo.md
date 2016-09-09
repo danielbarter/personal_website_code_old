@@ -35,12 +35,29 @@ $$L = \frac{1}{2} m g(v,v) - V(x)$$
 We call $V(x)$ the potential energy and $\frac{1}{2} m g(v,v)$ the kinetic energy. Let $x^i$ be coordinates on $M$ and $v^i$ the corresponding coordinates on the fibers of $TM$. If $g = g_{ij} dx^i \otimes dx^j$ then $g(v,v) = g_{ij} v^i v^j$ which implies
 $$\frac{\partial L}{\partial v^i} = m g_{ij} v^j.$$
 Using the Riemannian metric g, we can identify $TM$ and $T^*M$ via the isomorphism $v \mapsto g(-,v)$. In coordinates, it sends the vector $v^j$ to $p_i = g_{ij} v^j$. Therefore we can write the Euler Lagrange equations as
-$$m \frac{d p_i}{dt} = - \frac{\partial V}{\partial x^i}.$$
+$$ \frac{d p_i}{dt} = - \frac{1}{m} \frac{\partial V}{\partial x^i}.$$
 From the equation $v^i = g^{ij} p_j$ we have that
 $$ \frac{d x^i}{dt} = g^{ij} p_j$$
 where $g^{ij}$ is the induced metric on $T^*M$. Therefore, on the cotangent bundle, the Euler-Lagrange equations specify the flow curves of the vector field 
-$$\left( g^{ij}p_j, - \frac{\partial V}{\partial x^i} \right).$$
+$$\left( g^{ij}p_j, - \frac{1}{m} \frac{\partial V}{\partial x^i} \right).$$
 
 ### The Symplectic Structure on the Cotangent Bundle
 
+The vector field we saw at the end of the last section is very special, but to see why, we need to understand the canonical symplectic structure on the cotangent bundle of the manifold $M$. Let $\pi : T^*M \to M$ be the projection. We can define a 1-form $\alpha$ on $T^*M$ by the equation
+$$\alpha_{\eta}(V) = \eta(\pi' X).$$
+Let $x^i$ be coordinates on $M$ and $p_i$ the induced coordinates on the fibers of $T^*M$. Then we have
+$$\alpha(\partial / \partial p_i) = 0 \quad \alpha(\partial / \partial x^i) = p_i.$$
+This implies that $\alpha = p_i dx^i$. We define 
+$$w = d \alpha = d p_i \wedge d x^i = d p_i \otimes d x^i - d x^i \otimes d p_i.$$ 
+This is called the canonical symplectic form on $T^*M$. The induced map $w : TM \to T^* M$ is
+$$\frac{\partial}{\partial x^i} \mapsto d p_i \quad \frac{\partial}{\partial p_i} \mapsto - dx^i$$
+If $H : T^*M \to \mathbb{R}$ is a function, then
+$$X_H = w^{-1} dH = \frac{\partial H}{\partial p_i} \frac{\partial}{\partial x^i} - \frac{\partial H}{\partial x^i} \frac{\partial}{\partial p_i}$$
+is called the symplectic gradient of $H$.
 
+### The Hamiltonian
+
+Now lets return to classical mechanics on a Riemannian manifold. We have have seen that solutions for the Euler-Lagrange equation are flow curves of the vector field
+$$\left( g^{ij}p_j, - \frac{1}{m} \frac{\partial V}{\partial x^i} \right)$$
+This vector field is exactly the symplectic gadient of
+$$H = \frac{1}{2} g^{ij} p_i p_j + \frac{1}{m} V.$$
