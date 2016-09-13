@@ -7,7 +7,7 @@ date: 2016-09-12
 
 Recall Newton\'s second law which describes the motion of a particle in the presence of a conservative force field:
 $$m \frac{d^2 x}{dt^2} + \nabla V(x) = 0$$
-where $m$ is mass the mass of the particle, $x \in \mathbb{R}^3$ is the position of the particle and $V$ is the potential energy function. Netwon\'s second law specifies a set of curves in $\mathbb{R}^3$. In this post, we are going to describe the same set of curves in a coordinate indipendent way. 
+where $m$ is mass the mass of the particle, $x \in \mathbb{R}^3$ is the position of the particle and $V$ is the potential energy function. Newton\'s second law specifies a set of curves in $\mathbb{R}^3$. In this post, we are going to describe the same set of curves in a coordinate independent way. 
 
 ### The Euler-Lagrange equations
 
@@ -59,5 +59,5 @@ is called the symplectic gradient of $H$.
 
 Now lets return to classical mechanics on a Riemannian manifold. We have have seen that solutions for the Euler-Lagrange equation are flow curves of the vector field
 $$\left( g^{ij}p_j, - \frac{1}{m} \frac{\partial V}{\partial x^i} \right)$$
-This vector field is exactly the symplectic gadient of
+This vector field is exactly the symplectic gradient of
 $$H = \frac{1}{2} g^{ij} p_i p_j + \frac{1}{m} V.$$
