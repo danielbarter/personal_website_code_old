@@ -12,10 +12,9 @@ title: CV
 - B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney, 2008-2011.
 - PhD, Pure Mathematics, University of Michigan, 2012 - 2017. Specialized in category theory and representation theory.
 - I spend a lot of time thinking about: 
-    - Pure Mathematics: differential geometry, representation theory and category theory. 
-    - Statistical Inference: discriminative and generative models, inference algorithms (MAP estimation, MCMC, variational methods).
-    - Computer Science: interpreters and compilers, categorical design patterns for functional programming.
-
+    - Pure Mathematics: differential geometry, representation theory and category theory. I am particularly interested in the interaction between these subjects and physics. Recently, I have been thinking about the relationship between modular tensor categories, 3 dimensional topological quantum field theories and topological quantum computing.
+    - Statistical Inference: discriminative and generative models, inference algorithms (MAP estimation, MCMC, variational methods). Machine learning is pretty popular right now. I have been spending some time learning about the mathematical foundations of the subject. I don\'t know all the folklore that goes into building effective non linear classifiers, but I understand the meaning of words like neural network, autoencoder, generative model and KL-divergence.
+    - Computer Science: programming language semantics, categorical design patterns for functional programming. A few years ago, I started writing Haskell scripts to automate boring things. Because of this, I am pretty good at functional programming. More recently, I have been thinking about programming language semantics. This is useful for reading and writing code in unfamiliar languages.
 
 ## Papers
 - Noetherianity and rooted trees. [arXiv:1509.04228](http://arxiv.org/abs/1509.04228)
