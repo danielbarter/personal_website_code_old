@@ -13,7 +13,7 @@ title: CV
 - PhD, Pure Mathematics, University of Michigan, 2012 - 2017. Specialized in category theory and representation theory.
 - I spend a lot of time thinking about: 
     - Pure Mathematics: differential geometry, representation theory and category theory: I am particularly interested in the interaction between these subjects and physics. Recently, I have been thinking about the relationship between modular tensor categories, 3 dimensional topological quantum field theories and topological quantum computing.
-    - Statistical Inference: discriminative and generative models, inference algorithms (MAP estimation, MCMC, variational methods): Machine learning is pretty popular right now. I have been spending some time learning about the mathematical foundations of the subject. I don\'t know all the folklore that goes into building effective non linear classifiers, but I understand the meaning of words like neural network, autoencoder, generative model and KL-divergence.
+    - Statistical Inference: discriminative and generative models, inference algorithms (MAP estimation, MCMC, variational methods): Machine learning is popular right now. I have been spending some time learning about the mathematical foundations of the subject. I don\'t know all the folklore that goes into building effective non linear classifiers, but I understand the meaning of words like neural network, autoencoder, generative model and KL-divergence.
     - Computer Science: UNIX, scripting languages, functional programming: I have been using GNU/Linux as my main operating system since 2012. I have been using scripting languages (Bash, Lua, Emacs Lisp, Python\.\.\.) to automate boring things since 2014. I prefer functional programming, but when mutable state is required, I like languages with simple object systems like Python.
 
 ## Papers
@@ -36,4 +36,4 @@ title: CV
 - Graduate Student Instructor, Math 215 (Calculus 3), Winter 2015, University of Michigan
 - Graduate Student Instructor, Math 116 (Calculus 2), Fall 2016, University of Michigan
 
-Note: At the University of Michigan, the lectures for Math 115 (Calculus 1) and Math 116 (Calculus 2) are graduate student instructors.
+Note: At the University of Michigan, the lecturers for Math 115 (Calculus 1) and Math 116 (Calculus 2) are graduate student instructors.
