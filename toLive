@@ -1,0 +1,8 @@
+#!/bin/bash 
+
+if [ -e _site ]
+then
+  rsync -r --delete ./_site/* ../danielbarter.github.io/
+else
+  echo 'you need to build the site first'
+fi
