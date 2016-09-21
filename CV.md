@@ -11,10 +11,10 @@ title: CV
 ## Education
 - B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney, 2008-2011.
 - PhD, Pure Mathematics, University of Michigan, 2012 - 2017. Specialized in category theory and representation theory.
-- I spend a lot of time thinking about: 
+- I like to think about: 
     - Pure Mathematics: differential geometry, representation theory and category theory: I am particularly interested in the interaction between these subjects and physics. Recently, I have been thinking about the relationship between modular tensor categories, 3 dimensional topological quantum field theories and topological quantum computing.
     - Statistical Inference: discriminative and generative models, inference algorithms (MAP estimation, MCMC, variational methods): Machine learning is popular right now. I have been spending some time learning about the mathematical foundations of the subject. I don\'t know all the folklore that goes into building effective non linear classifiers, but I understand the meaning of words like neural network, autoencoder, generative model and KL-divergence.
-    - Computer Science: UNIX, scripting languages, functional programming: I have been using GNU/Linux as my main operating system since 2012. I have been using scripting languages (Bash, Lua, Emacs Lisp, Python\.\.\.) to automate boring things since 2014. My favourite book is [SICP](https://mitpress.mit.edu/sicp/). I prefer functional programming, but when mutable state is required, I like languages with simple object systems like Python.
+    - Computer Science: UNIX, scripting languages, functional programming: I have been using GNU/Linux as my main operating system since 2012. I have been using scripting languages (Bash, Lua, Emacs Lisp, Python\.\.\.) to automate boring things since 2014. I prefer functional programming, but when mutable state is required, I like languages which have a simple object system like Python. My favourite book about computer science is [SICP](https://mitpress.mit.edu/sicp/). 
 
 ## Papers
 - Noetherianity and rooted trees. [arXiv:1509.04228](http://arxiv.org/abs/1509.04228)
