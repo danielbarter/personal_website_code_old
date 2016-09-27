@@ -18,6 +18,7 @@ title: CV
 
 ## Papers
 - Noetherianity and rooted trees. [arXiv:1509.04228](http://arxiv.org/abs/1509.04228)
+- Eigenvalues of rotations and braids in spherical fusion categories. Joint with Corey Jones and Henry Tucker. Coming Soon!
 
 ## Invited Talks
 - Michigan theoretical computer science seminar, *Tensor rank and stability in representation theory*
