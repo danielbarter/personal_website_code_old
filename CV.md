@@ -15,7 +15,8 @@ title: CV
 - I like to think about: 
     - Pure Mathematics: differential geometry, representation theory and category theory: I am particularly interested in the interaction between these subjects and physics. Recently, I have been thinking about the relationship between modular tensor categories, 3 dimensional topological quantum field theories and topological quantum computing.
     - Statistical Inference: discriminative and generative models, inference algorithms (MAP estimation, MCMC, variational methods): Machine learning is popular right now. I have been spending some time learning about the mathematical foundations of the subject. I don\'t know all the folklore that goes into building effective non linear classifiers, but I understand the meaning of words like neural network, autoencoder, generative model and KL-divergence. 
-    - Computer Science: UNIX, scripting languages, functional programming: I have been using GNU/Linux as my main operating system since 2012. I have been using scripting languages (Bash, Lua, Emacs Lisp, Python\.\.\.) to automate boring things since 2014. I prefer functional programming, but when mutable state is required, I like languages which have a simple object system like Python.
+    - Computer Science: Functional programming, compilers, UNIX: In 2016 I started reading [SICP](https://mitpress.mit.edu/sicp/) which got me interested in computation. Since then I have solved most of the exercises. I have also been reading [Compiler Design: Virtual Machines](http://www.springer.com/us/book/9783642149085) which beautifully explains the operational semantics of several different programming languages. I have been using GNU/Linux as my main operating system since 2012 and am acquainted with the standard tools and how to combine them.
+
 
 ## Papers
 - Noetherianity and rooted trees. [arXiv:1509.04228](http://arxiv.org/abs/1509.04228)
