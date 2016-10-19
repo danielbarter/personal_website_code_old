@@ -20,8 +20,8 @@ title: CV
 
 ## Preprints
 - Noetherianity and rooted trees. [arXiv:1509.04228](http://arxiv.org/abs/1509.04228)
-- A remark about 6j symbols and young semi-normal form [arXiv:1610.05248](https://arxiv.org/abs/1610.05248)
-- Computing the minimal model for the quantum symmetric algebra [arXiv:1610.05204](https://arxiv.org/abs/1610.05204)
+- A remark about 6j symbols and young semi-normal form. [arXiv:1610.05248](https://arxiv.org/abs/1610.05248)
+- Computing the minimal model for the quantum symmetric algebra. [arXiv:1610.05204](https://arxiv.org/abs/1610.05204)
 - Eigenvalues of rotations and braids in spherical fusion categories. Joint with Corey Jones and Henry Tucker. Coming Soon!
 
 ## Invited Talks
