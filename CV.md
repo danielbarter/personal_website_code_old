@@ -18,8 +18,10 @@ title: CV
     - Computer Science: functional programming, compilers, UNIX: In 2015 I started reading [SICP](https://mitpress.mit.edu/sicp/) which got me interested in computer science. Since then I have solved most of the exercises. I have also been reading [Compiler Design: Virtual Machines](http://www.springer.com/us/book/9783642149085) which explains the operational semantics of several different programming languages. I have been using GNU/Linux as my main operating system since 2012 and am acquainted with the standard tools and how to combine them.
 
 
-## Papers
+## Preprints
 - Noetherianity and rooted trees. [arXiv:1509.04228](http://arxiv.org/abs/1509.04228)
+- A remark about 6j symbols and young semi-normal form [arXiv:1610.05248](https://arxiv.org/abs/1610.05248)
+- Computing the minimal model for the quantum symmetric algebra [arXiv:1610.05204](https://arxiv.org/abs/1610.05204)
 - Eigenvalues of rotations and braids in spherical fusion categories. Joint with Corey Jones and Henry Tucker. Coming Soon!
 
 ## Invited Talks
