@@ -13,7 +13,7 @@ title: CV
 - B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney, 2008-2011.
 - PhD, Pure Mathematics, University of Michigan, 2012 - 2017. Specialized in category theory and representation theory.
 - I like to think about: 
-    - Pure Mathematics: differential geometry, representation theory and category theory: I am particularly interested in the interaction between these subjects and physics. Recently, I have been thinking about the relationship between tensor categories and topological quantum computing.
+    - Pure Mathematics: differential geometry, representation theory and category theory: I am particularly interested in the interaction between these subjects and physics. Recently, I have been thinking about the relationship between tensor categories, classical representation theory and and topological quantum computing.
     - Statistical Inference: discriminative and generative models, inference algorithms (MAP estimation, MCMC, variational methods): Machine learning is popular right now. I have been spending some time learning about the mathematical foundations of the subject. I don\'t know all the folklore that goes into building effective non linear classifiers, but I understand the meaning of words like neural network, autoencoder, generative model and KL-divergence. 
     - Computer Science: functional programming, compilers, UNIX: In 2015 I started reading [SICP](https://mitpress.mit.edu/sicp/) which got me interested in computer science. Since then I have solved most of the exercises. I have also been reading [Compiler Design: Virtual Machines](http://www.springer.com/us/book/9783642149085) which explains the operational semantics of several different programming languages. I have been using GNU/Linux as my main operating system since 2012 and am acquainted with the standard tools and how to combine them.
 
@@ -22,7 +22,7 @@ title: CV
 - Noetherianity and rooted trees. [arXiv:1509.04228](http://arxiv.org/abs/1509.04228)
 - A remark about 6j symbols and young semi-normal form. [arXiv:1610.05248](https://arxiv.org/abs/1610.05248)
 - Computing the minimal model for the quantum symmetric algebra. [arXiv:1610.05204](https://arxiv.org/abs/1610.05204)
-- Eigenvalues of rotations and braids in spherical fusion categories. Joint with Corey Jones and Henry Tucker. Coming Soon!
+- Eigenvalues of rotations and braids in spherical fusion categories. Joint with Corey Jones and Henry Tucker. [arXiv:1611.00071](https://arxiv.org/abs/1611.00071)
 
 ## Invited Talks
 - Michigan theoretical computer science seminar, *Tensor rank and stability in representation theory*
