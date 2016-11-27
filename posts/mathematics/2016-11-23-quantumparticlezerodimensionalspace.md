@@ -5,7 +5,7 @@ date: 2016-11-23
 
 # Quantum Particles in a Zero Dimensional Space
 
-Most introductory textbooks on quantum mechanics start by studying a quantum particle in the real line. In this blog post, we are going to study a quantum particle in a finite set.
+Most introductory textbooks on quantum mechanics start by studying a quantum particle in the real line. In this blog post, we are going to think about quantum particles in a finite set.
 
 ### Classical Mechanics in a finite set
 
@@ -24,5 +24,20 @@ p_s & f(s) = \lambda \\
 In words, when we record $\lambda$ we truncate the probability of any incompatible state to zero and then scale the resulting vector so it becomes a probability distribution. As you can see, measurement is much more interesting in statistical mechanics. Now lets talk about dynamics. In physics, we want the time evolution of our system to be deterministic. Therefore we can model the passage of time as a function
 $$E_t : \Delta \to \Delta$$
 Moreover, we want the system to be invariant under time translation which implies that
-$$E_{t+s} = E_t \circ E_s$$
+$$E_{t+s} = E_t \circ E_s.$$
+From the laws of probability theory, we have
+$${\bf P}(E_t X = s') = \sum_s {\bf P}(E_t X = s' | X = s) p_s$$
+which implies that
+$$E_t p = \sum_s p_s E_t \delta_s.$$
+where $\delta_s$ is the probability distribution concentrated at $s$. It follows that $E_t$ is linear. Any linear map which preserves $\Delta$ must have all positive real entries and columns summing to one. From Lie theory, we know that
+$$E_t = \exp(tH)$$
+where $H$ is a matrix whose off diagonal entries are positive with columns summing to zero. We call $H$ the Hamiltonian generator for the statistical mechanical system. 
+
+### Quantum Mechanics in a finite set
+
+Somewhat surprisingly, the transition from classical mechanical systems to quantum mechanical systems requires little effort. Now the state of the system is encoded using a wave function. When $S$ is a finite set, the wave function $\chi$ lives in
+$$\{ \chi \in {\rm maps}(S,\mathbb{C}) : \langle \chi,\chi \rangle = 1\}$$
+where $\langle \cdot,\cdot \rangle$ is the standard Hermitian form. If $f : S \to \mathbb{R}$ is an observable, when we measure $f$, we record the value $f(s)$ with probability $\lvert \chi_s \lvert^2$. If we actually measure $f$ and record $\lambda$, the wave function collapses according to Bayes rule. The time evolution operator $E_t$ must be unitary to preserve probability, so the infinitesimal generator $H$ is skew Hermitian.
+
+
 
