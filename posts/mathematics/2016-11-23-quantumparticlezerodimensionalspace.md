@@ -31,7 +31,17 @@ which implies that
 $$E_t p = \sum_s p_s E_t \delta_s.$$
 where $\delta_s$ is the probability distribution concentrated at $s$. It follows that $E_t$ is linear. Any linear map which preserves $\Delta$ must have all positive real entries and columns summing to one. From Lie theory, we know that
 $$E_t = \exp(tH)$$
-where $H$ is a matrix whose off diagonal entries are positive with columns summing to zero. We call $H$ the Hamiltonian generator for the statistical mechanical system. 
+where $H$ is a matrix whose off diagonal entries are positive with columns summing to zero. We call $H$ the Hamiltonian generator for the statistical mechanical system. One of the fundamental concepts in statistical mechanics is entropy:
+$$\Theta= \sum_s p_s \log p_s$$
+We would like to understand how $\Theta$ behaves under time evolution. We have
+$$E_t p = p + tHp + O(t^2)$$
+which implies that the directional derivative is
+$$d\Theta(Hp).$$
+The exterior derivative is
+$$d\Theta = \sum_s (\log p_s + 1)dp_s$$
+which implies that
+$$d\Theta(Hp) = (\log p^T) H p.$$
+Regardless of $H$, this directional derivative is $0$ when $p$ is uniform. The uniform distribution is the maximum entropy distribution on a finite set, therefore we have proved that if the statistical mechanical system ever reaches maximum entropy, it remains there for the rest of time.
 
 ### Quantum Mechanics in a finite set
 
