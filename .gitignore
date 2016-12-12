@@ -22,6 +22,7 @@ _site/
 website
 cssgen
 style.css
+cvPDF
 
 ### ipython checkpoints
 .ipynb_checkpoints
@@ -46,3 +47,4 @@ style.css
 ## Intermediate documents:
 *.pdf
 
+CV.tex
