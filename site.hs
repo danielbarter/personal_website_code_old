@@ -20,8 +20,8 @@ buildSite =  hakyll $ do
 
   match "home.md" $ do
     route   $ constRoute "index.html"
-    compile $ 
-        pandocCompiler 
+    compile $
+        pandocCompiler
         >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
         >>= relativizeUrls
 
@@ -38,26 +38,20 @@ buildSite =  hakyll $ do
 
   match "posts/*/*" $ do
     route $ setExtension "html"
-    compile $ 
+    compile $
           pandocMathCompiler
           >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
           >>= relativizeUrls
 
   match "blog.md" $ do
     route $ setExtension "html"
-    compile $ do 
-      compPosts     <- loadAll "posts/computers/*"
-      mathPosts     <- loadAll "posts/mathematics/*"
-      statPosts     <- loadAll "posts/statistics/*"
-      compPostsOrdered     <- recentFirst compPosts
-      mathPostsOrdered     <- recentFirst mathPosts
-      statPostsOrdered     <- recentFirst statPosts
+    compile $ do
+      posts <- loadAll "posts/*/*"
+      postsOrdered  <- recentFirst posts
       -- this relies on posts being titled YYYY-MM-DD-title.extension
       -- also, need a date field at the top of each blog post for the blog.html template
-      let blogContext = 
-              listField "compPosts" defaultContext (return compPostsOrdered) 
-           <> listField "mathPosts" defaultContext (return mathPostsOrdered)
-           <> listField "statPosts" defaultContext (return statPostsOrdered)
+      let blogContext =
+              listField "posts" defaultContext (return postsOrdered)
            <> defaultContext
       pandocCompiler
         >>= loadAndApplyTemplate "html_templates/blog.html" blogContext
@@ -82,7 +76,3 @@ pandocMathCompiler =
                           writerHTMLMathMethod = MathJax ""
                         }
     in pandocCompilerWith defaultHakyllReaderOptions writerOptions
-
-
-
-
