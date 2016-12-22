@@ -8,6 +8,7 @@ title: CV
 - Place of Birth: Melbourne, Australia
 - Citizenship: Australia
 - website: [danielbarter.github.io](http://danielbarter.github.io/)
+- email: <danielbarter@gmail.com>
 
 ## Education
 - B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney, 2008-2011.
