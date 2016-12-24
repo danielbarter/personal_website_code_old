@@ -20,6 +20,10 @@ codeStyle = code ?
      fontSize    (px 20)
      lineHeight  (px 28)
 
+imgStyle :: Css
+imgStyle = img ? do
+  borderRadius (px 8) (px 8) (px 8) (px 8)
+
 softStyle :: Css
 softStyle = ".soft" ? do
   fontStyle italic
@@ -92,3 +96,4 @@ main = putCss $ do
   codeContainerStyle
   codeHighlight
   softStyle
+  imgStyle
