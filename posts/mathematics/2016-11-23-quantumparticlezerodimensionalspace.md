@@ -47,7 +47,6 @@ Regardless of $H$, this directional derivative is $0$ when $p$ is uniform. The u
 
 Somewhat surprisingly, the transition from classical mechanical systems to quantum mechanical systems requires little effort. Now the state of the system is encoded using a wave function. When $S$ is a finite set, the wave function $\chi$ lives in
 $$\{ \chi \in {\rm maps}(S,\mathbb{C}) : \langle \chi,\chi \rangle = 1\}$$
-where $\langle \cdot,\cdot \rangle$ is the standard Hermitian form. If $f : S \to \mathbb{R}$ is an observable, when we measure $f$, we record the value $f(s)$ with probability $\lvert \chi_s \lvert^2$. If we actually measure $f$ and record $\lambda$, the wave function collapses according to Bayes rule. The time evolution operator $E_t$ must be unitary to preserve probability, so the infinitesimal generator $H$ is skew Hermitian.
-
-
-
+where $\langle \cdot,\cdot \rangle$ is the standard Hermitian form, and ${\rm maps}(S,\mathbb{C})$ is the vector space with basis $S$. We call $S$ the **computation basis** and denote the basis vectors by $|s\rangle$ as is traditional in quantum mechanics. If $f : S \to \mathbb{R}$ is an observable, when we measure $f$, we record the value $f(s)$ with probability $\lvert \chi_s \lvert^2$. If we actually measure $f$ and record $\lambda$, the wave function collapses according to Bayes rule. The time evolution operator $E_t$ must be unitary to preserve probability, so the infinitesimal generator $H$ is skew Hermitian. This implies that time evolution is invertible. As a result we can talk about generalized observables. Choose an orthonormal basis $\psi_i$ and let $U$ be the unitary operator which takes $\psi_i$ to a computation basis vector. Then we can perform the operation
+$$U^{-1} \circ {\rm measurement} \circ U$$
+The spectral theorem says that a hermitian operator can be diagonalized by a unitary matrix and has real eigenvalues. Therefore, we can identify generalized observables with hermitian operators. This is one of the fundamental principles of quantum mechanics.
