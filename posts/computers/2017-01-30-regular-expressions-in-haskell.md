@@ -161,6 +161,7 @@ wordRegex w = mconcat (Atom <$> w :: [Regex])
 
 red = wordRegex "red"
 blue = wordRegex "blue"
+redblue = red `mappend` blue
 ```
 In the REPL we have
 ```{.haskell}
