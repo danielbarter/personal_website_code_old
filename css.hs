@@ -37,6 +37,7 @@ codeContainerStyle = codeContainer ?
   do border solid (px 1) "#C3C3C3"
      borderRadius (px 5) (px 5) (px 5) (px 5)
      paddingLeft (px 5)
+     overflowX auto
 
 -- please don't judge me. There must be a better way to do this
 codeHighlight :: Css
