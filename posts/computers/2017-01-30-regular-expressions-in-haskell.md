@@ -1,5 +1,5 @@
 ---
-title: Regular expressions in Haskell
+title: regular expressions in haskell
 date: 2017-01-30
 ---
 
