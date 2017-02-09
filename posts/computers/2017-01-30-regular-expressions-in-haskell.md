@@ -16,7 +16,7 @@ cd ./hs-regex
 ```
 [Protolude](https://github.com/sdiehl/protolude) is a minimal Haskell prelude which I like using. We are going to be using the [vector](https://hackage.haskell.org/package/vector) and [text](https://hackage.haskell.org/package/text) libraries, so in `hs-regex.cabal`, edit the `library` section so it looks like
 
-```
+```{.algorithm}
 library
   hs-source-dirs:      src
   ghc-options:         -Wall

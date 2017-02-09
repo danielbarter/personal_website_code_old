@@ -32,6 +32,16 @@ softStyle = ".soft" ? do
 codeContainer :: Selector
 codeContainer = div # ".sourceCode"
 
+algorithmContainer :: Selector
+algorithmContainer = pre # ".algorithm"
+
+algorithmContainerStyle :: Css
+algorithmContainerStyle = algorithmContainer ?
+  do border solid (px 1) "#C3C3C3"
+     borderRadius (px 5) (px 5) (px 5) (px 5)
+     paddingLeft (px 5)
+     overflowX auto
+
 codeContainerStyle :: Css
 codeContainerStyle = codeContainer ?
   do border solid (px 1) "#C3C3C3"
@@ -95,6 +105,7 @@ main = putCss $ do
   linkStyle
   codeStyle
   codeContainerStyle
+  algorithmContainerStyle
   codeHighlight
   softStyle
   imgStyle
