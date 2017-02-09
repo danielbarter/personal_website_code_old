@@ -43,7 +43,7 @@ buildSite =  hakyll $ do
           >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
           >>= relativizeUrls
 
-  match "solutions.md" $ do
+  match "CLRSsolutions/*" $ do
     route $ setExtension "html"
     compile $
       pandocMathCompiler
