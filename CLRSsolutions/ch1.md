@@ -2,7 +2,7 @@
 title: ch1
 ---
 
-# Solutions for CLRS Introduction to Algorithms Chapter 1
+# CLRS Chapter 1
 
 **1.1-1.** Alphabetizing student exam papers prior to recording grades into the grade book, where the students appear in alphabetical order. 
 
@@ -22,3 +22,18 @@ One strength of linked lists is that we don\'t need to store the nodes in adjace
 **1.2-2.** We have $8 n^2 > 64 n \log_2 n$ when $n > 42$.
 
 **1.2-3.** We have $2^n > 100 n^2$ when $n > 15$.
+
+**1.1.** First we roughly convert the time units into microseconds. Also, our logarithms are base 10 and we discard the non leading terms in the base 10 expansion.
+
+```{.algorithm}
+| time (ms)  |  10^6       |  10^7       |  10^9       |  10^{10}       |  10^{12}       |  10^{13}       |  10^{15}       |
+|------------|-------------|-------------|-------------|----------------|----------------|----------------|----------------|
+|  \log n    |  10^{10^6}  |  10^{10^7}  | $10^{10^9}  |  10^{10^{10}}  |  10^{10^{12}}  |  10^{10^{13}}  |  10^{10^{15}}  |
+|  \sqrt{n}  |  10^{12}    |  10^{14}    | $10^{18}    |  10^{20}       |  10^{24}       |  10^{26}       |  10^{30}       |
+|  n         |  10^{6}     |  10^{7}     | $10^{9}     |  10^{10}       |  10^{12}       |  10^{13}       |  10^{15}       |
+|  n \log n  |  10^5       |  10^6       | $10^8       |  10^9          |  10^{11}       |  10^{12}       |  10^{14}       |
+|  n^2       |  10^3       |  10^3       | $10^4       |  10^5          |  10^6          |  10^6          |  10^7          |
+|  n^3       |  10^2       |  10^2       | $10^3       |  10^3          |  10^4          |  10^4          |  10^5          |
+|  10^n      |  6          |  7          |  9          |  10            |  12            |  13            |  15            |
+|  n!        |  10         |  11         |  13         |  14            |  15            |  16            |  17            |
+```
