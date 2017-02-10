@@ -60,3 +60,31 @@ binaryAdd(A,B,C,n)
     C[i] = s
   C[n+1] = c
 ```
+
+**2.2-1.** $\Theta(n^3)$
+
+**2.2-2.** Here is the pseudocode for selection sort:
+```{.algorithm}
+// n is the length of the array
+selectionSort(A,n)
+  for i = 1 to (n - 1)
+    j = minimumIndex(A[i:],n-i+1)
+    swap(&A[i],&A[j])
+    
+minimumIndex(B,m)
+  min = 1
+  for k = 2 to m
+    if B[k] < B[min]
+      min = k
+  return min
+  
+// p and q are pointers
+// constant time
+swap(p,q)
+  x = *p
+  *p = *q
+  *q = x
+```
+Since repeatedly picking the index with the smallest value produces an increasing sequence, once selectionSort finishes, the array will be sorted. Since the last element is never picked, it is larger than all the others. The procedure swap has runtime $\Theta(1)$ and the procedure minimumIndex has runtime $\Theta(m)$. Both the best and worst case runtimes are $\Theta(n^2)$.
+
+**2.2-3.**
