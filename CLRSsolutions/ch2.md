@@ -47,3 +47,16 @@ linearSearch(A,v)
   return nil
 ```
 If the list doesn\'t contain `v`, then the if condition is never satisfied, so we return `nil`. If the list does contain `v`, then after the first time `A[i] == v`, we return `i`.
+
+**2.1-4.**
+First, lets state the problem formally. **Input:** Two length $n$ arrays $A$ and $B$ of binary digits. **Output:** A length $n+1$ array $C$ which contains the sum.
+```{.algorithm}
+// binaryPlus(x,y,z) is a procedure which adds the binary digits x and y. It returns c,s which is the carry and the sum.
+
+binaryAdd(A,B,C,n)
+  c = 0
+  for i = 1 to n
+    c,s = binaryPlus(A[i],B[i],c)
+    C[i] = s
+  C[n+1] = c
+```
