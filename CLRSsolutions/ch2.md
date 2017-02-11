@@ -202,4 +202,18 @@ binarySearch(A,p,q,v)
 ```
 Then we have $T(n) = T(n/2) + 1$ which gives $T(n) = \Theta(\log n)$
 
-**2.3-6.**
+**2.3-6.** I don\'t see an obvious way to do this. The issue is that binary search will allow us to find the correct spot in logarithmic time, but it will still take linear time to build the new array with the value inserted. 
+
+**2.3-7.** Suppose that the integers are presented to us in an array `A` and we want to decide if `x` is the sum of two elements in `A`. 
+```{.algorithm}
+sumOfTwo(A,x)
+  mergeSort(A,1,A.length)
+  for i = 1 to (A.length - 1)
+    maybej = binarySearch(A,i+1,A.length,x - A[i])
+    if j != nil
+      return i,j
+  return nil
+```
+If $n$ is the size of the array, then `mergeSort` has worst case runtime $\Theta(n \log n)$ and the loop has worst case runtime $O(\log n + \log (n-1) + ...)$. Therefore `sumofTwo` has worst case runtime $\Theta(n \log n)$.
+
+**2-1.**
