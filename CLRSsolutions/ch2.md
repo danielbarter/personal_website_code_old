@@ -216,4 +216,26 @@ sumOfTwo(A,x)
 ```
 If $n$ is the size of the array, then `mergeSort` has worst case runtime $\Theta(n \log n)$ and the loop has worst case runtime $O(\log n + \log (n-1) + ...)$. Therefore `sumofTwo` has worst case runtime $\Theta(n \log n)$.
 
-**2-1.**
+**2-1-a.** Firstly, it is easy to modify the `insertionSort` procedure so that it takes a start and end index in the array and sorts the corresponding sub array. Also for simplicity, we assume that k divides n. Then we have
+```{.algorithm}
+insertionSortLeaves(A,k,n)
+  for i = 1 to (n/k)
+    insertionSort(A,(i-1)*k + 1,i*k)
+```
+The worst case run time for `insertionSortLeaves` is $\Theta(k^2 * n/k ) = \Theta(nk)$.
+
+**2-1-b.** Inorder to merge the already sorted chunks, we modify the `mergeSort` algorithm to use box numbers instead of array indexes:
+```{.algorithm}
+// p and q are box numbers, not indexes
+mergeLeaves(A,k,p,q)
+  if p < q
+    m = floor((p + q)/2)
+    mergeLeaves(A,k,p,m)
+    mergeLeaves(A,k,m+1,q)
+    merge(A,(p-1)*k+1,q*k)
+```
+The worst case runtime satisfies $T(n,k) = 2 T(n/2,k) + n$ which implies that $T(n,k) = n * \log(n/k)$.
+
+**2-1-c.** Since $nk + n \log(n/k) = n (k - \log k) + n \log n$, if we take $k = O(\log n)$, then we will have the same asymptotic runtime as merge sort.
+
+**2-1-d.** With our current analysis we have no understanding of the lower order terms or constants in the worst case runtime. In practice, $k$ should be chosen empirically, guided by $k= O(\log n)$.
