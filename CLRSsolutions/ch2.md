@@ -239,3 +239,34 @@ The worst case runtime satisfies $T(n,k) = 2 T(n/2,k) + n$ which implies that $T
 **2-1-c.** Since $nk + n \log(n/k) = n (k - \log k) + n \log n$, if we take $k = O(\log n)$, then we will have the same asymptotic runtime as merge sort.
 
 **2-1-d.** With our current analysis we have no understanding of the lower order terms or constants in the worst case runtime. In practice, $k$ should be chosen empirically, guided by $k= O(\log n)$.
+
+**2-2.** The inner loop in `bubbleSort` moves the smallest value in `A[i..]` into position `i`. In the following example, `>` denotes the outer loop and `<` denotes the inner loop:
+```{.algorithm}
+>4,3,1,2<
+>4,3,1<,2
+>4,1<,3,2
+1,>4,3,2<
+```
+The array is sorted by repeatedly moving the smallest value in what remains to the index maintained by the outer loop. The worstcase running time for `bubbleSort` is $\Theta(n^2)$ where $n$ is the length of the array. The best case running time for bubble sort is also $\Theta(n^2)$, while the best case running time for `insertionSort` is $\Theta(n)$.
+
+**2-3.** Here is the pseudocode for Horner's rule:
+```{.algorithm}
+horner(A,x)
+  y = 0
+  for i = n downto 0
+    y = A[i] + x * y
+  return y
+```
+the runtime for horner is $\Theta(n)$. Here is the pseudocode for niave polynomial evaluation:
+```{.algorithm}
+niave(A,x)
+  y = 0
+  for i = 0 to n
+    power = 1
+    for j = 1 to i
+      power = power * x
+    y = y + A[i] * power
+```
+the niave version has runtime $\Theta(n^2)$.
+
+**2-4.**
