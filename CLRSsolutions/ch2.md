@@ -249,7 +249,7 @@ The worst case runtime satisfies $T(n,k) = 2 T(n/2,k) + n$ which implies that $T
 ```
 The array is sorted by repeatedly moving the smallest value in what remains to the index maintained by the outer loop. The worstcase running time for `bubbleSort` is $\Theta(n^2)$ where $n$ is the length of the array. The best case running time for bubble sort is also $\Theta(n^2)$, while the best case running time for `insertionSort` is $\Theta(n)$.
 
-**2-3.** Here is the pseudocode for Horner's rule:
+**2-3.** Here is the pseudocode for Horner\'s rule:
 ```{.algorithm}
 horner(A,x)
   y = 0
@@ -269,4 +269,45 @@ niave(A,x)
 ```
 the niave version has runtime $\Theta(n^2)$.
 
-**2-4.**
+**2-4.** Inversions in the sequence $a_1,a_2,\dots,a_n,b_1,b_2,\dots,b_m$ with no repeats are either 
+
+- inversions in $a_1,a_2,\dots,a_n$
+- inversions in $b_1,b_2,\dots,b_m$
+- inversions in $a_1',a_2',\dots,a_n',b_1',b_2',\dots,b_m'$ where $a_1',\dots,a_n'$ is $a_1,\dots,a_n$ sorted and $b_1',\dots,b_m'$ is $b_1,\dots,b_m$ sorted.
+
+First we need to modify the `merge` procedure to also compute inversions. Consider the sequence $a_1',a_2',\dots,a_n',b_1',b_2',\dots,b_m'$ described above. If $b_1' < a_1'$ then $b_1' < a_i'$ for each $i$ so we have $n$ inversions which involve $b_1'$.
+```{.algorithm}
+mergeInversion(A,p,q,r)
+  n1 = q - p + 1
+  n2 = r - q
+  let L[1..n1 + 1] and R[1..n2 + 1] be new arrays
+  for i = 1 to n1
+    L[i] = A[p+i-1]
+  for j = 1 to n2
+    R[j] = A[q+j]
+  L[n1+1] = inf
+  R[n2+1] = inf
+  i = 1
+  j = 1
+  counter = 0
+  for k = p to r
+    if L[i] <= R[j]
+      A[k] = L[i]
+      i = i + 1
+    else 
+      A[k] = R[j]
+      j = j + 1
+      counter = n1 - i + 1
+  return counter
+```
+We maintain a counter and everytime we pick an element from the right array, we add the size of the left array to the counter. This computes the number of inversions. Now we modify `mergeSort`:
+```{.algorithm}
+mergeSortInversion(A,p,r)
+  if p < r 
+    q = floor((p+r)/2)
+    l = mergeSortInversion(A,p,q)
+    r = mergeSortInversion(A,q+1,r)
+    m = mergeInversion(A,p,q,r)
+    return l + r + m
+  return 0
+```
