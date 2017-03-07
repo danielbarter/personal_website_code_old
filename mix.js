@@ -7064,305 +7064,9 @@ var _elm_lang$core$Dict$diff = F2(
 			t2);
 	});
 
-var _elm_lang$core$Color$fmod = F2(
-	function (f, n) {
-		var integer = _elm_lang$core$Basics$floor(f);
-		return (_elm_lang$core$Basics$toFloat(
-			A2(_elm_lang$core$Basics_ops['%'], integer, n)) + f) - _elm_lang$core$Basics$toFloat(integer);
-	});
-var _elm_lang$core$Color$rgbToHsl = F3(
-	function (red, green, blue) {
-		var b = _elm_lang$core$Basics$toFloat(blue) / 255;
-		var g = _elm_lang$core$Basics$toFloat(green) / 255;
-		var r = _elm_lang$core$Basics$toFloat(red) / 255;
-		var cMax = A2(
-			_elm_lang$core$Basics$max,
-			A2(_elm_lang$core$Basics$max, r, g),
-			b);
-		var cMin = A2(
-			_elm_lang$core$Basics$min,
-			A2(_elm_lang$core$Basics$min, r, g),
-			b);
-		var c = cMax - cMin;
-		var lightness = (cMax + cMin) / 2;
-		var saturation = _elm_lang$core$Native_Utils.eq(lightness, 0) ? 0 : (c / (1 - _elm_lang$core$Basics$abs((2 * lightness) - 1)));
-		var hue = _elm_lang$core$Basics$degrees(60) * (_elm_lang$core$Native_Utils.eq(cMax, r) ? A2(_elm_lang$core$Color$fmod, (g - b) / c, 6) : (_elm_lang$core$Native_Utils.eq(cMax, g) ? (((b - r) / c) + 2) : (((r - g) / c) + 4)));
-		return {ctor: '_Tuple3', _0: hue, _1: saturation, _2: lightness};
-	});
-var _elm_lang$core$Color$hslToRgb = F3(
-	function (hue, saturation, lightness) {
-		var normHue = hue / _elm_lang$core$Basics$degrees(60);
-		var chroma = (1 - _elm_lang$core$Basics$abs((2 * lightness) - 1)) * saturation;
-		var x = chroma * (1 - _elm_lang$core$Basics$abs(
-			A2(_elm_lang$core$Color$fmod, normHue, 2) - 1));
-		var _p0 = (_elm_lang$core$Native_Utils.cmp(normHue, 0) < 0) ? {ctor: '_Tuple3', _0: 0, _1: 0, _2: 0} : ((_elm_lang$core$Native_Utils.cmp(normHue, 1) < 0) ? {ctor: '_Tuple3', _0: chroma, _1: x, _2: 0} : ((_elm_lang$core$Native_Utils.cmp(normHue, 2) < 0) ? {ctor: '_Tuple3', _0: x, _1: chroma, _2: 0} : ((_elm_lang$core$Native_Utils.cmp(normHue, 3) < 0) ? {ctor: '_Tuple3', _0: 0, _1: chroma, _2: x} : ((_elm_lang$core$Native_Utils.cmp(normHue, 4) < 0) ? {ctor: '_Tuple3', _0: 0, _1: x, _2: chroma} : ((_elm_lang$core$Native_Utils.cmp(normHue, 5) < 0) ? {ctor: '_Tuple3', _0: x, _1: 0, _2: chroma} : ((_elm_lang$core$Native_Utils.cmp(normHue, 6) < 0) ? {ctor: '_Tuple3', _0: chroma, _1: 0, _2: x} : {ctor: '_Tuple3', _0: 0, _1: 0, _2: 0}))))));
-		var r = _p0._0;
-		var g = _p0._1;
-		var b = _p0._2;
-		var m = lightness - (chroma / 2);
-		return {ctor: '_Tuple3', _0: r + m, _1: g + m, _2: b + m};
-	});
-var _elm_lang$core$Color$toRgb = function (color) {
-	var _p1 = color;
-	if (_p1.ctor === 'RGBA') {
-		return {red: _p1._0, green: _p1._1, blue: _p1._2, alpha: _p1._3};
-	} else {
-		var _p2 = A3(_elm_lang$core$Color$hslToRgb, _p1._0, _p1._1, _p1._2);
-		var r = _p2._0;
-		var g = _p2._1;
-		var b = _p2._2;
-		return {
-			red: _elm_lang$core$Basics$round(255 * r),
-			green: _elm_lang$core$Basics$round(255 * g),
-			blue: _elm_lang$core$Basics$round(255 * b),
-			alpha: _p1._3
-		};
-	}
-};
-var _elm_lang$core$Color$toHsl = function (color) {
-	var _p3 = color;
-	if (_p3.ctor === 'HSLA') {
-		return {hue: _p3._0, saturation: _p3._1, lightness: _p3._2, alpha: _p3._3};
-	} else {
-		var _p4 = A3(_elm_lang$core$Color$rgbToHsl, _p3._0, _p3._1, _p3._2);
-		var h = _p4._0;
-		var s = _p4._1;
-		var l = _p4._2;
-		return {hue: h, saturation: s, lightness: l, alpha: _p3._3};
-	}
-};
-var _elm_lang$core$Color$HSLA = F4(
-	function (a, b, c, d) {
-		return {ctor: 'HSLA', _0: a, _1: b, _2: c, _3: d};
-	});
-var _elm_lang$core$Color$hsla = F4(
-	function (hue, saturation, lightness, alpha) {
-		return A4(
-			_elm_lang$core$Color$HSLA,
-			hue - _elm_lang$core$Basics$turns(
-				_elm_lang$core$Basics$toFloat(
-					_elm_lang$core$Basics$floor(hue / (2 * _elm_lang$core$Basics$pi)))),
-			saturation,
-			lightness,
-			alpha);
-	});
-var _elm_lang$core$Color$hsl = F3(
-	function (hue, saturation, lightness) {
-		return A4(_elm_lang$core$Color$hsla, hue, saturation, lightness, 1);
-	});
-var _elm_lang$core$Color$complement = function (color) {
-	var _p5 = color;
-	if (_p5.ctor === 'HSLA') {
-		return A4(
-			_elm_lang$core$Color$hsla,
-			_p5._0 + _elm_lang$core$Basics$degrees(180),
-			_p5._1,
-			_p5._2,
-			_p5._3);
-	} else {
-		var _p6 = A3(_elm_lang$core$Color$rgbToHsl, _p5._0, _p5._1, _p5._2);
-		var h = _p6._0;
-		var s = _p6._1;
-		var l = _p6._2;
-		return A4(
-			_elm_lang$core$Color$hsla,
-			h + _elm_lang$core$Basics$degrees(180),
-			s,
-			l,
-			_p5._3);
-	}
-};
-var _elm_lang$core$Color$grayscale = function (p) {
-	return A4(_elm_lang$core$Color$HSLA, 0, 0, 1 - p, 1);
-};
-var _elm_lang$core$Color$greyscale = function (p) {
-	return A4(_elm_lang$core$Color$HSLA, 0, 0, 1 - p, 1);
-};
-var _elm_lang$core$Color$RGBA = F4(
-	function (a, b, c, d) {
-		return {ctor: 'RGBA', _0: a, _1: b, _2: c, _3: d};
-	});
-var _elm_lang$core$Color$rgba = _elm_lang$core$Color$RGBA;
-var _elm_lang$core$Color$rgb = F3(
-	function (r, g, b) {
-		return A4(_elm_lang$core$Color$RGBA, r, g, b, 1);
-	});
-var _elm_lang$core$Color$lightRed = A4(_elm_lang$core$Color$RGBA, 239, 41, 41, 1);
-var _elm_lang$core$Color$red = A4(_elm_lang$core$Color$RGBA, 204, 0, 0, 1);
-var _elm_lang$core$Color$darkRed = A4(_elm_lang$core$Color$RGBA, 164, 0, 0, 1);
-var _elm_lang$core$Color$lightOrange = A4(_elm_lang$core$Color$RGBA, 252, 175, 62, 1);
-var _elm_lang$core$Color$orange = A4(_elm_lang$core$Color$RGBA, 245, 121, 0, 1);
-var _elm_lang$core$Color$darkOrange = A4(_elm_lang$core$Color$RGBA, 206, 92, 0, 1);
-var _elm_lang$core$Color$lightYellow = A4(_elm_lang$core$Color$RGBA, 255, 233, 79, 1);
-var _elm_lang$core$Color$yellow = A4(_elm_lang$core$Color$RGBA, 237, 212, 0, 1);
-var _elm_lang$core$Color$darkYellow = A4(_elm_lang$core$Color$RGBA, 196, 160, 0, 1);
-var _elm_lang$core$Color$lightGreen = A4(_elm_lang$core$Color$RGBA, 138, 226, 52, 1);
-var _elm_lang$core$Color$green = A4(_elm_lang$core$Color$RGBA, 115, 210, 22, 1);
-var _elm_lang$core$Color$darkGreen = A4(_elm_lang$core$Color$RGBA, 78, 154, 6, 1);
-var _elm_lang$core$Color$lightBlue = A4(_elm_lang$core$Color$RGBA, 114, 159, 207, 1);
-var _elm_lang$core$Color$blue = A4(_elm_lang$core$Color$RGBA, 52, 101, 164, 1);
-var _elm_lang$core$Color$darkBlue = A4(_elm_lang$core$Color$RGBA, 32, 74, 135, 1);
-var _elm_lang$core$Color$lightPurple = A4(_elm_lang$core$Color$RGBA, 173, 127, 168, 1);
-var _elm_lang$core$Color$purple = A4(_elm_lang$core$Color$RGBA, 117, 80, 123, 1);
-var _elm_lang$core$Color$darkPurple = A4(_elm_lang$core$Color$RGBA, 92, 53, 102, 1);
-var _elm_lang$core$Color$lightBrown = A4(_elm_lang$core$Color$RGBA, 233, 185, 110, 1);
-var _elm_lang$core$Color$brown = A4(_elm_lang$core$Color$RGBA, 193, 125, 17, 1);
-var _elm_lang$core$Color$darkBrown = A4(_elm_lang$core$Color$RGBA, 143, 89, 2, 1);
-var _elm_lang$core$Color$black = A4(_elm_lang$core$Color$RGBA, 0, 0, 0, 1);
-var _elm_lang$core$Color$white = A4(_elm_lang$core$Color$RGBA, 255, 255, 255, 1);
-var _elm_lang$core$Color$lightGrey = A4(_elm_lang$core$Color$RGBA, 238, 238, 236, 1);
-var _elm_lang$core$Color$grey = A4(_elm_lang$core$Color$RGBA, 211, 215, 207, 1);
-var _elm_lang$core$Color$darkGrey = A4(_elm_lang$core$Color$RGBA, 186, 189, 182, 1);
-var _elm_lang$core$Color$lightGray = A4(_elm_lang$core$Color$RGBA, 238, 238, 236, 1);
-var _elm_lang$core$Color$gray = A4(_elm_lang$core$Color$RGBA, 211, 215, 207, 1);
-var _elm_lang$core$Color$darkGray = A4(_elm_lang$core$Color$RGBA, 186, 189, 182, 1);
-var _elm_lang$core$Color$lightCharcoal = A4(_elm_lang$core$Color$RGBA, 136, 138, 133, 1);
-var _elm_lang$core$Color$charcoal = A4(_elm_lang$core$Color$RGBA, 85, 87, 83, 1);
-var _elm_lang$core$Color$darkCharcoal = A4(_elm_lang$core$Color$RGBA, 46, 52, 54, 1);
-var _elm_lang$core$Color$Radial = F5(
-	function (a, b, c, d, e) {
-		return {ctor: 'Radial', _0: a, _1: b, _2: c, _3: d, _4: e};
-	});
-var _elm_lang$core$Color$radial = _elm_lang$core$Color$Radial;
-var _elm_lang$core$Color$Linear = F3(
-	function (a, b, c) {
-		return {ctor: 'Linear', _0: a, _1: b, _2: c};
-	});
-var _elm_lang$core$Color$linear = _elm_lang$core$Color$Linear;
-
 var _danielbarter$elm_mix$Mix$load = function (_p0) {
 	var _p1 = _p0;
 	return {a: _danielbarter$elm_mix$Atom$zeroWord, x: _danielbarter$elm_mix$Atom$zeroWord, i1: _danielbarter$elm_mix$Atom$zeroSmallWord, i2: _danielbarter$elm_mix$Atom$zeroSmallWord, i3: _danielbarter$elm_mix$Atom$zeroSmallWord, i4: _danielbarter$elm_mix$Atom$zeroSmallWord, i5: _danielbarter$elm_mix$Atom$zeroSmallWord, i6: _danielbarter$elm_mix$Atom$zeroSmallWord, j: _danielbarter$elm_mix$Atom$zeroSmallWord, p: 0, mem: _p1._1, meta: _p1._0, symbolTable: _p1._2, reverseSymbolTable: _p1._3, overflow: _danielbarter$elm_mix$Atom$Good, comparison: _danielbarter$elm_mix$Atom$E};
-};
-var _danielbarter$elm_mix$Mix$ppPrefix = F2(
-	function (a, l) {
-		var _p2 = l;
-		if (_p2.ctor === 'Nothing') {
-			return '';
-		} else {
-			return A2(
-				_elm_lang$core$Basics_ops['++'],
-				':',
-				A2(_elm_lang$core$Basics_ops['++'], _p2._0, ' '));
-		}
-	});
-var _danielbarter$elm_mix$Mix$ppMaybeMasks = function (m) {
-	var _p3 = m;
-	if (_p3.ctor === 'Nothing') {
-		return '';
-	} else {
-		return A2(
-			_elm_lang$core$Basics_ops['++'],
-			'/',
-			function (_p4) {
-				return _elm_lang$core$Basics$toString(
-					_danielbarter$elm_mix$Atom$value(
-						_danielbarter$elm_mix$Atom$masksToByte(_p4)));
-			}(_p3._0));
-	}
-};
-var _danielbarter$elm_mix$Mix$ppMaybeIndex = function (i) {
-	var _p5 = i;
-	if (_p5.ctor === 'Nothing') {
-		return '';
-	} else {
-		return A2(
-			_elm_lang$core$Basics_ops['++'],
-			'+',
-			_elm_lang$core$Basics$toString(_p5._0));
-	}
-};
-var _danielbarter$elm_mix$Mix$ppMaybeAddress = F2(
-	function (mix, a) {
-		var _p6 = a;
-		if (_p6.ctor === 'Nothing') {
-			return '';
-		} else {
-			var _p8 = _p6._0;
-			var _p7 = A2(_elm_lang$core$Dict$get, _p8, mix.reverseSymbolTable);
-			if (_p7.ctor === 'Nothing') {
-				return _elm_lang$core$Basics$toString(_p8);
-			} else {
-				return _p7._0;
-			}
-		}
-	});
-var _danielbarter$elm_mix$Mix$ppStaticInstructionClean = F2(
-	function (mix, _p9) {
-		var _p10 = _p9;
-		var sm = _danielbarter$elm_mix$Mix$ppMaybeMasks(_p10._2);
-		var si = _danielbarter$elm_mix$Mix$ppMaybeIndex(_p10._1);
-		var sa = A2(_danielbarter$elm_mix$Mix$ppMaybeAddress, mix, _p10._0);
-		var st = _danielbarter$elm_mix$Instruction$ppTag(_p10._3);
-		return A2(
-			_elm_lang$core$String$join,
-			' ',
-			{
-				ctor: '::',
-				_0: sm,
-				_1: {
-					ctor: '::',
-					_0: st,
-					_1: {
-						ctor: '::',
-						_0: sa,
-						_1: {
-							ctor: '::',
-							_0: si,
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			});
-	});
-var _danielbarter$elm_mix$Mix$ppComparision = function (t) {
-	var _p11 = t;
-	switch (_p11.ctor) {
-		case 'L':
-			return {ctor: '_Tuple3', _0: '<', _1: _elm_lang$core$Color$darkRed, _2: _elm_lang$core$Color$white};
-		case 'E':
-			return {ctor: '_Tuple3', _0: '=', _1: _elm_lang$core$Color$darkGrey, _2: _elm_lang$core$Color$white};
-		default:
-			return {ctor: '_Tuple3', _0: '>', _1: _elm_lang$core$Color$darkGreen, _2: _elm_lang$core$Color$white};
-	}
-};
-var _danielbarter$elm_mix$Mix$ppOverflow = function (t) {
-	var _p12 = t;
-	switch (_p12.ctor) {
-		case 'Overflow':
-			return {ctor: '_Tuple3', _0: 'Overflow', _1: _elm_lang$core$Color$darkRed, _2: _elm_lang$core$Color$white};
-		case 'Good':
-			return {ctor: '_Tuple3', _0: 'Good', _1: _elm_lang$core$Color$darkGreen, _2: _elm_lang$core$Color$white};
-		default:
-			return {ctor: '_Tuple3', _0: 'Fuck!', _1: _elm_lang$core$Color$black, _2: _elm_lang$core$Color$white};
-	}
-};
-var _danielbarter$elm_mix$Mix$ppJump = function (w) {
-	return {
-		ctor: '_Tuple3',
-		_0: _elm_lang$core$Basics$toString(
-			_danielbarter$elm_mix$Atom$smallWordValue(w)),
-		_1: _elm_lang$core$Color$darkBlue,
-		_2: _elm_lang$core$Color$white
-	};
-};
-var _danielbarter$elm_mix$Mix$ppSmallWord = function (w) {
-	return {
-		ctor: '_Tuple3',
-		_0: _elm_lang$core$Basics$toString(
-			_danielbarter$elm_mix$Atom$smallWordValue(w)),
-		_1: _elm_lang$core$Color$darkCharcoal,
-		_2: _elm_lang$core$Color$white
-	};
-};
-var _danielbarter$elm_mix$Mix$ppWord = function (w) {
-	return {
-		ctor: '_Tuple3',
-		_0: _elm_lang$core$Basics$toString(
-			_danielbarter$elm_mix$Atom$wordValue(w)),
-		_1: _elm_lang$core$Color$lightCharcoal,
-		_2: _elm_lang$core$Color$black
-	};
 };
 var _danielbarter$elm_mix$Mix$read = F2(
 	function (a, mem) {
@@ -7372,20 +7076,20 @@ var _danielbarter$elm_mix$Mix$read = F2(
 			A2(_elm_lang$core$Dict$get, a, mem));
 	});
 var _danielbarter$elm_mix$Mix$instructionTransition = F2(
-	function (_p13, s) {
-		var _p14 = _p13;
-		var _p110 = _p14._1;
-		var _p109 = _p14._0;
-		var _p15 = _p14._2;
-		switch (_p15.ctor) {
+	function (_p2, s) {
+		var _p3 = _p2;
+		var _p99 = _p3._1;
+		var _p98 = _p3._0;
+		var _p4 = _p3._2;
+		switch (_p4.ctor) {
 			case 'LoadA':
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{
 						a: A3(
 							_danielbarter$elm_mix$Atom$copy,
-							_p110,
-							A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem),
+							_p99,
+							A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem),
 							s.a)
 					});
 			case 'LoadX':
@@ -7394,8 +7098,8 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						x: A3(
 							_danielbarter$elm_mix$Atom$copy,
-							_p110,
-							A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem),
+							_p99,
+							A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem),
 							s.x)
 					});
 			case 'LoadI1':
@@ -7405,8 +7109,8 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i1: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem),
+								_p99,
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i1)))
 					});
 			case 'LoadI2':
@@ -7416,8 +7120,8 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i2: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem),
+								_p99,
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i2)))
 					});
 			case 'LoadI3':
@@ -7427,8 +7131,8 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i3: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem),
+								_p99,
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i3)))
 					});
 			case 'LoadI4':
@@ -7438,8 +7142,8 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i4: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem),
+								_p99,
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i4)))
 					});
 			case 'LoadI5':
@@ -7449,8 +7153,8 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i5: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem),
+								_p99,
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i5)))
 					});
 			case 'LoadI6':
@@ -7460,8 +7164,8 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i6: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem),
+								_p99,
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i6)))
 					});
 			case 'LoadANeg':
@@ -7470,9 +7174,9 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						a: A3(
 							_danielbarter$elm_mix$Atom$copy,
-							_p110,
+							_p99,
 							_danielbarter$elm_mix$Atom$flipSignWord(
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.a)
 					});
 			case 'LoadXNeg':
@@ -7481,9 +7185,9 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						x: A3(
 							_danielbarter$elm_mix$Atom$copy,
-							_p110,
+							_p99,
 							_danielbarter$elm_mix$Atom$flipSignWord(
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.x)
 					});
 			case 'LoadI1Neg':
@@ -7493,9 +7197,9 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i1: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$flipSignWord(
-									A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+									A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i1)))
 					});
 			case 'LoadI2Neg':
@@ -7505,9 +7209,9 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i2: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$flipSignWord(
-									A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+									A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i2)))
 					});
 			case 'LoadI3Neg':
@@ -7517,9 +7221,9 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i3: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$flipSignWord(
-									A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+									A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i3)))
 					});
 			case 'LoadI4Neg':
@@ -7529,9 +7233,9 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i4: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$flipSignWord(
-									A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+									A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i4)))
 					});
 			case 'LoadI5Neg':
@@ -7541,9 +7245,9 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i5: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$flipSignWord(
-									A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+									A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i5)))
 					});
 			case 'LoadI6Neg':
@@ -7553,9 +7257,9 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 						i6: _danielbarter$elm_mix$Atom$wordContract(
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$flipSignWord(
-									A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+									A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 								_danielbarter$elm_mix$Atom$wordExpand(s.i6)))
 					});
 			case 'StoreA':
@@ -7564,12 +7268,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						mem: A3(
 							_elm_lang$core$Dict$insert,
-							_p109,
+							_p98,
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								s.a,
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.mem)
 					});
 			case 'StoreX':
@@ -7578,12 +7282,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						mem: A3(
 							_elm_lang$core$Dict$insert,
-							_p109,
+							_p98,
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								s.x,
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.mem)
 					});
 			case 'StoreI1':
@@ -7592,12 +7296,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						mem: A3(
 							_elm_lang$core$Dict$insert,
-							_p109,
+							_p98,
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$wordExpand(s.i1),
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.mem)
 					});
 			case 'StoreI2':
@@ -7606,12 +7310,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						mem: A3(
 							_elm_lang$core$Dict$insert,
-							_p109,
+							_p98,
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$wordExpand(s.i2),
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.mem)
 					});
 			case 'StoreI3':
@@ -7620,12 +7324,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						mem: A3(
 							_elm_lang$core$Dict$insert,
-							_p109,
+							_p98,
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$wordExpand(s.i3),
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.mem)
 					});
 			case 'StoreI4':
@@ -7634,12 +7338,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						mem: A3(
 							_elm_lang$core$Dict$insert,
-							_p109,
+							_p98,
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$wordExpand(s.i4),
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.mem)
 					});
 			case 'StoreI5':
@@ -7648,12 +7352,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						mem: A3(
 							_elm_lang$core$Dict$insert,
-							_p109,
+							_p98,
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$wordExpand(s.i5),
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.mem)
 					});
 			case 'StoreI6':
@@ -7662,12 +7366,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						mem: A3(
 							_elm_lang$core$Dict$insert,
-							_p109,
+							_p98,
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$wordExpand(s.i6),
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.mem)
 					});
 			case 'StoreJ':
@@ -7676,12 +7380,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						mem: A3(
 							_elm_lang$core$Dict$insert,
-							_p109,
+							_p98,
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$wordExpand(s.j),
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.mem)
 					});
 			case 'StoreZero':
@@ -7690,472 +7394,472 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					{
 						mem: A3(
 							_elm_lang$core$Dict$insert,
-							_p109,
+							_p98,
 							A3(
 								_danielbarter$elm_mix$Atom$copy,
-								_p110,
+								_p99,
 								_danielbarter$elm_mix$Atom$zeroWord,
-								A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem)),
+								A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem)),
 							s.mem)
 					});
 			case 'Add':
-				var _p16 = A4(
+				var _p5 = A4(
 					_danielbarter$elm_mix$Atom$op,
 					F2(
 						function (x, y) {
 							return x + y;
 						}),
-					_p110,
+					_p99,
 					s.a,
-					A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem));
-				var t = _p16._0;
-				var r = _p16._1;
+					A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem));
+				var t = _p5._0;
+				var r = _p5._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{a: r, overflow: t});
 			case 'Sub':
-				var _p17 = A4(
+				var _p6 = A4(
 					_danielbarter$elm_mix$Atom$op,
 					F2(
 						function (x, y) {
 							return x - y;
 						}),
-					_p110,
+					_p99,
 					s.a,
-					A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem));
+					A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem));
+				var t = _p6._0;
+				var r = _p6._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{a: r, overflow: t});
+			case 'AddX':
+				var _p7 = A4(
+					_danielbarter$elm_mix$Atom$op,
+					F2(
+						function (x, y) {
+							return x + y;
+						}),
+					_p99,
+					s.a,
+					s.x);
+				var t = _p7._0;
+				var r = _p7._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{a: r, overflow: t});
+			case 'SubX':
+				var _p8 = A4(
+					_danielbarter$elm_mix$Atom$op,
+					F2(
+						function (x, y) {
+							return x - y;
+						}),
+					_p99,
+					s.a,
+					s.x);
+				var t = _p8._0;
+				var r = _p8._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{a: r, overflow: t});
+			case 'EnterA':
+				var _p9 = A2(_danielbarter$elm_mix$Atom$intToWord, _p98, s.a);
+				var t = _p9._0;
+				var r = _p9._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{a: r, overflow: t});
+			case 'EnterX':
+				var _p10 = A2(_danielbarter$elm_mix$Atom$intToWord, _p98, s.x);
+				var t = _p10._0;
+				var r = _p10._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{x: r, overflow: t});
+			case 'EnterI1':
+				var _p11 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p98, s.i1);
+				var t = _p11._0;
+				var r = _p11._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{i1: r, overflow: t});
+			case 'EnterI2':
+				var _p12 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p98, s.i2);
+				var t = _p12._0;
+				var r = _p12._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{i2: r, overflow: t});
+			case 'EnterI3':
+				var _p13 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p98, s.i3);
+				var t = _p13._0;
+				var r = _p13._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{i3: r, overflow: t});
+			case 'EnterI4':
+				var _p14 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p98, s.i4);
+				var t = _p14._0;
+				var r = _p14._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{i4: r, overflow: t});
+			case 'EnterI5':
+				var _p15 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p98, s.i5);
+				var t = _p15._0;
+				var r = _p15._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{i5: r, overflow: t});
+			case 'EnterI6':
+				var _p16 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p98, s.i6);
+				var t = _p16._0;
+				var r = _p16._1;
+				return _elm_lang$core$Native_Utils.update(
+					s,
+					{i6: r, overflow: t});
+			case 'EnterANeg':
+				var _p17 = A2(
+					_danielbarter$elm_mix$Atom$intToWord,
+					_elm_lang$core$Basics$negate(_p98),
+					s.a);
 				var t = _p17._0;
 				var r = _p17._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{a: r, overflow: t});
-			case 'AddX':
-				var _p18 = A4(
-					_danielbarter$elm_mix$Atom$op,
-					F2(
-						function (x, y) {
-							return x + y;
-						}),
-					_p110,
-					s.a,
+			case 'EnterXNeg':
+				var _p18 = A2(
+					_danielbarter$elm_mix$Atom$intToWord,
+					_elm_lang$core$Basics$negate(_p98),
 					s.x);
 				var t = _p18._0;
 				var r = _p18._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{a: r, overflow: t});
-			case 'SubX':
-				var _p19 = A4(
-					_danielbarter$elm_mix$Atom$op,
-					F2(
-						function (x, y) {
-							return x - y;
-						}),
-					_p110,
-					s.a,
-					s.x);
+					{x: r, overflow: t});
+			case 'EnterI1Neg':
+				var _p19 = A2(
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_elm_lang$core$Basics$negate(_p98),
+					s.i1);
 				var t = _p19._0;
 				var r = _p19._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{a: r, overflow: t});
-			case 'EnterA':
-				var _p20 = A2(_danielbarter$elm_mix$Atom$intToWord, _p109, s.a);
+					{i1: r, overflow: t});
+			case 'EnterI2Neg':
+				var _p20 = A2(
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_elm_lang$core$Basics$negate(_p98),
+					s.i2);
 				var t = _p20._0;
 				var r = _p20._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{a: r, overflow: t});
-			case 'EnterX':
-				var _p21 = A2(_danielbarter$elm_mix$Atom$intToWord, _p109, s.x);
+					{i2: r, overflow: t});
+			case 'EnterI3Neg':
+				var _p21 = A2(
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_elm_lang$core$Basics$negate(_p98),
+					s.i3);
 				var t = _p21._0;
 				var r = _p21._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{x: r, overflow: t});
-			case 'EnterI1':
-				var _p22 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p109, s.i1);
+					{i3: r, overflow: t});
+			case 'EnterI4Neg':
+				var _p22 = A2(
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_elm_lang$core$Basics$negate(_p98),
+					s.i4);
 				var t = _p22._0;
 				var r = _p22._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i1: r, overflow: t});
-			case 'EnterI2':
-				var _p23 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p109, s.i2);
+					{i4: r, overflow: t});
+			case 'EnterI5Neg':
+				var _p23 = A2(
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_elm_lang$core$Basics$negate(_p98),
+					s.i5);
 				var t = _p23._0;
 				var r = _p23._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i2: r, overflow: t});
-			case 'EnterI3':
-				var _p24 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p109, s.i3);
+					{i5: r, overflow: t});
+			case 'EnterI6Neg':
+				var _p24 = A2(
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_elm_lang$core$Basics$negate(_p98),
+					s.i6);
 				var t = _p24._0;
 				var r = _p24._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i3: r, overflow: t});
-			case 'EnterI4':
-				var _p25 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p109, s.i4);
+					{i6: r, overflow: t});
+			case 'IncrementA':
+				var _p25 = A2(
+					_danielbarter$elm_mix$Atom$intToWord,
+					_danielbarter$elm_mix$Atom$wordValue(s.a) + _p98,
+					s.a);
 				var t = _p25._0;
 				var r = _p25._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i4: r, overflow: t});
-			case 'EnterI5':
-				var _p26 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p109, s.i5);
+					{a: r, overflow: t});
+			case 'IncrementX':
+				var _p26 = A2(
+					_danielbarter$elm_mix$Atom$intToWord,
+					_danielbarter$elm_mix$Atom$wordValue(s.x) + _p98,
+					s.x);
 				var t = _p26._0;
 				var r = _p26._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i5: r, overflow: t});
-			case 'EnterI6':
-				var _p27 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, _p109, s.i6);
+					{x: r, overflow: t});
+			case 'IncrementI1':
+				var _p27 = A2(
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i1) + _p98,
+					s.i1);
 				var t = _p27._0;
 				var r = _p27._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i6: r, overflow: t});
-			case 'EnterANeg':
+					{i1: r, overflow: t});
+			case 'IncrementI2':
 				var _p28 = A2(
-					_danielbarter$elm_mix$Atom$intToWord,
-					_elm_lang$core$Basics$negate(_p109),
-					s.a);
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i2) + _p98,
+					s.i2);
 				var t = _p28._0;
 				var r = _p28._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{a: r, overflow: t});
-			case 'EnterXNeg':
+					{i2: r, overflow: t});
+			case 'IncrementI3':
 				var _p29 = A2(
-					_danielbarter$elm_mix$Atom$intToWord,
-					_elm_lang$core$Basics$negate(_p109),
-					s.x);
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i3) + _p98,
+					s.i3);
 				var t = _p29._0;
 				var r = _p29._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{x: r, overflow: t});
-			case 'EnterI1Neg':
+					{i3: r, overflow: t});
+			case 'IncrementI4':
 				var _p30 = A2(
 					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_elm_lang$core$Basics$negate(_p109),
-					s.i1);
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i4) + _p98,
+					s.i4);
 				var t = _p30._0;
 				var r = _p30._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i1: r, overflow: t});
-			case 'EnterI2Neg':
+					{i4: r, overflow: t});
+			case 'IncrementI5':
 				var _p31 = A2(
 					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_elm_lang$core$Basics$negate(_p109),
-					s.i2);
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i5) + _p98,
+					s.i5);
 				var t = _p31._0;
 				var r = _p31._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i2: r, overflow: t});
-			case 'EnterI3Neg':
+					{i5: r, overflow: t});
+			case 'IncrementI6':
 				var _p32 = A2(
 					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_elm_lang$core$Basics$negate(_p109),
-					s.i3);
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i6) + _p98,
+					s.i6);
 				var t = _p32._0;
 				var r = _p32._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i3: r, overflow: t});
-			case 'EnterI4Neg':
+					{i6: r, overflow: t});
+			case 'DecrementA':
 				var _p33 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_elm_lang$core$Basics$negate(_p109),
-					s.i4);
+					_danielbarter$elm_mix$Atom$intToWord,
+					_danielbarter$elm_mix$Atom$wordValue(s.a) - _p98,
+					s.a);
 				var t = _p33._0;
 				var r = _p33._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i4: r, overflow: t});
-			case 'EnterI5Neg':
+					{a: r, overflow: t});
+			case 'DecrementX':
 				var _p34 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_elm_lang$core$Basics$negate(_p109),
-					s.i5);
+					_danielbarter$elm_mix$Atom$intToWord,
+					_danielbarter$elm_mix$Atom$wordValue(s.x) - _p98,
+					s.x);
 				var t = _p34._0;
 				var r = _p34._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i5: r, overflow: t});
-			case 'EnterI6Neg':
+					{x: r, overflow: t});
+			case 'DecrementI1':
 				var _p35 = A2(
 					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_elm_lang$core$Basics$negate(_p109),
-					s.i6);
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i1) - _p98,
+					s.i1);
 				var t = _p35._0;
 				var r = _p35._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i6: r, overflow: t});
-			case 'IncrementA':
+					{i1: r, overflow: t});
+			case 'DecrementI2':
 				var _p36 = A2(
-					_danielbarter$elm_mix$Atom$intToWord,
-					_danielbarter$elm_mix$Atom$wordValue(s.a) + _p109,
-					s.a);
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i2) - _p98,
+					s.i2);
 				var t = _p36._0;
 				var r = _p36._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{a: r, overflow: t});
-			case 'IncrementX':
+					{i2: r, overflow: t});
+			case 'DecrementI3':
 				var _p37 = A2(
-					_danielbarter$elm_mix$Atom$intToWord,
-					_danielbarter$elm_mix$Atom$wordValue(s.x) + _p109,
-					s.x);
+					_danielbarter$elm_mix$Atom$intToSmallWord,
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i3) - _p98,
+					s.i3);
 				var t = _p37._0;
 				var r = _p37._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{x: r, overflow: t});
-			case 'IncrementI1':
+					{i3: r, overflow: t});
+			case 'DecrementI4':
 				var _p38 = A2(
 					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i1) + _p109,
-					s.i1);
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i4) - _p98,
+					s.i4);
 				var t = _p38._0;
 				var r = _p38._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i1: r, overflow: t});
-			case 'IncrementI2':
+					{i4: r, overflow: t});
+			case 'DecrementI5':
 				var _p39 = A2(
 					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i2) + _p109,
-					s.i2);
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i5) - _p98,
+					s.i5);
 				var t = _p39._0;
 				var r = _p39._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{i2: r, overflow: t});
-			case 'IncrementI3':
-				var _p40 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i3) + _p109,
-					s.i3);
-				var t = _p40._0;
-				var r = _p40._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
-					{i3: r, overflow: t});
-			case 'IncrementI4':
-				var _p41 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i4) + _p109,
-					s.i4);
-				var t = _p41._0;
-				var r = _p41._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
-					{i4: r, overflow: t});
-			case 'IncrementI5':
-				var _p42 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i5) + _p109,
-					s.i5);
-				var t = _p42._0;
-				var r = _p42._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
-					{i5: r, overflow: t});
-			case 'IncrementI6':
-				var _p43 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i6) + _p109,
-					s.i6);
-				var t = _p43._0;
-				var r = _p43._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
-					{i6: r, overflow: t});
-			case 'DecrementA':
-				var _p44 = A2(
-					_danielbarter$elm_mix$Atom$intToWord,
-					_danielbarter$elm_mix$Atom$wordValue(s.a) - _p109,
-					s.a);
-				var t = _p44._0;
-				var r = _p44._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
-					{a: r, overflow: t});
-			case 'DecrementX':
-				var _p45 = A2(
-					_danielbarter$elm_mix$Atom$intToWord,
-					_danielbarter$elm_mix$Atom$wordValue(s.x) - _p109,
-					s.x);
-				var t = _p45._0;
-				var r = _p45._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
-					{x: r, overflow: t});
-			case 'DecrementI1':
-				var _p46 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i1) - _p109,
-					s.i1);
-				var t = _p46._0;
-				var r = _p46._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
-					{i1: r, overflow: t});
-			case 'DecrementI2':
-				var _p47 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i2) - _p109,
-					s.i2);
-				var t = _p47._0;
-				var r = _p47._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
-					{i2: r, overflow: t});
-			case 'DecrementI3':
-				var _p48 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i3) - _p109,
-					s.i3);
-				var t = _p48._0;
-				var r = _p48._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
-					{i3: r, overflow: t});
-			case 'DecrementI4':
-				var _p49 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i4) - _p109,
-					s.i4);
-				var t = _p49._0;
-				var r = _p49._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
-					{i4: r, overflow: t});
-			case 'DecrementI5':
-				var _p50 = A2(
-					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i5) - _p109,
-					s.i5);
-				var t = _p50._0;
-				var r = _p50._1;
-				return _elm_lang$core$Native_Utils.update(
-					s,
 					{i5: r, overflow: t});
 			case 'DecrementI6':
-				var _p51 = A2(
+				var _p40 = A2(
 					_danielbarter$elm_mix$Atom$intToSmallWord,
-					_danielbarter$elm_mix$Atom$smallWordValue(s.i6) - _p109,
+					_danielbarter$elm_mix$Atom$smallWordValue(s.i6) - _p98,
 					s.i6);
-				var t = _p51._0;
-				var r = _p51._1;
+				var t = _p40._0;
+				var r = _p40._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{i6: r, overflow: t});
 			case 'CompareA':
 				var c = A3(
 					_danielbarter$elm_mix$Atom$comp,
-					_p110,
+					_p99,
 					s.a,
-					A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem));
+					A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem));
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{comparison: c});
 			case 'CompareX':
 				var c = A3(
 					_danielbarter$elm_mix$Atom$comp,
-					_p110,
+					_p99,
 					s.x,
-					A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem));
+					A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem));
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{comparison: c});
 			case 'CompareI1':
 				var c = A3(
 					_danielbarter$elm_mix$Atom$comp,
-					_p110,
+					_p99,
 					_danielbarter$elm_mix$Atom$wordExpand(s.i1),
-					A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem));
+					A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem));
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{comparison: c});
 			case 'CompareI2':
 				var c = A3(
 					_danielbarter$elm_mix$Atom$comp,
-					_p110,
+					_p99,
 					_danielbarter$elm_mix$Atom$wordExpand(s.i2),
-					A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem));
+					A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem));
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{comparison: c});
 			case 'CompareI3':
 				var c = A3(
 					_danielbarter$elm_mix$Atom$comp,
-					_p110,
+					_p99,
 					_danielbarter$elm_mix$Atom$wordExpand(s.i3),
-					A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem));
+					A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem));
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{comparison: c});
 			case 'CompareI4':
 				var c = A3(
 					_danielbarter$elm_mix$Atom$comp,
-					_p110,
+					_p99,
 					_danielbarter$elm_mix$Atom$wordExpand(s.i4),
-					A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem));
+					A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem));
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{comparison: c});
 			case 'CompareI5':
 				var c = A3(
 					_danielbarter$elm_mix$Atom$comp,
-					_p110,
+					_p99,
 					_danielbarter$elm_mix$Atom$wordExpand(s.i5),
-					A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem));
+					A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem));
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{comparison: c});
 			case 'CompareI6':
 				var c = A3(
 					_danielbarter$elm_mix$Atom$comp,
-					_p110,
+					_p99,
 					_danielbarter$elm_mix$Atom$wordExpand(s.i6),
-					A2(_danielbarter$elm_mix$Mix$read, _p109, s.mem));
+					A2(_danielbarter$elm_mix$Mix$read, _p98, s.mem));
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{comparison: c});
 			case 'Jump':
-				var _p52 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-				var t = _p52._0;
-				var newJ = _p52._1;
+				var _p41 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+				var t = _p41._0;
+				var newJ = _p41._1;
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{p: _p109, j: newJ});
+					{p: _p98, j: newJ});
 			case 'JumpSaveJ':
 				return _elm_lang$core$Native_Utils.update(
 					s,
-					{p: _p109});
+					{p: _p98});
 			case 'JumpOnOverflow':
 				if (_elm_lang$core$Native_Utils.eq(s.overflow, _danielbarter$elm_mix$Atom$Overflow)) {
-					var _p53 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p53._0;
-					var newJ = _p53._1;
+					var _p42 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p42._0;
+					var newJ = _p42._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ, overflow: _danielbarter$elm_mix$Atom$Good});
+						{p: _p98, j: newJ, overflow: _danielbarter$elm_mix$Atom$Good});
 				} else {
 					return s;
 				}
 			case 'JumpOnNoOverflow':
 				if (_elm_lang$core$Native_Utils.eq(s.overflow, _danielbarter$elm_mix$Atom$Good)) {
-					var _p54 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p54._0;
-					var newJ = _p54._1;
+					var _p43 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p43._0;
+					var newJ = _p43._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return _elm_lang$core$Native_Utils.update(
 						s,
@@ -8163,67 +7867,67 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				}
 			case 'JumpOnLess':
 				if (_elm_lang$core$Native_Utils.eq(s.comparison, _danielbarter$elm_mix$Atom$L)) {
-					var _p55 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p55._0;
-					var newJ = _p55._1;
+					var _p44 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p44._0;
+					var newJ = _p44._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
 			case 'JumpOnEqual':
 				if (_elm_lang$core$Native_Utils.eq(s.comparison, _danielbarter$elm_mix$Atom$E)) {
-					var _p56 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p56._0;
-					var newJ = _p56._1;
+					var _p45 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p45._0;
+					var newJ = _p45._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
 			case 'JumpOnGreater':
 				if (_elm_lang$core$Native_Utils.eq(s.comparison, _danielbarter$elm_mix$Atom$G)) {
-					var _p57 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p57._0;
-					var newJ = _p57._1;
+					var _p46 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p46._0;
+					var newJ = _p46._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
 			case 'JumpOnGreaterEqual':
 				if (_elm_lang$core$Native_Utils.eq(s.comparison, _danielbarter$elm_mix$Atom$G) || _elm_lang$core$Native_Utils.eq(s.comparison, _danielbarter$elm_mix$Atom$E)) {
-					var _p58 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p58._0;
-					var newJ = _p58._1;
+					var _p47 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p47._0;
+					var newJ = _p47._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
 			case 'JumpOnUnEqual':
 				if (_elm_lang$core$Native_Utils.eq(s.comparison, _danielbarter$elm_mix$Atom$L) || _elm_lang$core$Native_Utils.eq(s.comparison, _danielbarter$elm_mix$Atom$G)) {
-					var _p59 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p59._0;
-					var newJ = _p59._1;
+					var _p48 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p48._0;
+					var newJ = _p48._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
 			case 'JumpOnLessEqual':
 				if (_elm_lang$core$Native_Utils.eq(s.comparison, _danielbarter$elm_mix$Atom$L) || _elm_lang$core$Native_Utils.eq(s.comparison, _danielbarter$elm_mix$Atom$E)) {
-					var _p60 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p60._0;
-					var newJ = _p60._1;
+					var _p49 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p49._0;
+					var newJ = _p49._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8231,12 +7935,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$wordValue(s.a),
 					0) < 0) {
-					var _p61 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p61._0;
-					var newJ = _p61._1;
+					var _p50 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p50._0;
+					var newJ = _p50._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8244,12 +7948,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$wordValue(s.a),
 					0)) {
-					var _p62 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p62._0;
-					var newJ = _p62._1;
+					var _p51 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p51._0;
+					var newJ = _p51._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8257,12 +7961,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$wordValue(s.a),
 					0) > 0) {
-					var _p63 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p63._0;
-					var newJ = _p63._1;
+					var _p52 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p52._0;
+					var newJ = _p52._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8272,12 +7976,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) > 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$wordValue(s.a),
 					0)) {
-					var _p64 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p64._0;
-					var newJ = _p64._1;
+					var _p53 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p53._0;
+					var newJ = _p53._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8287,12 +7991,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$wordValue(s.a),
 					0) > 0)) {
-					var _p65 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p65._0;
-					var newJ = _p65._1;
+					var _p54 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p54._0;
+					var newJ = _p54._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8302,12 +8006,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$wordValue(s.a),
 					0)) {
-					var _p66 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p66._0;
-					var newJ = _p66._1;
+					var _p55 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p55._0;
+					var newJ = _p55._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8315,12 +8019,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$wordValue(s.x),
 					0) < 0) {
-					var _p67 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p67._0;
-					var newJ = _p67._1;
+					var _p56 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p56._0;
+					var newJ = _p56._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8328,12 +8032,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$wordValue(s.x),
 					0)) {
-					var _p68 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p68._0;
-					var newJ = _p68._1;
+					var _p57 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p57._0;
+					var newJ = _p57._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8341,12 +8045,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$wordValue(s.x),
 					0) > 0) {
-					var _p69 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p69._0;
-					var newJ = _p69._1;
+					var _p58 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p58._0;
+					var newJ = _p58._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8356,12 +8060,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) > 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$wordValue(s.x),
 					0)) {
-					var _p70 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p70._0;
-					var newJ = _p70._1;
+					var _p59 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p59._0;
+					var newJ = _p59._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8371,12 +8075,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$wordValue(s.x),
 					0) > 0)) {
-					var _p71 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p71._0;
-					var newJ = _p71._1;
+					var _p60 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p60._0;
+					var newJ = _p60._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8386,12 +8090,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$wordValue(s.x),
 					0)) {
-					var _p72 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p72._0;
-					var newJ = _p72._1;
+					var _p61 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p61._0;
+					var newJ = _p61._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8399,12 +8103,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i1),
 					0) < 0) {
-					var _p73 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p73._0;
-					var newJ = _p73._1;
+					var _p62 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p62._0;
+					var newJ = _p62._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8412,12 +8116,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i1),
 					0)) {
-					var _p74 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p74._0;
-					var newJ = _p74._1;
+					var _p63 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p63._0;
+					var newJ = _p63._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8425,12 +8129,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i1),
 					0) > 0) {
-					var _p75 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p75._0;
-					var newJ = _p75._1;
+					var _p64 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p64._0;
+					var newJ = _p64._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8440,12 +8144,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) > 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i1),
 					0)) {
-					var _p76 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p76._0;
-					var newJ = _p76._1;
+					var _p65 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p65._0;
+					var newJ = _p65._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8455,12 +8159,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i1),
 					0) > 0)) {
-					var _p77 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p77._0;
-					var newJ = _p77._1;
+					var _p66 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p66._0;
+					var newJ = _p66._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8470,12 +8174,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i1),
 					0)) {
-					var _p78 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p78._0;
-					var newJ = _p78._1;
+					var _p67 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p67._0;
+					var newJ = _p67._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8483,12 +8187,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i2),
 					0) < 0) {
-					var _p79 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p79._0;
-					var newJ = _p79._1;
+					var _p68 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p68._0;
+					var newJ = _p68._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8496,12 +8200,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i2),
 					0)) {
-					var _p80 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p80._0;
-					var newJ = _p80._1;
+					var _p69 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p69._0;
+					var newJ = _p69._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8509,12 +8213,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i2),
 					0) > 0) {
-					var _p81 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p81._0;
-					var newJ = _p81._1;
+					var _p70 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p70._0;
+					var newJ = _p70._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8524,12 +8228,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) > 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i2),
 					0)) {
-					var _p82 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p82._0;
-					var newJ = _p82._1;
+					var _p71 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p71._0;
+					var newJ = _p71._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8539,12 +8243,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i2),
 					0) > 0)) {
-					var _p83 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p83._0;
-					var newJ = _p83._1;
+					var _p72 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p72._0;
+					var newJ = _p72._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8554,12 +8258,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i2),
 					0)) {
-					var _p84 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p84._0;
-					var newJ = _p84._1;
+					var _p73 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p73._0;
+					var newJ = _p73._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8567,12 +8271,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i3),
 					0) < 0) {
-					var _p85 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p85._0;
-					var newJ = _p85._1;
+					var _p74 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p74._0;
+					var newJ = _p74._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8580,12 +8284,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i3),
 					0)) {
-					var _p86 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p86._0;
-					var newJ = _p86._1;
+					var _p75 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p75._0;
+					var newJ = _p75._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8593,12 +8297,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i3),
 					0) > 0) {
-					var _p87 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p87._0;
-					var newJ = _p87._1;
+					var _p76 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p76._0;
+					var newJ = _p76._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8608,12 +8312,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) > 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i3),
 					0)) {
-					var _p88 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p88._0;
-					var newJ = _p88._1;
+					var _p77 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p77._0;
+					var newJ = _p77._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8623,12 +8327,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i3),
 					0) > 0)) {
-					var _p89 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p89._0;
-					var newJ = _p89._1;
+					var _p78 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p78._0;
+					var newJ = _p78._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8638,12 +8342,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i3),
 					0)) {
-					var _p90 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p90._0;
-					var newJ = _p90._1;
+					var _p79 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p79._0;
+					var newJ = _p79._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8651,12 +8355,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i4),
 					0) < 0) {
-					var _p91 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p91._0;
-					var newJ = _p91._1;
+					var _p80 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p80._0;
+					var newJ = _p80._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8664,12 +8368,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i4),
 					0)) {
-					var _p92 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p92._0;
-					var newJ = _p92._1;
+					var _p81 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p81._0;
+					var newJ = _p81._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8677,12 +8381,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i4),
 					0) > 0) {
-					var _p93 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p93._0;
-					var newJ = _p93._1;
+					var _p82 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p82._0;
+					var newJ = _p82._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8692,12 +8396,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) > 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i4),
 					0)) {
-					var _p94 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p94._0;
-					var newJ = _p94._1;
+					var _p83 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p83._0;
+					var newJ = _p83._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8707,12 +8411,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i4),
 					0) > 0)) {
-					var _p95 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p95._0;
-					var newJ = _p95._1;
+					var _p84 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p84._0;
+					var newJ = _p84._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8722,12 +8426,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i4),
 					0)) {
-					var _p96 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p96._0;
-					var newJ = _p96._1;
+					var _p85 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p85._0;
+					var newJ = _p85._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8735,12 +8439,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i5),
 					0) < 0) {
-					var _p97 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p97._0;
-					var newJ = _p97._1;
+					var _p86 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p86._0;
+					var newJ = _p86._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8748,12 +8452,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i5),
 					0)) {
-					var _p98 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p98._0;
-					var newJ = _p98._1;
+					var _p87 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p87._0;
+					var newJ = _p87._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8761,12 +8465,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i5),
 					0) > 0) {
-					var _p99 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p99._0;
-					var newJ = _p99._1;
+					var _p88 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p88._0;
+					var newJ = _p88._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8776,12 +8480,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) > 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i5),
 					0)) {
-					var _p100 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p100._0;
-					var newJ = _p100._1;
+					var _p89 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p89._0;
+					var newJ = _p89._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8791,12 +8495,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i5),
 					0) > 0)) {
-					var _p101 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p101._0;
-					var newJ = _p101._1;
+					var _p90 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p90._0;
+					var newJ = _p90._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8806,12 +8510,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i5),
 					0)) {
-					var _p102 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p102._0;
-					var newJ = _p102._1;
+					var _p91 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p91._0;
+					var newJ = _p91._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8819,12 +8523,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i6),
 					0) < 0) {
-					var _p103 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p103._0;
-					var newJ = _p103._1;
+					var _p92 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p92._0;
+					var newJ = _p92._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8832,12 +8536,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i6),
 					0)) {
-					var _p104 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p104._0;
-					var newJ = _p104._1;
+					var _p93 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p93._0;
+					var newJ = _p93._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8845,12 +8549,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				if (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i6),
 					0) > 0) {
-					var _p105 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p105._0;
-					var newJ = _p105._1;
+					var _p94 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p94._0;
+					var newJ = _p94._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8860,12 +8564,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) > 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i6),
 					0)) {
-					var _p106 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p106._0;
-					var newJ = _p106._1;
+					var _p95 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p95._0;
+					var newJ = _p95._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8875,12 +8579,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || (_elm_lang$core$Native_Utils.cmp(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i6),
 					0) > 0)) {
-					var _p107 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p107._0;
-					var newJ = _p107._1;
+					var _p96 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p96._0;
+					var newJ = _p96._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8890,12 +8594,12 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 					0) < 0) || _elm_lang$core$Native_Utils.eq(
 					_danielbarter$elm_mix$Atom$smallWordValue(s.i6),
 					0)) {
-					var _p108 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
-					var t = _p108._0;
-					var newJ = _p108._1;
+					var _p97 = A2(_danielbarter$elm_mix$Atom$intToSmallWord, s.p, s.j);
+					var t = _p97._0;
+					var newJ = _p97._1;
 					return _elm_lang$core$Native_Utils.update(
 						s,
-						{p: _p109, j: newJ});
+						{p: _p98, j: newJ});
 				} else {
 					return s;
 				}
@@ -8903,25 +8607,25 @@ var _danielbarter$elm_mix$Mix$instructionTransition = F2(
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{
-						a: A2(_danielbarter$elm_mix$Atom$shift, _p109, s.a)
+						a: A2(_danielbarter$elm_mix$Atom$shift, _p98, s.a)
 					});
 			case 'ShiftX':
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{
-						x: A2(_danielbarter$elm_mix$Atom$shift, _p109, s.x)
+						x: A2(_danielbarter$elm_mix$Atom$shift, _p98, s.x)
 					});
 			case 'ShiftACircular':
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{
-						a: A2(_danielbarter$elm_mix$Atom$shiftCircular, _p109, s.a)
+						a: A2(_danielbarter$elm_mix$Atom$shiftCircular, _p98, s.a)
 					});
 			case 'ShiftXCircular':
 				return _elm_lang$core$Native_Utils.update(
 					s,
 					{
-						x: A2(_danielbarter$elm_mix$Atom$shiftCircular, _p109, s.x)
+						x: A2(_danielbarter$elm_mix$Atom$shiftCircular, _p98, s.x)
 					});
 			case 'SwapAX':
 				return _elm_lang$core$Native_Utils.update(
@@ -9010,84 +8714,6 @@ var _danielbarter$elm_mix$Mix$readMeta = F2(
 			_elm_lang$core$Maybe$withDefault,
 			_danielbarter$elm_mix$Mix$Number,
 			A2(_elm_lang$core$Dict$get, a, meta));
-	});
-var _danielbarter$elm_mix$Mix$memData = F2(
-	function (m, a) {
-		return {
-			ctor: '_Tuple6',
-			_0: a,
-			_1: A2(_elm_lang$core$Dict$get, a, m.reverseSymbolTable),
-			_2: A2(_danielbarter$elm_mix$Mix$readMeta, a, m.meta),
-			_3: _danielbarter$elm_mix$Atom$wordValue(
-				A2(_danielbarter$elm_mix$Mix$read, a, m.mem)),
-			_4: A2(
-				_elm_lang$core$Result$map,
-				_danielbarter$elm_mix$Instruction$cleanStatic,
-				_danielbarter$elm_mix$Instruction$decodeInstruction(
-					_danielbarter$elm_mix$Atom$unpack(
-						A2(_danielbarter$elm_mix$Mix$read, a, m.mem)))),
-			_5: _elm_lang$core$Native_Utils.eq(m.p, a)
-		};
-	});
-var _danielbarter$elm_mix$Mix$totalMemData = function (m) {
-	return A2(
-		_elm_lang$core$List$map,
-		_danielbarter$elm_mix$Mix$memData(m),
-		_elm_lang$core$Dict$keys(m.mem));
-};
-var _danielbarter$elm_mix$Mix$ppMemData = F2(
-	function (mix, d) {
-		ppMemData:
-		while (true) {
-			var _p111 = d;
-			var a = _p111._0;
-			var l = _p111._1;
-			var t = _p111._2;
-			var v = _p111._3;
-			var i = _p111._4;
-			var b = _p111._5;
-			var prefix = A2(_danielbarter$elm_mix$Mix$ppPrefix, a, l);
-			var vv = A2(
-				_danielbarter$elm_mix$Mix$ppMaybeAddress,
-				mix,
-				_elm_lang$core$Maybe$Just(v));
-			var _p112 = t;
-			if (_p112.ctor === 'Number') {
-				return b ? {
-					ctor: '_Tuple3',
-					_0: A2(_elm_lang$core$Basics_ops['++'], prefix, vv),
-					_1: _elm_lang$core$Color$darkOrange,
-					_2: _elm_lang$core$Color$white
-				} : {
-					ctor: '_Tuple3',
-					_0: A2(_elm_lang$core$Basics_ops['++'], prefix, vv),
-					_1: _elm_lang$core$Color$lightCharcoal,
-					_2: _elm_lang$core$Color$black
-				};
-			} else {
-				var _p113 = i;
-				if (_p113.ctor === 'Err') {
-					var _v13 = mix,
-						_v14 = {ctor: '_Tuple6', _0: a, _1: l, _2: _danielbarter$elm_mix$Mix$Number, _3: v, _4: i, _5: b};
-					mix = _v13;
-					d = _v14;
-					continue ppMemData;
-				} else {
-					var s = A2(_danielbarter$elm_mix$Mix$ppStaticInstructionClean, mix, _p113._0);
-					return b ? {
-						ctor: '_Tuple3',
-						_0: A2(_elm_lang$core$Basics_ops['++'], prefix, s),
-						_1: _elm_lang$core$Color$darkOrange,
-						_2: _elm_lang$core$Color$white
-					} : {
-						ctor: '_Tuple3',
-						_0: A2(_elm_lang$core$Basics_ops['++'], prefix, s),
-						_1: _elm_lang$core$Color$lightCharcoal,
-						_2: _elm_lang$core$Color$black
-					};
-				}
-			}
-		}
 	});
 
 var _danielbarter$elm_mix$Assembler$assembleLine = function (_p0) {
@@ -10654,6 +10280,172 @@ var _danielbarter$elm_mix$MixStep$step = A2(
 		A2(_danielbarter$elm_mix$StateMonad_ops['<*'], _danielbarter$elm_mix$MixStep$decodeInstructionOp, _danielbarter$elm_mix$MixStep$incrementCounter),
 		_danielbarter$elm_mix$MixStep$relativiseInstructionOp),
 	_danielbarter$elm_mix$MixStep$executeInstructionOp);
+
+var _elm_lang$core$Color$fmod = F2(
+	function (f, n) {
+		var integer = _elm_lang$core$Basics$floor(f);
+		return (_elm_lang$core$Basics$toFloat(
+			A2(_elm_lang$core$Basics_ops['%'], integer, n)) + f) - _elm_lang$core$Basics$toFloat(integer);
+	});
+var _elm_lang$core$Color$rgbToHsl = F3(
+	function (red, green, blue) {
+		var b = _elm_lang$core$Basics$toFloat(blue) / 255;
+		var g = _elm_lang$core$Basics$toFloat(green) / 255;
+		var r = _elm_lang$core$Basics$toFloat(red) / 255;
+		var cMax = A2(
+			_elm_lang$core$Basics$max,
+			A2(_elm_lang$core$Basics$max, r, g),
+			b);
+		var cMin = A2(
+			_elm_lang$core$Basics$min,
+			A2(_elm_lang$core$Basics$min, r, g),
+			b);
+		var c = cMax - cMin;
+		var lightness = (cMax + cMin) / 2;
+		var saturation = _elm_lang$core$Native_Utils.eq(lightness, 0) ? 0 : (c / (1 - _elm_lang$core$Basics$abs((2 * lightness) - 1)));
+		var hue = _elm_lang$core$Basics$degrees(60) * (_elm_lang$core$Native_Utils.eq(cMax, r) ? A2(_elm_lang$core$Color$fmod, (g - b) / c, 6) : (_elm_lang$core$Native_Utils.eq(cMax, g) ? (((b - r) / c) + 2) : (((r - g) / c) + 4)));
+		return {ctor: '_Tuple3', _0: hue, _1: saturation, _2: lightness};
+	});
+var _elm_lang$core$Color$hslToRgb = F3(
+	function (hue, saturation, lightness) {
+		var normHue = hue / _elm_lang$core$Basics$degrees(60);
+		var chroma = (1 - _elm_lang$core$Basics$abs((2 * lightness) - 1)) * saturation;
+		var x = chroma * (1 - _elm_lang$core$Basics$abs(
+			A2(_elm_lang$core$Color$fmod, normHue, 2) - 1));
+		var _p0 = (_elm_lang$core$Native_Utils.cmp(normHue, 0) < 0) ? {ctor: '_Tuple3', _0: 0, _1: 0, _2: 0} : ((_elm_lang$core$Native_Utils.cmp(normHue, 1) < 0) ? {ctor: '_Tuple3', _0: chroma, _1: x, _2: 0} : ((_elm_lang$core$Native_Utils.cmp(normHue, 2) < 0) ? {ctor: '_Tuple3', _0: x, _1: chroma, _2: 0} : ((_elm_lang$core$Native_Utils.cmp(normHue, 3) < 0) ? {ctor: '_Tuple3', _0: 0, _1: chroma, _2: x} : ((_elm_lang$core$Native_Utils.cmp(normHue, 4) < 0) ? {ctor: '_Tuple3', _0: 0, _1: x, _2: chroma} : ((_elm_lang$core$Native_Utils.cmp(normHue, 5) < 0) ? {ctor: '_Tuple3', _0: x, _1: 0, _2: chroma} : ((_elm_lang$core$Native_Utils.cmp(normHue, 6) < 0) ? {ctor: '_Tuple3', _0: chroma, _1: 0, _2: x} : {ctor: '_Tuple3', _0: 0, _1: 0, _2: 0}))))));
+		var r = _p0._0;
+		var g = _p0._1;
+		var b = _p0._2;
+		var m = lightness - (chroma / 2);
+		return {ctor: '_Tuple3', _0: r + m, _1: g + m, _2: b + m};
+	});
+var _elm_lang$core$Color$toRgb = function (color) {
+	var _p1 = color;
+	if (_p1.ctor === 'RGBA') {
+		return {red: _p1._0, green: _p1._1, blue: _p1._2, alpha: _p1._3};
+	} else {
+		var _p2 = A3(_elm_lang$core$Color$hslToRgb, _p1._0, _p1._1, _p1._2);
+		var r = _p2._0;
+		var g = _p2._1;
+		var b = _p2._2;
+		return {
+			red: _elm_lang$core$Basics$round(255 * r),
+			green: _elm_lang$core$Basics$round(255 * g),
+			blue: _elm_lang$core$Basics$round(255 * b),
+			alpha: _p1._3
+		};
+	}
+};
+var _elm_lang$core$Color$toHsl = function (color) {
+	var _p3 = color;
+	if (_p3.ctor === 'HSLA') {
+		return {hue: _p3._0, saturation: _p3._1, lightness: _p3._2, alpha: _p3._3};
+	} else {
+		var _p4 = A3(_elm_lang$core$Color$rgbToHsl, _p3._0, _p3._1, _p3._2);
+		var h = _p4._0;
+		var s = _p4._1;
+		var l = _p4._2;
+		return {hue: h, saturation: s, lightness: l, alpha: _p3._3};
+	}
+};
+var _elm_lang$core$Color$HSLA = F4(
+	function (a, b, c, d) {
+		return {ctor: 'HSLA', _0: a, _1: b, _2: c, _3: d};
+	});
+var _elm_lang$core$Color$hsla = F4(
+	function (hue, saturation, lightness, alpha) {
+		return A4(
+			_elm_lang$core$Color$HSLA,
+			hue - _elm_lang$core$Basics$turns(
+				_elm_lang$core$Basics$toFloat(
+					_elm_lang$core$Basics$floor(hue / (2 * _elm_lang$core$Basics$pi)))),
+			saturation,
+			lightness,
+			alpha);
+	});
+var _elm_lang$core$Color$hsl = F3(
+	function (hue, saturation, lightness) {
+		return A4(_elm_lang$core$Color$hsla, hue, saturation, lightness, 1);
+	});
+var _elm_lang$core$Color$complement = function (color) {
+	var _p5 = color;
+	if (_p5.ctor === 'HSLA') {
+		return A4(
+			_elm_lang$core$Color$hsla,
+			_p5._0 + _elm_lang$core$Basics$degrees(180),
+			_p5._1,
+			_p5._2,
+			_p5._3);
+	} else {
+		var _p6 = A3(_elm_lang$core$Color$rgbToHsl, _p5._0, _p5._1, _p5._2);
+		var h = _p6._0;
+		var s = _p6._1;
+		var l = _p6._2;
+		return A4(
+			_elm_lang$core$Color$hsla,
+			h + _elm_lang$core$Basics$degrees(180),
+			s,
+			l,
+			_p5._3);
+	}
+};
+var _elm_lang$core$Color$grayscale = function (p) {
+	return A4(_elm_lang$core$Color$HSLA, 0, 0, 1 - p, 1);
+};
+var _elm_lang$core$Color$greyscale = function (p) {
+	return A4(_elm_lang$core$Color$HSLA, 0, 0, 1 - p, 1);
+};
+var _elm_lang$core$Color$RGBA = F4(
+	function (a, b, c, d) {
+		return {ctor: 'RGBA', _0: a, _1: b, _2: c, _3: d};
+	});
+var _elm_lang$core$Color$rgba = _elm_lang$core$Color$RGBA;
+var _elm_lang$core$Color$rgb = F3(
+	function (r, g, b) {
+		return A4(_elm_lang$core$Color$RGBA, r, g, b, 1);
+	});
+var _elm_lang$core$Color$lightRed = A4(_elm_lang$core$Color$RGBA, 239, 41, 41, 1);
+var _elm_lang$core$Color$red = A4(_elm_lang$core$Color$RGBA, 204, 0, 0, 1);
+var _elm_lang$core$Color$darkRed = A4(_elm_lang$core$Color$RGBA, 164, 0, 0, 1);
+var _elm_lang$core$Color$lightOrange = A4(_elm_lang$core$Color$RGBA, 252, 175, 62, 1);
+var _elm_lang$core$Color$orange = A4(_elm_lang$core$Color$RGBA, 245, 121, 0, 1);
+var _elm_lang$core$Color$darkOrange = A4(_elm_lang$core$Color$RGBA, 206, 92, 0, 1);
+var _elm_lang$core$Color$lightYellow = A4(_elm_lang$core$Color$RGBA, 255, 233, 79, 1);
+var _elm_lang$core$Color$yellow = A4(_elm_lang$core$Color$RGBA, 237, 212, 0, 1);
+var _elm_lang$core$Color$darkYellow = A4(_elm_lang$core$Color$RGBA, 196, 160, 0, 1);
+var _elm_lang$core$Color$lightGreen = A4(_elm_lang$core$Color$RGBA, 138, 226, 52, 1);
+var _elm_lang$core$Color$green = A4(_elm_lang$core$Color$RGBA, 115, 210, 22, 1);
+var _elm_lang$core$Color$darkGreen = A4(_elm_lang$core$Color$RGBA, 78, 154, 6, 1);
+var _elm_lang$core$Color$lightBlue = A4(_elm_lang$core$Color$RGBA, 114, 159, 207, 1);
+var _elm_lang$core$Color$blue = A4(_elm_lang$core$Color$RGBA, 52, 101, 164, 1);
+var _elm_lang$core$Color$darkBlue = A4(_elm_lang$core$Color$RGBA, 32, 74, 135, 1);
+var _elm_lang$core$Color$lightPurple = A4(_elm_lang$core$Color$RGBA, 173, 127, 168, 1);
+var _elm_lang$core$Color$purple = A4(_elm_lang$core$Color$RGBA, 117, 80, 123, 1);
+var _elm_lang$core$Color$darkPurple = A4(_elm_lang$core$Color$RGBA, 92, 53, 102, 1);
+var _elm_lang$core$Color$lightBrown = A4(_elm_lang$core$Color$RGBA, 233, 185, 110, 1);
+var _elm_lang$core$Color$brown = A4(_elm_lang$core$Color$RGBA, 193, 125, 17, 1);
+var _elm_lang$core$Color$darkBrown = A4(_elm_lang$core$Color$RGBA, 143, 89, 2, 1);
+var _elm_lang$core$Color$black = A4(_elm_lang$core$Color$RGBA, 0, 0, 0, 1);
+var _elm_lang$core$Color$white = A4(_elm_lang$core$Color$RGBA, 255, 255, 255, 1);
+var _elm_lang$core$Color$lightGrey = A4(_elm_lang$core$Color$RGBA, 238, 238, 236, 1);
+var _elm_lang$core$Color$grey = A4(_elm_lang$core$Color$RGBA, 211, 215, 207, 1);
+var _elm_lang$core$Color$darkGrey = A4(_elm_lang$core$Color$RGBA, 186, 189, 182, 1);
+var _elm_lang$core$Color$lightGray = A4(_elm_lang$core$Color$RGBA, 238, 238, 236, 1);
+var _elm_lang$core$Color$gray = A4(_elm_lang$core$Color$RGBA, 211, 215, 207, 1);
+var _elm_lang$core$Color$darkGray = A4(_elm_lang$core$Color$RGBA, 186, 189, 182, 1);
+var _elm_lang$core$Color$lightCharcoal = A4(_elm_lang$core$Color$RGBA, 136, 138, 133, 1);
+var _elm_lang$core$Color$charcoal = A4(_elm_lang$core$Color$RGBA, 85, 87, 83, 1);
+var _elm_lang$core$Color$darkCharcoal = A4(_elm_lang$core$Color$RGBA, 46, 52, 54, 1);
+var _elm_lang$core$Color$Radial = F5(
+	function (a, b, c, d, e) {
+		return {ctor: 'Radial', _0: a, _1: b, _2: c, _3: d, _4: e};
+	});
+var _elm_lang$core$Color$radial = _elm_lang$core$Color$Radial;
+var _elm_lang$core$Color$Linear = F3(
+	function (a, b, c) {
+		return {ctor: 'Linear', _0: a, _1: b, _2: c};
+	});
+var _elm_lang$core$Color$linear = _elm_lang$core$Color$Linear;
 
 //import Native.List //
 
@@ -14830,6 +14622,241 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
+var _danielbarter$elm_mix$MemData$ppValue = F2(
+	function (mix, v) {
+		var _p0 = A2(_elm_lang$core$Dict$get, v, mix.reverseSymbolTable);
+		if (_p0.ctor === 'Nothing') {
+			return _elm_lang$core$Basics$toString(v);
+		} else {
+			return A2(
+				_elm_lang$core$Basics_ops['++'],
+				_elm_lang$core$Basics$toString(v),
+				A2(_elm_lang$core$Basics_ops['++'], '|', _p0._0));
+		}
+	});
+var _danielbarter$elm_mix$MemData$ppPrefix = F2(
+	function (a, l) {
+		var pref = _elm_lang$core$Basics$toString(a);
+		var _p1 = l;
+		if (_p1.ctor === 'Nothing') {
+			return A2(_elm_lang$core$Basics_ops['++'], pref, ' ');
+		} else {
+			return A2(
+				_elm_lang$core$Basics_ops['++'],
+				pref,
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					':',
+					A2(_elm_lang$core$Basics_ops['++'], _p1._0, ' ')));
+		}
+	});
+var _danielbarter$elm_mix$MemData$ppMaybeMasks = function (m) {
+	var _p2 = m;
+	if (_p2.ctor === 'Nothing') {
+		return '';
+	} else {
+		var _p4 = function (_p3) {
+			return _danielbarter$elm_mix$Atom$value(
+				_danielbarter$elm_mix$Atom$masksToByte(_p3));
+		}(_p2._0);
+		if (_p4 === 0) {
+			return '';
+		} else {
+			return A2(
+				_elm_lang$core$Basics_ops['++'],
+				'/',
+				_elm_lang$core$Basics$toString(_p4));
+		}
+	}
+};
+var _danielbarter$elm_mix$MemData$ppMaybeIndex = function (i) {
+	var _p5 = i;
+	if (_p5.ctor === 'Nothing') {
+		return '';
+	} else {
+		var _p7 = _p5._0;
+		var _p6 = _p7;
+		if (_p6 === 0) {
+			return '';
+		} else {
+			return A2(
+				_elm_lang$core$Basics_ops['++'],
+				'+',
+				_elm_lang$core$Basics$toString(_p7));
+		}
+	}
+};
+var _danielbarter$elm_mix$MemData$ppMaybeAddress = F2(
+	function (mix, a) {
+		var _p8 = a;
+		if (_p8.ctor === 'Nothing') {
+			return '';
+		} else {
+			var _p10 = _p8._0;
+			var _p9 = A2(_elm_lang$core$Dict$get, _p10, mix.reverseSymbolTable);
+			if (_p9.ctor === 'Nothing') {
+				return _elm_lang$core$Basics$toString(_p10);
+			} else {
+				return A2(
+					_elm_lang$core$Basics_ops['++'],
+					_elm_lang$core$Basics$toString(_p10),
+					A2(_elm_lang$core$Basics_ops['++'], '|', _p9._0));
+			}
+		}
+	});
+var _danielbarter$elm_mix$MemData$ppStaticInstructionClean = F2(
+	function (mix, _p11) {
+		var _p12 = _p11;
+		var sm = _danielbarter$elm_mix$MemData$ppMaybeMasks(_p12._2);
+		var si = _danielbarter$elm_mix$MemData$ppMaybeIndex(_p12._1);
+		var sa = A2(_danielbarter$elm_mix$MemData$ppMaybeAddress, mix, _p12._0);
+		var st = _danielbarter$elm_mix$Instruction$ppTag(_p12._3);
+		return A2(
+			_elm_lang$core$String$join,
+			' ',
+			{
+				ctor: '::',
+				_0: sm,
+				_1: {
+					ctor: '::',
+					_0: st,
+					_1: {
+						ctor: '::',
+						_0: sa,
+						_1: {
+							ctor: '::',
+							_0: si,
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			});
+	});
+var _danielbarter$elm_mix$MemData$ppMemData = F2(
+	function (mix, d) {
+		ppMemData:
+		while (true) {
+			var _p13 = d;
+			var a = _p13._0;
+			var l = _p13._1;
+			var t = _p13._2;
+			var v = _p13._3;
+			var i = _p13._4;
+			var b = _p13._5;
+			var prefix = A2(_danielbarter$elm_mix$MemData$ppPrefix, a, l);
+			var vv = A2(_danielbarter$elm_mix$MemData$ppValue, mix, v);
+			var _p14 = t;
+			if (_p14.ctor === 'Number') {
+				return b ? {
+					ctor: '_Tuple3',
+					_0: A2(_elm_lang$core$Basics_ops['++'], prefix, vv),
+					_1: _elm_lang$core$Color$darkOrange,
+					_2: _elm_lang$core$Color$white
+				} : {
+					ctor: '_Tuple3',
+					_0: A2(_elm_lang$core$Basics_ops['++'], prefix, vv),
+					_1: _elm_lang$core$Color$lightCharcoal,
+					_2: _elm_lang$core$Color$black
+				};
+			} else {
+				var _p15 = i;
+				if (_p15.ctor === 'Err') {
+					var _v11 = mix,
+						_v12 = {ctor: '_Tuple6', _0: a, _1: l, _2: _danielbarter$elm_mix$Mix$Number, _3: v, _4: i, _5: b};
+					mix = _v11;
+					d = _v12;
+					continue ppMemData;
+				} else {
+					var s = A2(_danielbarter$elm_mix$MemData$ppStaticInstructionClean, mix, _p15._0);
+					return b ? {
+						ctor: '_Tuple3',
+						_0: A2(_elm_lang$core$Basics_ops['++'], prefix, s),
+						_1: _elm_lang$core$Color$darkOrange,
+						_2: _elm_lang$core$Color$white
+					} : {
+						ctor: '_Tuple3',
+						_0: A2(_elm_lang$core$Basics_ops['++'], prefix, s),
+						_1: _elm_lang$core$Color$lightCharcoal,
+						_2: _elm_lang$core$Color$black
+					};
+				}
+			}
+		}
+	});
+var _danielbarter$elm_mix$MemData$ppComparision = function (t) {
+	var _p16 = t;
+	switch (_p16.ctor) {
+		case 'L':
+			return {ctor: '_Tuple3', _0: '<', _1: _elm_lang$core$Color$darkRed, _2: _elm_lang$core$Color$white};
+		case 'E':
+			return {ctor: '_Tuple3', _0: '=', _1: _elm_lang$core$Color$darkGrey, _2: _elm_lang$core$Color$white};
+		default:
+			return {ctor: '_Tuple3', _0: '>', _1: _elm_lang$core$Color$darkGreen, _2: _elm_lang$core$Color$white};
+	}
+};
+var _danielbarter$elm_mix$MemData$ppOverflow = function (t) {
+	var _p17 = t;
+	switch (_p17.ctor) {
+		case 'Overflow':
+			return {ctor: '_Tuple3', _0: 'Overflow', _1: _elm_lang$core$Color$darkRed, _2: _elm_lang$core$Color$white};
+		case 'Good':
+			return {ctor: '_Tuple3', _0: 'Good', _1: _elm_lang$core$Color$darkGreen, _2: _elm_lang$core$Color$white};
+		default:
+			return {ctor: '_Tuple3', _0: 'Fuck!', _1: _elm_lang$core$Color$black, _2: _elm_lang$core$Color$white};
+	}
+};
+var _danielbarter$elm_mix$MemData$ppJump = function (w) {
+	return {
+		ctor: '_Tuple3',
+		_0: _elm_lang$core$Basics$toString(
+			_danielbarter$elm_mix$Atom$smallWordValue(w)),
+		_1: _elm_lang$core$Color$darkBlue,
+		_2: _elm_lang$core$Color$white
+	};
+};
+var _danielbarter$elm_mix$MemData$ppSmallWord = function (w) {
+	return {
+		ctor: '_Tuple3',
+		_0: _elm_lang$core$Basics$toString(
+			_danielbarter$elm_mix$Atom$smallWordValue(w)),
+		_1: _elm_lang$core$Color$darkCharcoal,
+		_2: _elm_lang$core$Color$white
+	};
+};
+var _danielbarter$elm_mix$MemData$ppWord = function (w) {
+	return {
+		ctor: '_Tuple3',
+		_0: _elm_lang$core$Basics$toString(
+			_danielbarter$elm_mix$Atom$wordValue(w)),
+		_1: _elm_lang$core$Color$lightCharcoal,
+		_2: _elm_lang$core$Color$black
+	};
+};
+var _danielbarter$elm_mix$MemData$memData = F2(
+	function (m, a) {
+		return {
+			ctor: '_Tuple6',
+			_0: a,
+			_1: A2(_elm_lang$core$Dict$get, a, m.reverseSymbolTable),
+			_2: A2(_danielbarter$elm_mix$Mix$readMeta, a, m.meta),
+			_3: _danielbarter$elm_mix$Atom$wordValue(
+				A2(_danielbarter$elm_mix$Mix$read, a, m.mem)),
+			_4: A2(
+				_elm_lang$core$Result$map,
+				_danielbarter$elm_mix$Instruction$cleanStatic,
+				_danielbarter$elm_mix$Instruction$decodeInstruction(
+					_danielbarter$elm_mix$Atom$unpack(
+						A2(_danielbarter$elm_mix$Mix$read, a, m.mem)))),
+			_5: _elm_lang$core$Native_Utils.eq(m.p, a)
+		};
+	});
+var _danielbarter$elm_mix$MemData$totalMemData = function (m) {
+	return A2(
+		_elm_lang$core$List$map,
+		_danielbarter$elm_mix$MemData$memData(m),
+		_elm_lang$core$Dict$keys(m.mem));
+};
+
 var _danielbarter$elm_mix$Model$printColor = function (c) {
 	var cc = _elm_lang$core$Color$toRgb(c);
 	var r = _elm_lang$core$Basics$toString(
@@ -14926,7 +14953,7 @@ var _danielbarter$elm_mix$Model$boxStyle = F2(
 	});
 var _danielbarter$elm_mix$Model$displayMemData = F2(
 	function (mix, d) {
-		var _p0 = A2(_danielbarter$elm_mix$Mix$ppMemData, mix, d);
+		var _p0 = A2(_danielbarter$elm_mix$MemData$ppMemData, mix, d);
 		var s = _p0._0;
 		var cb = _p0._1;
 		var ct = _p0._2;
@@ -14940,7 +14967,7 @@ var _danielbarter$elm_mix$Model$displayMemData = F2(
 			});
 	});
 var _danielbarter$elm_mix$Model$displayMem = function (mix) {
-	var memDatas = _danielbarter$elm_mix$Mix$totalMemData(mix);
+	var memDatas = _danielbarter$elm_mix$MemData$totalMemData(mix);
 	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
@@ -14950,7 +14977,7 @@ var _danielbarter$elm_mix$Model$displayMem = function (mix) {
 			memDatas));
 };
 var _danielbarter$elm_mix$Model$displayWord = function (w) {
-	var _p1 = _danielbarter$elm_mix$Mix$ppWord(w);
+	var _p1 = _danielbarter$elm_mix$MemData$ppWord(w);
 	var s = _p1._0;
 	var cb = _p1._1;
 	var ct = _p1._2;
@@ -14964,7 +14991,7 @@ var _danielbarter$elm_mix$Model$displayWord = function (w) {
 		});
 };
 var _danielbarter$elm_mix$Model$displaySmallWord = function (w) {
-	var _p2 = _danielbarter$elm_mix$Mix$ppSmallWord(w);
+	var _p2 = _danielbarter$elm_mix$MemData$ppSmallWord(w);
 	var s = _p2._0;
 	var cb = _p2._1;
 	var ct = _p2._2;
@@ -14978,7 +15005,7 @@ var _danielbarter$elm_mix$Model$displaySmallWord = function (w) {
 		});
 };
 var _danielbarter$elm_mix$Model$displayJump = function (w) {
-	var _p3 = _danielbarter$elm_mix$Mix$ppJump(w);
+	var _p3 = _danielbarter$elm_mix$MemData$ppJump(w);
 	var s = _p3._0;
 	var cb = _p3._1;
 	var ct = _p3._2;
@@ -14992,7 +15019,7 @@ var _danielbarter$elm_mix$Model$displayJump = function (w) {
 		});
 };
 var _danielbarter$elm_mix$Model$displayOverflow = function (t) {
-	var _p4 = _danielbarter$elm_mix$Mix$ppOverflow(t);
+	var _p4 = _danielbarter$elm_mix$MemData$ppOverflow(t);
 	var s = _p4._0;
 	var cb = _p4._1;
 	var ct = _p4._2;
@@ -15006,7 +15033,7 @@ var _danielbarter$elm_mix$Model$displayOverflow = function (t) {
 		});
 };
 var _danielbarter$elm_mix$Model$displayComparison = function (t) {
-	var _p5 = _danielbarter$elm_mix$Mix$ppComparision(t);
+	var _p5 = _danielbarter$elm_mix$MemData$ppComparision(t);
 	var s = _p5._0;
 	var cb = _p5._1;
 	var ct = _p5._2;
