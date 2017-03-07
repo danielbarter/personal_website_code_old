@@ -16,7 +16,7 @@ This is a simulator for Knuth\'s MIX machine from the book [Art of Computer Prog
     var app = Elm.Main.embed(node);
 </script>
 
-Statements in the assembler language look like **(:label) (/mask) (instruction) (relative address) (+index)**. Instuctions in memory look like **(address:label) (/mask) (instruction) (address|label) (+index)**. Here is an example multiplication routine:
+Statements in the assembler language look like **(:label) (/mask) (instruction) (relative address) (+index)**. Instuctions in memory look like **address(:label) (/mask) (instruction) (address|label) (+index)**. Here is an example multiplication routine:
 
 ```{.algorithm}
 # multiplication routine
