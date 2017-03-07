@@ -14631,7 +14631,7 @@ var _danielbarter$elm_mix$MemData$ppValue = F2(
 			return A2(
 				_elm_lang$core$Basics_ops['++'],
 				_elm_lang$core$Basics$toString(v),
-				A2(_elm_lang$core$Basics_ops['++'], '|', _p0._0));
+				A2(_elm_lang$core$Basics_ops['++'], ':', _p0._0));
 		}
 	});
 var _danielbarter$elm_mix$MemData$ppPrefix = F2(
@@ -14700,7 +14700,7 @@ var _danielbarter$elm_mix$MemData$ppMaybeAddress = F2(
 				return A2(
 					_elm_lang$core$Basics_ops['++'],
 					_elm_lang$core$Basics$toString(_p10),
-					A2(_elm_lang$core$Basics_ops['++'], '|', _p9._0));
+					A2(_elm_lang$core$Basics_ops['++'], ':', _p9._0));
 			}
 		}
 	});
@@ -14743,21 +14743,11 @@ var _danielbarter$elm_mix$MemData$ppMemData = F2(
 			var v = _p13._3;
 			var i = _p13._4;
 			var b = _p13._5;
-			var prefix = A2(_danielbarter$elm_mix$MemData$ppPrefix, a, l);
+			var p = A2(_danielbarter$elm_mix$MemData$ppPrefix, a, l);
 			var vv = A2(_danielbarter$elm_mix$MemData$ppValue, mix, v);
 			var _p14 = t;
 			if (_p14.ctor === 'Number') {
-				return b ? {
-					ctor: '_Tuple3',
-					_0: A2(_elm_lang$core$Basics_ops['++'], prefix, vv),
-					_1: _elm_lang$core$Color$darkOrange,
-					_2: _elm_lang$core$Color$white
-				} : {
-					ctor: '_Tuple3',
-					_0: A2(_elm_lang$core$Basics_ops['++'], prefix, vv),
-					_1: _elm_lang$core$Color$lightCharcoal,
-					_2: _elm_lang$core$Color$black
-				};
+				return b ? {ctor: '_Tuple6', _0: p, _1: _elm_lang$core$Color$darkCharcoal, _2: _elm_lang$core$Color$white, _3: vv, _4: _elm_lang$core$Color$darkOrange, _5: _elm_lang$core$Color$white} : {ctor: '_Tuple6', _0: p, _1: _elm_lang$core$Color$darkCharcoal, _2: _elm_lang$core$Color$white, _3: vv, _4: _elm_lang$core$Color$lightCharcoal, _5: _elm_lang$core$Color$black};
 			} else {
 				var _p15 = i;
 				if (_p15.ctor === 'Err') {
@@ -14768,17 +14758,7 @@ var _danielbarter$elm_mix$MemData$ppMemData = F2(
 					continue ppMemData;
 				} else {
 					var s = A2(_danielbarter$elm_mix$MemData$ppStaticInstructionClean, mix, _p15._0);
-					return b ? {
-						ctor: '_Tuple3',
-						_0: A2(_elm_lang$core$Basics_ops['++'], prefix, s),
-						_1: _elm_lang$core$Color$darkOrange,
-						_2: _elm_lang$core$Color$white
-					} : {
-						ctor: '_Tuple3',
-						_0: A2(_elm_lang$core$Basics_ops['++'], prefix, s),
-						_1: _elm_lang$core$Color$lightCharcoal,
-						_2: _elm_lang$core$Color$black
-					};
+					return b ? {ctor: '_Tuple6', _0: p, _1: _elm_lang$core$Color$darkCharcoal, _2: _elm_lang$core$Color$white, _3: s, _4: _elm_lang$core$Color$darkOrange, _5: _elm_lang$core$Color$white} : {ctor: '_Tuple6', _0: p, _1: _elm_lang$core$Color$darkCharcoal, _2: _elm_lang$core$Color$white, _3: s, _4: _elm_lang$core$Color$lightCharcoal, _5: _elm_lang$core$Color$black};
 				}
 			}
 		}
@@ -14810,7 +14790,7 @@ var _danielbarter$elm_mix$MemData$ppJump = function (w) {
 		ctor: '_Tuple3',
 		_0: _elm_lang$core$Basics$toString(
 			_danielbarter$elm_mix$Atom$smallWordValue(w)),
-		_1: _elm_lang$core$Color$darkBlue,
+		_1: _elm_lang$core$Color$darkCharcoal,
 		_2: _elm_lang$core$Color$white
 	};
 };
@@ -14819,7 +14799,7 @@ var _danielbarter$elm_mix$MemData$ppSmallWord = function (w) {
 		ctor: '_Tuple3',
 		_0: _elm_lang$core$Basics$toString(
 			_danielbarter$elm_mix$Atom$smallWordValue(w)),
-		_1: _elm_lang$core$Color$darkCharcoal,
+		_1: _elm_lang$core$Color$darkBlue,
 		_2: _elm_lang$core$Color$white
 	};
 };
@@ -14857,6 +14837,28 @@ var _danielbarter$elm_mix$MemData$totalMemData = function (m) {
 		_elm_lang$core$Dict$keys(m.mem));
 };
 
+var _danielbarter$elm_mix$Model$outerBoxStyle = {
+	ctor: '::',
+	_0: _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'display', _1: 'inline-block'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'border-size', _1: '3px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'border-style', _1: 'solid'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'border-color', _1: 'white'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}),
+	_1: {ctor: '[]'}
+};
 var _danielbarter$elm_mix$Model$printColor = function (c) {
 	var cc = _elm_lang$core$Color$toRgb(c);
 	var r = _elm_lang$core$Basics$toString(
@@ -14932,7 +14934,7 @@ var _danielbarter$elm_mix$Model$boxStyle = F2(
 									_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '10px'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border-size', _1: '2px'},
+										_0: {ctor: '_Tuple2', _0: 'border-size', _1: '3px'},
 										_1: {
 											ctor: '::',
 											_0: {ctor: '_Tuple2', _0: 'border-style', _1: 'solid'},
@@ -14951,33 +14953,22 @@ var _danielbarter$elm_mix$Model$boxStyle = F2(
 			_1: {ctor: '[]'}
 		};
 	});
-var _danielbarter$elm_mix$Model$displayMemData = F2(
-	function (mix, d) {
-		var _p0 = A2(_danielbarter$elm_mix$MemData$ppMemData, mix, d);
-		var s = _p0._0;
-		var cb = _p0._1;
-		var ct = _p0._2;
-		return A2(
-			_elm_lang$html$Html$div,
-			A2(_danielbarter$elm_mix$Model$boxStyle, cb, ct),
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html$text(s),
-				_1: {ctor: '[]'}
-			});
-	});
-var _danielbarter$elm_mix$Model$displayMem = function (mix) {
-	var memDatas = _danielbarter$elm_mix$MemData$totalMemData(mix);
+var _danielbarter$elm_mix$Model$displayWord = function (w) {
+	var _p0 = _danielbarter$elm_mix$MemData$ppWord(w);
+	var s = _p0._0;
+	var cb = _p0._1;
+	var ct = _p0._2;
 	return A2(
 		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		A2(
-			_elm_lang$core$List$map,
-			_danielbarter$elm_mix$Model$displayMemData(mix),
-			memDatas));
+		A2(_danielbarter$elm_mix$Model$boxStyle, cb, ct),
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(s),
+			_1: {ctor: '[]'}
+		});
 };
-var _danielbarter$elm_mix$Model$displayWord = function (w) {
-	var _p1 = _danielbarter$elm_mix$MemData$ppWord(w);
+var _danielbarter$elm_mix$Model$displaySmallWord = function (w) {
+	var _p1 = _danielbarter$elm_mix$MemData$ppSmallWord(w);
 	var s = _p1._0;
 	var cb = _p1._1;
 	var ct = _p1._2;
@@ -14990,8 +14981,8 @@ var _danielbarter$elm_mix$Model$displayWord = function (w) {
 			_1: {ctor: '[]'}
 		});
 };
-var _danielbarter$elm_mix$Model$displaySmallWord = function (w) {
-	var _p2 = _danielbarter$elm_mix$MemData$ppSmallWord(w);
+var _danielbarter$elm_mix$Model$displayJump = function (w) {
+	var _p2 = _danielbarter$elm_mix$MemData$ppJump(w);
 	var s = _p2._0;
 	var cb = _p2._1;
 	var ct = _p2._2;
@@ -15004,8 +14995,8 @@ var _danielbarter$elm_mix$Model$displaySmallWord = function (w) {
 			_1: {ctor: '[]'}
 		});
 };
-var _danielbarter$elm_mix$Model$displayJump = function (w) {
-	var _p3 = _danielbarter$elm_mix$MemData$ppJump(w);
+var _danielbarter$elm_mix$Model$displayOverflow = function (t) {
+	var _p3 = _danielbarter$elm_mix$MemData$ppOverflow(t);
 	var s = _p3._0;
 	var cb = _p3._1;
 	var ct = _p3._2;
@@ -15018,25 +15009,11 @@ var _danielbarter$elm_mix$Model$displayJump = function (w) {
 			_1: {ctor: '[]'}
 		});
 };
-var _danielbarter$elm_mix$Model$displayOverflow = function (t) {
-	var _p4 = _danielbarter$elm_mix$MemData$ppOverflow(t);
+var _danielbarter$elm_mix$Model$displayComparison = function (t) {
+	var _p4 = _danielbarter$elm_mix$MemData$ppComparision(t);
 	var s = _p4._0;
 	var cb = _p4._1;
 	var ct = _p4._2;
-	return A2(
-		_elm_lang$html$Html$div,
-		A2(_danielbarter$elm_mix$Model$boxStyle, cb, ct),
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(s),
-			_1: {ctor: '[]'}
-		});
-};
-var _danielbarter$elm_mix$Model$displayComparison = function (t) {
-	var _p5 = _danielbarter$elm_mix$MemData$ppComparision(t);
-	var s = _p5._0;
-	var cb = _p5._1;
-	var ct = _p5._2;
 	return A2(
 		_elm_lang$html$Html$div,
 		A2(_danielbarter$elm_mix$Model$boxStyle, cb, ct),
@@ -15095,6 +15072,126 @@ var _danielbarter$elm_mix$Model$displayRegisters = function (mix) {
 				}
 			}
 		});
+};
+var _danielbarter$elm_mix$Model$leftBoxStyle = F2(
+	function (cb, ct) {
+		return {
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'background-color',
+						_1: _danielbarter$elm_mix$Model$printColor(cb)
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'color',
+							_1: _danielbarter$elm_mix$Model$printColor(ct)
+						},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'display', _1: 'inline-block'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '10px 0px 0px 10px'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}),
+			_1: {ctor: '[]'}
+		};
+	});
+var _danielbarter$elm_mix$Model$rightBoxStyle = F2(
+	function (cb, ct) {
+		return {
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'background-color',
+						_1: _danielbarter$elm_mix$Model$printColor(cb)
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'color',
+							_1: _danielbarter$elm_mix$Model$printColor(ct)
+						},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'display', _1: 'inline-block'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '0px 10px 10px 0px'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}),
+			_1: {ctor: '[]'}
+		};
+	});
+var _danielbarter$elm_mix$Model$displayMemData = F2(
+	function (mix, d) {
+		var _p5 = A2(_danielbarter$elm_mix$MemData$ppMemData, mix, d);
+		var p = _p5._0;
+		var mb = _p5._1;
+		var mt = _p5._2;
+		var s = _p5._3;
+		var cb = _p5._4;
+		var ct = _p5._5;
+		return A2(
+			_elm_lang$html$Html$div,
+			_danielbarter$elm_mix$Model$outerBoxStyle,
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					A2(_danielbarter$elm_mix$Model$leftBoxStyle, mb, mt),
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(p),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						A2(_danielbarter$elm_mix$Model$rightBoxStyle, cb, ct),
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(s),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
+var _danielbarter$elm_mix$Model$displayMem = function (mix) {
+	var memDatas = _danielbarter$elm_mix$MemData$totalMemData(mix);
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		A2(
+			_elm_lang$core$List$map,
+			_danielbarter$elm_mix$Model$displayMemData(mix),
+			memDatas));
 };
 var _danielbarter$elm_mix$Model$displayMix = function (mix) {
 	return A2(
