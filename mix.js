@@ -14622,23 +14622,14 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
-var _danielbarter$elm_mix$MemData$ppValue = F2(
-	function (mix, v) {
-		var _p0 = A2(_elm_lang$core$Dict$get, v, mix.reverseSymbolTable);
-		if (_p0.ctor === 'Nothing') {
-			return _elm_lang$core$Basics$toString(v);
-		} else {
-			return A2(
-				_elm_lang$core$Basics_ops['++'],
-				_elm_lang$core$Basics$toString(v),
-				A2(_elm_lang$core$Basics_ops['++'], ':', _p0._0));
-		}
-	});
+var _danielbarter$elm_mix$MemData$ppValue = function (v) {
+	return _elm_lang$core$Basics$toString(v);
+};
 var _danielbarter$elm_mix$MemData$ppPrefix = F2(
 	function (a, l) {
 		var pref = _elm_lang$core$Basics$toString(a);
-		var _p1 = l;
-		if (_p1.ctor === 'Nothing') {
+		var _p0 = l;
+		if (_p0.ctor === 'Nothing') {
 			return A2(_elm_lang$core$Basics_ops['++'], pref, ' ');
 		} else {
 			return A2(
@@ -14647,70 +14638,60 @@ var _danielbarter$elm_mix$MemData$ppPrefix = F2(
 				A2(
 					_elm_lang$core$Basics_ops['++'],
 					':',
-					A2(_elm_lang$core$Basics_ops['++'], _p1._0, ' ')));
+					A2(_elm_lang$core$Basics_ops['++'], _p0._0, ' ')));
 		}
 	});
 var _danielbarter$elm_mix$MemData$ppMaybeMasks = function (m) {
-	var _p2 = m;
-	if (_p2.ctor === 'Nothing') {
+	var _p1 = m;
+	if (_p1.ctor === 'Nothing') {
 		return '';
 	} else {
-		var _p4 = function (_p3) {
+		var _p3 = function (_p2) {
 			return _danielbarter$elm_mix$Atom$value(
-				_danielbarter$elm_mix$Atom$masksToByte(_p3));
-		}(_p2._0);
-		if (_p4 === 0) {
+				_danielbarter$elm_mix$Atom$masksToByte(_p2));
+		}(_p1._0);
+		if (_p3 === 0) {
 			return '';
 		} else {
 			return A2(
 				_elm_lang$core$Basics_ops['++'],
 				'/',
-				_elm_lang$core$Basics$toString(_p4));
+				_elm_lang$core$Basics$toString(_p3));
 		}
 	}
 };
 var _danielbarter$elm_mix$MemData$ppMaybeIndex = function (i) {
-	var _p5 = i;
-	if (_p5.ctor === 'Nothing') {
+	var _p4 = i;
+	if (_p4.ctor === 'Nothing') {
 		return '';
 	} else {
-		var _p7 = _p5._0;
-		var _p6 = _p7;
-		if (_p6 === 0) {
+		var _p6 = _p4._0;
+		var _p5 = _p6;
+		if (_p5 === 0) {
 			return '';
 		} else {
 			return A2(
 				_elm_lang$core$Basics_ops['++'],
 				'+',
-				_elm_lang$core$Basics$toString(_p7));
+				_elm_lang$core$Basics$toString(_p6));
 		}
 	}
 };
-var _danielbarter$elm_mix$MemData$ppMaybeAddress = F2(
-	function (mix, a) {
-		var _p8 = a;
-		if (_p8.ctor === 'Nothing') {
-			return '';
-		} else {
-			var _p10 = _p8._0;
-			var _p9 = A2(_elm_lang$core$Dict$get, _p10, mix.reverseSymbolTable);
-			if (_p9.ctor === 'Nothing') {
-				return _elm_lang$core$Basics$toString(_p10);
-			} else {
-				return A2(
-					_elm_lang$core$Basics_ops['++'],
-					_elm_lang$core$Basics$toString(_p10),
-					A2(_elm_lang$core$Basics_ops['++'], ':', _p9._0));
-			}
-		}
-	});
+var _danielbarter$elm_mix$MemData$ppMaybeAddress = function (a) {
+	var _p7 = a;
+	if (_p7.ctor === 'Nothing') {
+		return '';
+	} else {
+		return _elm_lang$core$Basics$toString(_p7._0);
+	}
+};
 var _danielbarter$elm_mix$MemData$ppStaticInstructionClean = F2(
-	function (mix, _p11) {
-		var _p12 = _p11;
-		var sm = _danielbarter$elm_mix$MemData$ppMaybeMasks(_p12._2);
-		var si = _danielbarter$elm_mix$MemData$ppMaybeIndex(_p12._1);
-		var sa = A2(_danielbarter$elm_mix$MemData$ppMaybeAddress, mix, _p12._0);
-		var st = _danielbarter$elm_mix$Instruction$ppTag(_p12._3);
+	function (mix, _p8) {
+		var _p9 = _p8;
+		var sm = _danielbarter$elm_mix$MemData$ppMaybeMasks(_p9._2);
+		var si = _danielbarter$elm_mix$MemData$ppMaybeIndex(_p9._1);
+		var sa = _danielbarter$elm_mix$MemData$ppMaybeAddress(_p9._0);
+		var st = _danielbarter$elm_mix$Instruction$ppTag(_p9._3);
 		return A2(
 			_elm_lang$core$String$join,
 			' ',
@@ -14736,36 +14717,36 @@ var _danielbarter$elm_mix$MemData$ppMemData = F2(
 	function (mix, d) {
 		ppMemData:
 		while (true) {
-			var _p13 = d;
-			var a = _p13._0;
-			var l = _p13._1;
-			var t = _p13._2;
-			var v = _p13._3;
-			var i = _p13._4;
-			var b = _p13._5;
+			var _p10 = d;
+			var a = _p10._0;
+			var l = _p10._1;
+			var t = _p10._2;
+			var v = _p10._3;
+			var i = _p10._4;
+			var b = _p10._5;
 			var p = A2(_danielbarter$elm_mix$MemData$ppPrefix, a, l);
-			var vv = A2(_danielbarter$elm_mix$MemData$ppValue, mix, v);
-			var _p14 = t;
-			if (_p14.ctor === 'Number') {
+			var vv = _danielbarter$elm_mix$MemData$ppValue(v);
+			var _p11 = t;
+			if (_p11.ctor === 'Number') {
 				return b ? {ctor: '_Tuple6', _0: p, _1: _elm_lang$core$Color$darkCharcoal, _2: _elm_lang$core$Color$white, _3: vv, _4: _elm_lang$core$Color$darkOrange, _5: _elm_lang$core$Color$white} : {ctor: '_Tuple6', _0: p, _1: _elm_lang$core$Color$darkCharcoal, _2: _elm_lang$core$Color$white, _3: vv, _4: _elm_lang$core$Color$lightCharcoal, _5: _elm_lang$core$Color$black};
 			} else {
-				var _p15 = i;
-				if (_p15.ctor === 'Err') {
-					var _v11 = mix,
-						_v12 = {ctor: '_Tuple6', _0: a, _1: l, _2: _danielbarter$elm_mix$Mix$Number, _3: v, _4: i, _5: b};
-					mix = _v11;
-					d = _v12;
+				var _p12 = i;
+				if (_p12.ctor === 'Err') {
+					var _v9 = mix,
+						_v10 = {ctor: '_Tuple6', _0: a, _1: l, _2: _danielbarter$elm_mix$Mix$Number, _3: v, _4: i, _5: b};
+					mix = _v9;
+					d = _v10;
 					continue ppMemData;
 				} else {
-					var s = A2(_danielbarter$elm_mix$MemData$ppStaticInstructionClean, mix, _p15._0);
+					var s = A2(_danielbarter$elm_mix$MemData$ppStaticInstructionClean, mix, _p12._0);
 					return b ? {ctor: '_Tuple6', _0: p, _1: _elm_lang$core$Color$darkCharcoal, _2: _elm_lang$core$Color$white, _3: s, _4: _elm_lang$core$Color$darkOrange, _5: _elm_lang$core$Color$white} : {ctor: '_Tuple6', _0: p, _1: _elm_lang$core$Color$darkCharcoal, _2: _elm_lang$core$Color$white, _3: s, _4: _elm_lang$core$Color$lightCharcoal, _5: _elm_lang$core$Color$black};
 				}
 			}
 		}
 	});
 var _danielbarter$elm_mix$MemData$ppComparision = function (t) {
-	var _p16 = t;
-	switch (_p16.ctor) {
+	var _p13 = t;
+	switch (_p13.ctor) {
 		case 'L':
 			return {ctor: '_Tuple3', _0: '<', _1: _elm_lang$core$Color$darkRed, _2: _elm_lang$core$Color$white};
 		case 'E':
@@ -14775,8 +14756,8 @@ var _danielbarter$elm_mix$MemData$ppComparision = function (t) {
 	}
 };
 var _danielbarter$elm_mix$MemData$ppOverflow = function (t) {
-	var _p17 = t;
-	switch (_p17.ctor) {
+	var _p14 = t;
+	switch (_p14.ctor) {
 		case 'Overflow':
 			return {ctor: '_Tuple3', _0: 'Overflow', _1: _elm_lang$core$Color$darkRed, _2: _elm_lang$core$Color$white};
 		case 'Good':
