@@ -62,5 +62,28 @@ HLT
 :y 6
 ```
 
+Here is an example where we loop through a zero terminated array and increment each entry by 1:
+```{.algorithm}
+#routine
+
+:start LDA x +1
+JAZ end
+INCA 1
+STA x +1
+INC1 1
+JMP start
+
+:end HLT
+
+
+#data
+:x 7
+-1
+2
+4
+1
+0
+```
+
 This is alpha software and there are probably bugs. Moreover, the documentation is currently non existent. I plan to polish it over the next few months. The source code can be inspected on [github](https://github.com/danielbarter/elm-mix).
 

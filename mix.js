@@ -14833,9 +14833,31 @@ var _danielbarter$elm_mix$Model$outerBoxStyle = {
 					_1: {
 						ctor: '::',
 						_0: {ctor: '_Tuple2', _0: 'border-color', _1: 'white'},
-						_1: {ctor: '[]'}
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'font-family', _1: 'monospace'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'font-size', _1: '20px'},
+								_1: {ctor: '[]'}
+							}
+						}
 					}
 				}
+			}
+		}),
+	_1: {ctor: '[]'}
+};
+var _danielbarter$elm_mix$Model$bStyle = {
+	ctor: '::',
+	_0: _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'font-family', _1: 'monospace'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'font-size', _1: '15px'},
+				_1: {ctor: '[]'}
 			}
 		}),
 	_1: {ctor: '[]'}
@@ -14922,7 +14944,15 @@ var _danielbarter$elm_mix$Model$boxStyle = F2(
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'border-color', _1: 'white'},
-												_1: {ctor: '[]'}
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'font-family', _1: 'monospace'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'font-size', _1: '20px'},
+														_1: {ctor: '[]'}
+													}
+												}
 											}
 										}
 									}
@@ -14948,9 +14978,8 @@ var _danielbarter$elm_mix$Model$displayWord = function (w) {
 			_1: {ctor: '[]'}
 		});
 };
-var _danielbarter$elm_mix$Model$displaySmallWord = function (w) {
-	var _p1 = _danielbarter$elm_mix$MemData$ppSmallWord(w);
-	var s = _p1._0;
+var _danielbarter$elm_mix$Model$displayDefaultWord = function (s) {
+	var _p1 = _danielbarter$elm_mix$MemData$ppWord(_danielbarter$elm_mix$Atom$zeroWord);
 	var cb = _p1._1;
 	var ct = _p1._2;
 	return A2(
@@ -14962,9 +14991,8 @@ var _danielbarter$elm_mix$Model$displaySmallWord = function (w) {
 			_1: {ctor: '[]'}
 		});
 };
-var _danielbarter$elm_mix$Model$displayJump = function (w) {
-	var _p2 = _danielbarter$elm_mix$MemData$ppJump(w);
-	var s = _p2._0;
+var _danielbarter$elm_mix$Model$displayDefaultSmallWord = function (s) {
+	var _p2 = _danielbarter$elm_mix$MemData$ppSmallWord(_danielbarter$elm_mix$Atom$zeroSmallWord);
 	var cb = _p2._1;
 	var ct = _p2._2;
 	return A2(
@@ -14976,9 +15004,8 @@ var _danielbarter$elm_mix$Model$displayJump = function (w) {
 			_1: {ctor: '[]'}
 		});
 };
-var _danielbarter$elm_mix$Model$displayOverflow = function (t) {
-	var _p3 = _danielbarter$elm_mix$MemData$ppOverflow(t);
-	var s = _p3._0;
+var _danielbarter$elm_mix$Model$displayDefaultJump = function (s) {
+	var _p3 = _danielbarter$elm_mix$MemData$ppJump(_danielbarter$elm_mix$Atom$zeroSmallWord);
 	var cb = _p3._1;
 	var ct = _p3._2;
 	return A2(
@@ -14990,11 +15017,53 @@ var _danielbarter$elm_mix$Model$displayOverflow = function (t) {
 			_1: {ctor: '[]'}
 		});
 };
-var _danielbarter$elm_mix$Model$displayComparison = function (t) {
-	var _p4 = _danielbarter$elm_mix$MemData$ppComparision(t);
+var _danielbarter$elm_mix$Model$displaySmallWord = function (w) {
+	var _p4 = _danielbarter$elm_mix$MemData$ppSmallWord(w);
 	var s = _p4._0;
 	var cb = _p4._1;
 	var ct = _p4._2;
+	return A2(
+		_elm_lang$html$Html$div,
+		A2(_danielbarter$elm_mix$Model$boxStyle, cb, ct),
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(s),
+			_1: {ctor: '[]'}
+		});
+};
+var _danielbarter$elm_mix$Model$displayJump = function (w) {
+	var _p5 = _danielbarter$elm_mix$MemData$ppJump(w);
+	var s = _p5._0;
+	var cb = _p5._1;
+	var ct = _p5._2;
+	return A2(
+		_elm_lang$html$Html$div,
+		A2(_danielbarter$elm_mix$Model$boxStyle, cb, ct),
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(s),
+			_1: {ctor: '[]'}
+		});
+};
+var _danielbarter$elm_mix$Model$displayOverflow = function (t) {
+	var _p6 = _danielbarter$elm_mix$MemData$ppOverflow(t);
+	var s = _p6._0;
+	var cb = _p6._1;
+	var ct = _p6._2;
+	return A2(
+		_elm_lang$html$Html$div,
+		A2(_danielbarter$elm_mix$Model$boxStyle, cb, ct),
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(s),
+			_1: {ctor: '[]'}
+		});
+};
+var _danielbarter$elm_mix$Model$displayComparison = function (t) {
+	var _p7 = _danielbarter$elm_mix$MemData$ppComparision(t);
+	var s = _p7._0;
+	var cb = _p7._1;
+	var ct = _p7._2;
 	return A2(
 		_elm_lang$html$Html$div,
 		A2(_danielbarter$elm_mix$Model$boxStyle, cb, ct),
@@ -15054,6 +15123,80 @@ var _danielbarter$elm_mix$Model$displayRegisters = function (mix) {
 			}
 		});
 };
+var _danielbarter$elm_mix$Model$displayDefaultOverflow = function (s) {
+	var _p8 = _danielbarter$elm_mix$MemData$ppOverflow(_danielbarter$elm_mix$Atom$Good);
+	var cb = _p8._1;
+	var ct = _p8._2;
+	return A2(
+		_elm_lang$html$Html$div,
+		A2(_danielbarter$elm_mix$Model$boxStyle, cb, ct),
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(s),
+			_1: {ctor: '[]'}
+		});
+};
+var _danielbarter$elm_mix$Model$displayDefaultComparison = function (s) {
+	var _p9 = _danielbarter$elm_mix$MemData$ppComparision(_danielbarter$elm_mix$Atom$E);
+	var cb = _p9._1;
+	var ct = _p9._2;
+	return A2(
+		_elm_lang$html$Html$div,
+		A2(_danielbarter$elm_mix$Model$boxStyle, cb, ct),
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(s),
+			_1: {ctor: '[]'}
+		});
+};
+var _danielbarter$elm_mix$Model$displayDefaultRegisters = A2(
+	_elm_lang$html$Html$div,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: _danielbarter$elm_mix$Model$displayDefaultWord('A'),
+		_1: {
+			ctor: '::',
+			_0: _danielbarter$elm_mix$Model$displayDefaultWord('X'),
+			_1: {
+				ctor: '::',
+				_0: _danielbarter$elm_mix$Model$displayDefaultSmallWord('I1'),
+				_1: {
+					ctor: '::',
+					_0: _danielbarter$elm_mix$Model$displayDefaultSmallWord('I2'),
+					_1: {
+						ctor: '::',
+						_0: _danielbarter$elm_mix$Model$displayDefaultSmallWord('I3'),
+						_1: {
+							ctor: '::',
+							_0: _danielbarter$elm_mix$Model$displayDefaultSmallWord('I4'),
+							_1: {
+								ctor: '::',
+								_0: _danielbarter$elm_mix$Model$displayDefaultSmallWord('I5'),
+								_1: {
+									ctor: '::',
+									_0: _danielbarter$elm_mix$Model$displayDefaultSmallWord('I6'),
+									_1: {
+										ctor: '::',
+										_0: _danielbarter$elm_mix$Model$displayDefaultJump('J'),
+										_1: {
+											ctor: '::',
+											_0: _danielbarter$elm_mix$Model$displayDefaultOverflow('Overflow'),
+											_1: {
+												ctor: '::',
+												_0: _danielbarter$elm_mix$Model$displayDefaultComparison('Comparison'),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
 var _danielbarter$elm_mix$Model$leftBoxStyle = F2(
 	function (cb, ct) {
 		return {
@@ -15082,7 +15225,15 @@ var _danielbarter$elm_mix$Model$leftBoxStyle = F2(
 								_1: {
 									ctor: '::',
 									_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '10px 0px 0px 10px'},
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'font-family', _1: 'monospace'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'font-size', _1: '20px'},
+											_1: {ctor: '[]'}
+										}
+									}
 								}
 							}
 						}
@@ -15119,7 +15270,15 @@ var _danielbarter$elm_mix$Model$rightBoxStyle = F2(
 								_1: {
 									ctor: '::',
 									_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '0px 10px 10px 0px'},
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'font-family', _1: 'monospace'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'font-size', _1: '20px'},
+											_1: {ctor: '[]'}
+										}
+									}
 								}
 							}
 						}
@@ -15130,13 +15289,13 @@ var _danielbarter$elm_mix$Model$rightBoxStyle = F2(
 	});
 var _danielbarter$elm_mix$Model$displayMemData = F2(
 	function (mix, d) {
-		var _p5 = A2(_danielbarter$elm_mix$MemData$ppMemData, mix, d);
-		var p = _p5._0;
-		var mb = _p5._1;
-		var mt = _p5._2;
-		var s = _p5._3;
-		var cb = _p5._4;
-		var ct = _p5._5;
+		var _p10 = A2(_danielbarter$elm_mix$MemData$ppMemData, mix, d);
+		var p = _p10._0;
+		var mb = _p10._1;
+		var mt = _p10._2;
+		var s = _p10._3;
+		var cb = _p10._4;
+		var ct = _p10._5;
 		return A2(
 			_elm_lang$html$Html$div,
 			_danielbarter$elm_mix$Model$outerBoxStyle,
@@ -15189,12 +15348,19 @@ var _danielbarter$elm_mix$Model$displayMix = function (mix) {
 		});
 };
 var _danielbarter$elm_mix$Model$errorMessage = function (e) {
-	var _p6 = e;
-	if (_p6.ctor === 'Nothing') {
+	var _p11 = e;
+	if (_p11.ctor === 'Nothing') {
 		return _elm_lang$html$Html$text('');
 	} else {
-		return _elm_lang$html$Html$text(
-			_elm_lang$core$Basics$toString(_p6._0));
+		return A2(
+			_elm_lang$html$Html$div,
+			A2(_danielbarter$elm_mix$Model$boxStyle, _elm_lang$core$Color$darkRed, _elm_lang$core$Color$white),
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(
+					_elm_lang$core$Basics$toString(_p11._0)),
+				_1: {ctor: '[]'}
+			});
 	}
 };
 var _danielbarter$elm_mix$Model$Model = F5(
@@ -15212,15 +15378,15 @@ var _danielbarter$elm_mix$Model$model = {
 var _danielbarter$elm_mix$Model$On = {ctor: 'On'};
 var _danielbarter$elm_mix$Model$update = F2(
 	function (msg, model) {
-		var _p7 = msg;
-		switch (_p7.ctor) {
+		var _p12 = msg;
+		switch (_p12.ctor) {
 			case 'Compile':
-				var _p8 = _danielbarter$elm_mix$Compiler$compile(model.sourceCode);
-				if (_p8.ctor === 'Err') {
+				var _p13 = _danielbarter$elm_mix$Compiler$compile(model.sourceCode);
+				if (_p13.ctor === 'Err') {
 					return _elm_lang$core$Native_Utils.update(
 						model,
 						{
-							compileError: _elm_lang$core$Maybe$Just(_p8._0),
+							compileError: _elm_lang$core$Maybe$Just(_p13._0),
 							mix: {ctor: '[]'},
 							power: _danielbarter$elm_mix$Model$Off
 						});
@@ -15231,7 +15397,7 @@ var _danielbarter$elm_mix$Model$update = F2(
 							compileError: _elm_lang$core$Maybe$Nothing,
 							mix: {
 								ctor: '::',
-								_0: _danielbarter$elm_mix$Mix$load(_p8._0),
+								_0: _danielbarter$elm_mix$Mix$load(_p13._0),
 								_1: {ctor: '[]'}
 							},
 							power: _danielbarter$elm_mix$Model$On
@@ -15247,30 +15413,30 @@ var _danielbarter$elm_mix$Model$update = F2(
 						power: _danielbarter$elm_mix$Model$Off
 					});
 			case 'StepForward':
-				var _p9 = model.mix;
-				if (_p9.ctor === '[]') {
+				var _p14 = model.mix;
+				if (_p14.ctor === '[]') {
 					return model;
 				} else {
-					var _p14 = _p9._1;
-					var _p13 = _p9._0;
-					var _p10 = _danielbarter$elm_mix$MixStep$step(_p13);
-					if (_p10.ctor === 'Err') {
+					var _p19 = _p14._1;
+					var _p18 = _p14._0;
+					var _p15 = _danielbarter$elm_mix$MixStep$step(_p18);
+					if (_p15.ctor === 'Err') {
 						return _elm_lang$core$Native_Utils.update(
 							model,
 							{
-								runtimeError: _elm_lang$core$Maybe$Just(_p10._0)
+								runtimeError: _elm_lang$core$Maybe$Just(_p15._0)
 							});
 					} else {
-						var _p12 = _p10._0._0;
-						var _p11 = _p10._0._1;
-						if ((_p11.ctor === '_Tuple3') && (_p11._2.ctor === 'Halt')) {
+						var _p17 = _p15._0._0;
+						var _p16 = _p15._0._1;
+						if ((_p16.ctor === '_Tuple3') && (_p16._2.ctor === 'Halt')) {
 							return _elm_lang$core$Native_Utils.update(
 								model,
 								{
 									mix: {
 										ctor: '::',
-										_0: _p12,
-										_1: {ctor: '::', _0: _p13, _1: _p14}
+										_0: _p17,
+										_1: {ctor: '::', _0: _p18, _1: _p19}
 									},
 									runtimeError: _elm_lang$core$Maybe$Nothing,
 									power: _danielbarter$elm_mix$Model$Off
@@ -15281,8 +15447,8 @@ var _danielbarter$elm_mix$Model$update = F2(
 								{
 									mix: {
 										ctor: '::',
-										_0: _p12,
-										_1: {ctor: '::', _0: _p13, _1: _p14}
+										_0: _p17,
+										_1: {ctor: '::', _0: _p18, _1: _p19}
 									},
 									runtimeError: _elm_lang$core$Maybe$Nothing,
 									power: _danielbarter$elm_mix$Model$On
@@ -15291,18 +15457,18 @@ var _danielbarter$elm_mix$Model$update = F2(
 					}
 				}
 			case 'StepBackward':
-				var _p15 = model.mix;
-				if (_p15.ctor === '[]') {
+				var _p20 = model.mix;
+				if (_p20.ctor === '[]') {
 					return model;
 				} else {
 					return _elm_lang$core$Native_Utils.update(
 						model,
-						{mix: _p15._1, runtimeError: _elm_lang$core$Maybe$Nothing, power: _danielbarter$elm_mix$Model$On});
+						{mix: _p20._1, runtimeError: _elm_lang$core$Maybe$Nothing, power: _danielbarter$elm_mix$Model$On});
 				}
 			default:
 				return _elm_lang$core$Native_Utils.update(
 					model,
-					{sourceCode: _p7._0});
+					{sourceCode: _p12._0});
 		}
 	});
 var _danielbarter$elm_mix$Model$ReadCode = function (a) {
@@ -15315,15 +15481,18 @@ var _danielbarter$elm_mix$Model$sourceCodeBox = A2(
 		ctor: '::',
 		_0: A2(
 			_elm_lang$html$Html$textarea,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$placeholder('Write source code here.'),
-				_1: {
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Events$onInput(_danielbarter$elm_mix$Model$ReadCode),
-					_1: {ctor: '[]'}
-				}
-			},
+					_0: _elm_lang$html$Html_Attributes$placeholder('Write source code here.'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onInput(_danielbarter$elm_mix$Model$ReadCode),
+						_1: {ctor: '[]'}
+					}
+				},
+				_danielbarter$elm_mix$Model$bStyle),
 			{ctor: '[]'}),
 		_1: {ctor: '[]'}
 	});
@@ -15331,8 +15500,8 @@ var _danielbarter$elm_mix$Model$StepBackward = {ctor: 'StepBackward'};
 var _danielbarter$elm_mix$Model$StepForward = {ctor: 'StepForward'};
 var _danielbarter$elm_mix$Model$KillCurrentCore = {ctor: 'KillCurrentCore'};
 var _danielbarter$elm_mix$Model$runtimeButtons = function (p) {
-	var _p16 = p;
-	if (_p16.ctor === 'On') {
+	var _p21 = p;
+	if (_p21.ctor === 'On') {
 		return A2(
 			_elm_lang$html$Html$div,
 			{ctor: '[]'},
@@ -15340,11 +15509,14 @@ var _danielbarter$elm_mix$Model$runtimeButtons = function (p) {
 				ctor: '::',
 				_0: A2(
 					_elm_lang$html$Html$button,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$StepForward),
-						_1: {ctor: '[]'}
-					},
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$StepForward),
+							_1: {ctor: '[]'}
+						},
+						_danielbarter$elm_mix$Model$bStyle),
 					{
 						ctor: '::',
 						_0: _elm_lang$html$Html$text('step'),
@@ -15354,11 +15526,14 @@ var _danielbarter$elm_mix$Model$runtimeButtons = function (p) {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$button,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$StepBackward),
-							_1: {ctor: '[]'}
-						},
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$StepBackward),
+								_1: {ctor: '[]'}
+							},
+							_danielbarter$elm_mix$Model$bStyle),
 						{
 							ctor: '::',
 							_0: _elm_lang$html$Html$text('back'),
@@ -15368,11 +15543,14 @@ var _danielbarter$elm_mix$Model$runtimeButtons = function (p) {
 						ctor: '::',
 						_0: A2(
 							_elm_lang$html$Html$button,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$KillCurrentCore),
-								_1: {ctor: '[]'}
-							},
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$KillCurrentCore),
+									_1: {ctor: '[]'}
+								},
+								_danielbarter$elm_mix$Model$bStyle),
 							{
 								ctor: '::',
 								_0: _elm_lang$html$Html$text('kill core'),
@@ -15390,11 +15568,14 @@ var _danielbarter$elm_mix$Model$runtimeButtons = function (p) {
 				ctor: '::',
 				_0: A2(
 					_elm_lang$html$Html$button,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$StepBackward),
-						_1: {ctor: '[]'}
-					},
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$StepBackward),
+							_1: {ctor: '[]'}
+						},
+						_danielbarter$elm_mix$Model$bStyle),
 					{
 						ctor: '::',
 						_0: _elm_lang$html$Html$text('back'),
@@ -15404,11 +15585,14 @@ var _danielbarter$elm_mix$Model$runtimeButtons = function (p) {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$button,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$KillCurrentCore),
-							_1: {ctor: '[]'}
-						},
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$KillCurrentCore),
+								_1: {ctor: '[]'}
+							},
+							_danielbarter$elm_mix$Model$bStyle),
 						{
 							ctor: '::',
 							_0: _elm_lang$html$Html$text('kill core'),
@@ -15427,11 +15611,14 @@ var _danielbarter$elm_mix$Model$compileButton = A2(
 		ctor: '::',
 		_0: A2(
 			_elm_lang$html$Html$button,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$Compile),
-				_1: {ctor: '[]'}
-			},
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Events$onClick(_danielbarter$elm_mix$Model$Compile),
+					_1: {ctor: '[]'}
+				},
+				_danielbarter$elm_mix$Model$bStyle),
 			{
 				ctor: '::',
 				_0: _elm_lang$html$Html$text('compile'),
@@ -15446,8 +15633,8 @@ var _danielbarter$elm_mix$Model$view = function (model) {
 		{
 			ctor: '::',
 			_0: function () {
-				var _p17 = model.mix;
-				if (_p17.ctor === '[]') {
+				var _p22 = model.mix;
+				if (_p22.ctor === '[]') {
 					return A2(
 						_elm_lang$html$Html$div,
 						{ctor: '[]'},
@@ -15459,8 +15646,12 @@ var _danielbarter$elm_mix$Model$view = function (model) {
 								_0: _danielbarter$elm_mix$Model$compileButton,
 								_1: {
 									ctor: '::',
-									_0: _danielbarter$elm_mix$Model$errorMessage(model.compileError),
-									_1: {ctor: '[]'}
+									_0: _danielbarter$elm_mix$Model$displayDefaultRegisters,
+									_1: {
+										ctor: '::',
+										_0: _danielbarter$elm_mix$Model$errorMessage(model.compileError),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						});
@@ -15476,7 +15667,7 @@ var _danielbarter$elm_mix$Model$view = function (model) {
 								_0: _danielbarter$elm_mix$Model$runtimeButtons(model.power),
 								_1: {
 									ctor: '::',
-									_0: _danielbarter$elm_mix$Model$displayMix(_p17._0),
+									_0: _danielbarter$elm_mix$Model$displayMix(_p22._0),
 									_1: {
 										ctor: '::',
 										_0: _danielbarter$elm_mix$Model$errorMessage(model.runtimeError),
