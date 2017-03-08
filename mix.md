@@ -6,9 +6,7 @@ title: mix
 
 
 
-
-
-This is a simulator for Knuth\'s MIX machine from the book [Art of Computer Programming](https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming). We use the identifier 1010 because this machine is slightly different from MIX 1009. We encode masks using binary and there is no division or multiplication instructions.
+This is a simulator for Knuth\'s MIX machine from the book [Art of Computer Programming](https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming). We use the identifier 1010 because this machine is slightly different from MIX 1009. We encode masks using binary and there is no division or multiplication instructions. A detailed readme can be found on [github](https://github.com/danielbarter/elm-mix).
 
 <div id="mix1"></div>
 <script>
@@ -84,6 +82,4 @@ JMP start
 1
 0
 ```
-
-This is alpha software and there are probably bugs. Moreover, the documentation is currently non existent. I plan to polish it over the next few months. The source code can be inspected on [github](https://github.com/danielbarter/elm-mix).
 
