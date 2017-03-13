@@ -33,6 +33,10 @@ buildSite =  hakyll $ do
     route $ idRoute
     compile copyFileCompiler
 
+  match "thesis_main.pdf" $ do
+    route $ idRoute
+    compile copyFileCompiler
+
   match "mix.md" $ do
     route $ setExtension "html"
     compile $
