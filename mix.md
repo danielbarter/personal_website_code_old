@@ -83,3 +83,39 @@ JMP start
 0
 ```
 
+Here is an example where we add up all the numbers on a stack:
+```{.algorithm}
+# adding up all the numbers on the stack.
+
+# we maintain the stack pointer in I6
+INC6 stack_top 
+JMP add
+JMP add
+JMP add
+JMP add
+JMP add
+JMP add
+LDA 0 +6
+HLT
+
+# addition routine
+:add STJ add_return_adr
+JSJ add_start
+:add_return_adr
+:add_start LDA 0 +6
+ADD -1 +6
+DEC6 1
+STA 0 +6
+LD1 add_return_adr
+JMP 0 +1
+
+# stack bottom
+2
+10
+8
+5
+8
+4
+:stack_top 5
+```
+
