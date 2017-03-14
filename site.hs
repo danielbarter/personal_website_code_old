@@ -33,7 +33,7 @@ buildSite =  hakyll $ do
     route $ idRoute
     compile copyFileCompiler
 
-  match "thesis_main.pdf" $ do
+  match "thesis.pdf" $ do
     route $ idRoute
     compile copyFileCompiler
 
