@@ -119,20 +119,49 @@ JMP 0 +1
 :stack_top 5
 ```
 
-Here is an example where we multiply all numbers on the stack:
+We can expand this example out into a programmable stack calculator with addition and multiplication operations:
+
 ```{.algorithm}
-# multiplying all the numbers on the stack.
+# programmable stack calculator.
 
 # we maintain the stack pointer in I6
 INC6 stack_top 
+
+###################################
+########## start code #############
+###################################
+
+JMP push
+4
+JMP push
+5
 JMP mult
+JMP push
+2
 JMP mult
-JMP mult
-JMP mult
-JMP mult
-JMP mult
+JMP push
+2
+JMP add
+
+
+###################################
+########### end code ##############
+###################################
+
+
+
 LDA 0 +6
 HLT
+
+# push routine
+:push STJ push_return_adr
+JSJ push_start
+:push_return_adr
+:push_start INC6 1
+LD1 push_return_adr
+LDA 0 +1
+STA 0 +6
+JMP 1 +1
 
 # addition routine
 :add STJ add_return_adr
@@ -145,33 +174,33 @@ STA 0 +6
 LD1 add_return_adr
 JMP 0 +1
 
+
 # multiplication routine
 :mult STJ mult_return_adr
 STZ s
 JSJ mult_start
 :mult_return_adr
 :s 
-:mult_start LDA -1 +6
+:mult_start LDA 0 +6
+CMPA -1 +6
+JGE loop
+LDX -1 +6
+STA -1 +6
+STX 0 +6
+:loop LDA -1 +6
 JAZ mult_end
 DECA 1
 STA -1 +6
 LDA 0 +6
 ADD s
 STA s
-JMP mult_start
+JMP loop
 :mult_end DEC6 1
 LDA s
 STA 0 +6
 LD1 mult_return_adr
 JMP 0 +1
 
-
-# stack bottom
-2
-10
-8
-5
-8
-4
-:stack_top 5
+#stack bottom
+:stack_top 
 ```
