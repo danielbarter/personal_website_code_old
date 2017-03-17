@@ -6,7 +6,7 @@ title: mix
 
 
 
-This is a simulator for Knuth\'s MIX machine from the book [Art of Computer Programming](https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming). We use the identifier 1010 because this machine is slightly different from MIX 1009. We encode masks using binary and there is no division or multiplication instructions. A detailed readme can be found on [github](https://github.com/danielbarter/elm-mix).
+This is a simulator for Knuth\'s MIX machine from the book [Art of Computer Programming](https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming). We use the identifier 1010 because this machine is slightly different from MIX 1009. We encode masks using binary and there is no division or multiplication instructions. A detailed readme and instruction list can be found on [github](https://github.com/danielbarter/elm-mix).
 
 <div id="mix1"></div>
 <script>
@@ -81,6 +81,34 @@ JMP start
 4
 1
 0
+```
+
+Here is an example where we compute the maximum in an array of numbers.
+```{.algorithm}
+ENT1 x
+LD2 x_length
+:loop J2Z end
+CMPA 0 +1
+JL update
+:t INC1 1
+DEC2 1
+JMP loop
+
+:update LDA 0 +1
+JMP t
+
+:end HLT
+
+:x_length 9
+:x 8
+4
+-3
+2
+1
+5
+1
+2
+10
 ```
 
 Here is an example where we add up all the numbers on a stack:
