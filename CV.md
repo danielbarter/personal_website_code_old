@@ -15,7 +15,7 @@ title: CV
 - PhD, Pure Mathematics, University of Michigan, 2012 - 2017. Specialized in category theory and representation theory.
 - Independent Study. I like to think about: 
     - Pure Mathematics: **differential geometry, representation theory and category theory**: I am particularly interested in the interaction between these subjects and physics. Recently, I have been thinking about the relationship between tensor categories, classical representation theory and topological quantum computing.
-    - Computer Science: **functional programming, compilers, UNIX, machine learning**: I have read [SICP](https://mitpress.mit.edu/sicp/) and solved most of the exercises. I have also been reading [Compiler Design: Virtual Machines](http://www.springer.com/us/book/9783642149085) which explains the operational semantics of several different programming languages. I have been using GNU/Linux as my main operating system since 2012 and am acquainted with the standard tools and how to combine them. I understand the basics of machine learning.
+    - Computer Science: **functional programming, assembly, UNIX, machine learning**: I have read [SICP](https://mitpress.mit.edu/sicp/) and solved all of the exercises. I wrote a [simulator for Knuth\'s MIX machine](http://danielbarter.github.io/CV.html) to learn how computers execute programs. I have been using GNU/Linux as my main operating system since 2012 and am acquainted with the standard tools and how to combine them. I understand the basics of machine learning.
 
 
 ## Preprints
