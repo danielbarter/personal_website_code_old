@@ -232,3 +232,52 @@ JMP 0 +1
 #stack bottom
 :stack_top 
 ```
+
+here is an example where we traverse a binary tree with an integer stored at each node and increment those integers.
+```{.algorithm}
+ENT6 stack_top
+:loop JMP inc_node
+LDA 0 +6
+JANZ loop
+HLT
+
+:inc_value WBW [0 1 0]
+
+
+# routine for dealing with the node ontop of the stack
+:inc_node MOVJX
+SX -3
+/7 STX inc_node_end
+:inc_node_start LD1 0 +6
+DEC6 1
+LDA 0 +1
+ADDA inc_value
+STA 0 +1
+/7 LDX 0 +1
+SX 3
+MOVX2
+LD3 +1
+:left_node J2Z right_node
+INC6 1
+ST2 0 +6
+:right_node J3Z inc_node_end
+INC6 1
+ST3 0 +6
+:inc_node_end JMP 0
+
+# a binary tree
+:a WBW [b 3  c]
+:b WBW [d 7  0]
+:d WBW [0 4  0]
+:c WBW [e 13 f]
+:e WBW [0 6  g]
+:g WBW [0 1  0]
+:f WBW [h 23 j]
+:h WBW [0 4  0]
+:j WBW [0 9  0]
+
+
+# auxiliary stack
+0
+:stack_top a
+```
