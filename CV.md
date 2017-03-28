@@ -4,10 +4,9 @@ title: CV
 
 #Daniel Barter
 
-- Date of Birth: November 27, 1989
-- Citizenship: Australia
 - website: [danielbarter.github.io](http://danielbarter.github.io/)
 - email: <danielbarter@gmail.com>
+- Citizenship: Australia
 
 ## Education
 - B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney, 2008-2011.
