@@ -5,7 +5,6 @@ title: CV
 #Daniel Barter
 
 - Date of Birth: November 27, 1989
-- Place of Birth: Melbourne, Australia
 - Citizenship: Australia
 - website: [danielbarter.github.io](http://danielbarter.github.io/)
 - email: <danielbarter@gmail.com>
