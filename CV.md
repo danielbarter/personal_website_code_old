@@ -15,7 +15,7 @@ title: CV
 
 ## Employment
 - University of Sydney. 2011-2012. Tutor for calculus 1 and 2. Supervised problem sessions and graded homework/exams.
-- University of Michigan. 2012-2016. Graduate student instructor for calculus 1, 2 and 3. Taught classes with 20-30 students three times a week. Held office hours. Helped students use Mathematica. Graded homework/exams.
+- University of Michigan. 2012-2016. Graduate student instructor for calculus 1, 2 and 3. Taught classes with 20-30 students, three times a week. Held office hours. Helped students use Mathematica. Graded homework/exams.
 
 ## Independent Study 
 - Pure Mathematics: **differential geometry, representation theory and category theory**: I am particularly interested in the interaction between these subjects and physics. Recently, I have been thinking about the relationship between tensor categories, classical representation theory and topological quantum computing.
