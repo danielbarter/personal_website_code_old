@@ -8,7 +8,6 @@ title: CV
 - email: <danielbarter@gmail.com>
 - citizenship: Australia
 
-I have a PhD in mathematics and want to be a software engineer. I want to spend my time working on hard problems with a team that values creativity and ingenuity. 
 
 ## Education
 - B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney, 2008-2011.
