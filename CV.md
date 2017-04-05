@@ -10,12 +10,12 @@ title: CV
 
 
 ## Education
-- B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney, 2008-2011.
 - PhD, Pure Mathematics, University of Michigan, 2012 - 2017. Specialized in category theory and representation theory. Thesis: [Some Remarks about the Interaction between Quantum Algebra and Representation Stability.](http://danielbarter.github.io/thesis.pdf)
+- B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney, 2008-2011.
 
 ## Employment
-- University of Sydney. 2011-2012. Tutor for calculus 1 and 2. Supervised problem sessions and graded homework/exams.
 - University of Michigan. 2012-2016. Graduate student instructor for calculus 1, 2 and 3. Taught classes with 20-30 students, three times a week. Held office hours. Helped students use Mathematica. Graded homework/exams.
+- University of Sydney. 2011-2012. Tutor for calculus 1 and 2. Supervised problem sessions and graded homework/exams.
 
 ## Independent Study 
 - Pure Mathematics: **differential geometry, representation theory and category theory**: I am particularly interested in the interaction between these subjects and physics. Recently, I have been thinking about the relationship between tensor categories, classical representation theory and topological quantum computing.
