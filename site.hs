@@ -33,6 +33,11 @@ buildSite =  hakyll $ do
     route $ idRoute
     compile copyFileCompiler
 
+  match "tableau.js" $ do
+    route $ idRoute
+    compile copyFileCompiler
+
+
   match "thesis.pdf" $ do
     route $ idRoute
     compile copyFileCompiler
@@ -41,7 +46,14 @@ buildSite =  hakyll $ do
     route $ setExtension "html"
     compile $
         pandocCompiler
-        >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
+        >>= loadAndApplyTemplate "html_templates/mix_temp.html" defaultContext
+        >>= relativizeUrls
+
+  match "tableau.md" $ do
+    route $ setExtension "html"
+    compile $
+        pandocCompiler
+        >>= loadAndApplyTemplate "html_templates/tableau_temp.html" defaultContext
         >>= relativizeUrls
 
   match "CV.md" $ do
