@@ -32,4 +32,4 @@ $\Theta$ and functions $f_1,\dots,f_c$. To keep things simple, we shall take
 $$(f_1,\dots,f_c)(W,b,x) = {\rm softmax}(Wx + b)$$
 where $W$ is a $c \times f$ matrix, $b \in \mathbb{R}^c$ and 
 [softmax](https://en.wikipedia.org/wiki/Softmax_function) transforms the output into a 
-probability distribution.
+probability distribution. These ideas are demonstrated in [this notebook.](https://github.com/danielbarter/personal_website_code/blob/master/blog_notebooks/mnist/helm_mnist.ipynb)
