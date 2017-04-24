@@ -35,6 +35,12 @@ codeContainer = div # ".sourceCode"
 algorithmContainer :: Selector
 algorithmContainer = pre # ".algorithm"
 
+equationContainer :: Selector
+equationContainer = div # ".MathJax_Display"
+
+figureContainer :: Selector
+figureContainer = div # ".figure"
+
 algorithmContainerStyle :: Css
 algorithmContainerStyle = algorithmContainer ?
   do border solid (px 1) "#C3C3C3"
@@ -48,6 +54,16 @@ codeContainerStyle = codeContainer ?
      borderRadius (px 5) (px 5) (px 5) (px 5)
      paddingLeft (px 5)
      overflowX auto
+
+equationContainerStyle :: Css
+equationContainerStyle = equationContainer ?
+  do overflowX auto
+     overflowY hidden
+
+figureContainerStyle :: Css
+figureContainerStyle = figureContainer ?
+  do overflowX auto
+     overflowY hidden
 
 -- please don't judge me. There must be a better way to do this
 codeHighlight :: Css
@@ -106,6 +122,8 @@ main = putCss $ do
   codeStyle
   codeContainerStyle
   algorithmContainerStyle
+  equationContainerStyle
+  figureContainerStyle
   codeHighlight
   softStyle
   imgStyle
