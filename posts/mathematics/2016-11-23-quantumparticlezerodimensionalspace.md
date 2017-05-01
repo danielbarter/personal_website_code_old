@@ -78,3 +78,9 @@ $$U(T)_{b,a} \approx \sum_{k_{\bullet}} A(f) {\rm vol}(D(k_{\bullet})).$$
 If we let $N \to \infty$, then we have
 $$U(T)_{b,a} = \int_{X(a,b)} A(f) df.$$
 In words, the transition amplitude is a sum over all possible paths weighted by $A(f)df$. 
+
+### The perturbative approach
+
+The integral over histories expression for $U(T)_{b,a}$ is conceptually nice, but it is awful from a computational perspective. If we want to compute the amplitude, it is much better to just expand $U(T)_{b,a}$ as a power series in $T$. This gives us
+$$U(T)_{b,a} = \delta_{b,a} + TH_{b,a} + \frac{T^2}{2!} \sum_{k_1} H_{b,k_1} H_{k_1,a} + \frac{T^3}{3!} \sum_{k_1,k_2}H_{b,k_1}H_{k_1,k_2}H_{k_2,a} + \dots$$
+This is a single particle version of the Feynman diagram method for computing amplitudes. Quite simple really!
