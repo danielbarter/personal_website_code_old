@@ -27,6 +27,8 @@ title: CV
 - A remark about 6j symbols and young semi-normal form. [arXiv:1610.05248](https://arxiv.org/abs/1610.05248)
 - Computing the minimal model for the quantum symmetric algebra. [arXiv:1610.05204](https://arxiv.org/abs/1610.05204)
 - Eigenvalues of rotations and braids in spherical fusion categories. Joint with Corey Jones and Henry Tucker. [arXiv:1611.00071](https://arxiv.org/abs/1611.00071)
+- Deligne categories and representations of the infinite symmetric group. Joint with Inna Entova-Aizenbud and Thorsten Heidersdorf. [arXiv:1706.03645](https://arxiv.org/abs/1706.03645)
+
 
 ## Invited Talks
 - Michigan theoretical computer science seminar, *Tensor rank and stability in representation theory*
