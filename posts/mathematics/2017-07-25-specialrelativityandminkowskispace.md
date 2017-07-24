@@ -9,3 +9,11 @@ If we measure the speed of light in a vacuum, we always get the same value, inde
 
 ### Spacial distortion perpendicular to velocity
 
+Before we can derive any formulas, we need to understand how spatial measurements get distorted perpendicular to velocity. Suppose that you have a square sheet of metal and you cut out a complicated shape from the middle:
+
+![](/img/2017-07-25-no-perpendicular-dilation.PNG)
+
+The cut out piece fits perfectly through the hole in the sheet. When objects are moving really fast, their size doesn't change, just our perception of their size does. If the cut out piece is moving fast, parallel to the normal vector of the sheet (which is at rest in our frame of reference), it still fits through the hole. Therefore there cannot be any distortion of distances perpendicular to the velocity.
+
+### The Spacetime Interval
+
