@@ -17,3 +17,16 @@ The cut out piece fits perfectly through the hole in the sheet. When objects are
 
 ### The Spacetime Interval
 
+Since the time taken for light to travel from $A$ to $B$ is equal to the distance between $A$ and $B$ (in our units), we can use light beams to construct a clock. Consider the following apparatus at rest:
+
+![](/img/2017-07-25-clockatrest.PNG)
+
+It takes time $d$ for the light to travel from the bottom plate to the top plate. Now suppose that the clock is moving horizontally in your reference frame:
+
+![](/img/2017-07-25-clockinmotion.PNG)
+
+It takes time $l$ for the light to travel from the bottom plate to the top plate in your reference frame. In the clocks reference frame, it takes time $d$ for the light to travel from the bottom plate to the top plate. Since distances don't get distorted perpendicular to the velocity, Pythagoras's theorem tells us
+$$l^2 - x^2 = d^2.$$
+If we are watching an object traveling at a constant velocity, the time measured by a clock strapped to the object is
+$$\sqrt{t^2 - x^2}$$
+where $t$ is the time measured by our clock and $x$ is the distance which the object travels in our reference frame. This quantity is called a **spacetime interval** and the value is independent from the frame in which it was measured. 
