@@ -98,4 +98,4 @@ $$
 0 & 0 & 0 & 1
 \end{pmatrix}.
 $$
-This is the standard form for the Lorentz transformation.
+This is the standard form for the Lorentz transformation. Applying this transformation changes into the reference frame which is traveling with velocity $(-v,0,0)$ from our perspective.
