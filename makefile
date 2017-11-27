@@ -1,6 +1,6 @@
 build:
 	stack build
-	cp .stack-work/install/x86_64-linux-nopie/lts-9.11/8.0.2/bin/* .
+	cp .stack-work/install/x86_64-linux-ncurses6/lts-9.11/8.0.2/bin/*  .
 	./cssgen > style.css
 	./website build
 	./cvPDF
