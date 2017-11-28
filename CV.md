@@ -28,6 +28,7 @@ title: CV
 
 
 ## Invited Talks
-- Michigan theoretical computer science seminar, *Tensor rank and stability in representation theory*
-- Berkeley combinatorics seminar, *Combinatorial categories, configuration spaces and tensorial species*
+- Michigan theoretical computer science seminar, 2014, *Tensor rank and stability in representation theory*.
+- Berkeley combinatorics seminar, 2015, *Combinatorial categories, configuration spaces and tensorial species*.
+- Scott\'s Kioloa conference, *2017*, *One way Modular Tensor Categories arise in condensed matter physics*.
 
