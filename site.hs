@@ -94,9 +94,9 @@ buildSite =  hakyll $ do
               listField "posts" defaultContext (return postsOrdered)
            <> defaultContext
       pandocCompiler
-        >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
         >>= loadAndApplyTemplate "html_templates/blog.html" blogContext
-        >>= loadAndApplyTemplate "html_templates/default.html" blogContext
+        >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
+        >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
         >>= relativizeUrls
 
 
