@@ -22,8 +22,17 @@ buildSite =  hakyll $ do
     route   $ constRoute "index.html"
     compile $
         pandocCompiler
+        >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
         >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
         >>= relativizeUrls
+
+  match "publickey.md" $ do
+    route   $ setExtension "html"
+    compile $
+      pandocCompiler
+      >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
+      >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
+      >>= relativizeUrls
 
   match "img/*" $ do
     route $ idRoute
@@ -46,6 +55,7 @@ buildSite =  hakyll $ do
     route $ setExtension "html"
     compile $
         pandocCompiler
+        >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
         >>= loadAndApplyTemplate "html_templates/mix_temp.html" defaultContext
         >>= relativizeUrls
 
@@ -53,6 +63,7 @@ buildSite =  hakyll $ do
     route $ setExtension "html"
     compile $
         pandocCompiler
+        >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
         >>= loadAndApplyTemplate "html_templates/tableau_temp.html" defaultContext
         >>= relativizeUrls
 
@@ -60,6 +71,7 @@ buildSite =  hakyll $ do
     route $ setExtension "html"
     compile $
         pandocCompiler
+        >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
         >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
         >>= relativizeUrls
 
@@ -67,6 +79,7 @@ buildSite =  hakyll $ do
     route $ setExtension "html"
     compile $
           pandocMathCompiler
+          >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
           >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
           >>= relativizeUrls
 
@@ -81,6 +94,7 @@ buildSite =  hakyll $ do
               listField "posts" defaultContext (return postsOrdered)
            <> defaultContext
       pandocCompiler
+        >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
         >>= loadAndApplyTemplate "html_templates/blog.html" blogContext
         >>= loadAndApplyTemplate "html_templates/default.html" blogContext
         >>= relativizeUrls
