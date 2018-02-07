@@ -14,7 +14,8 @@ title: CV
 - B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney. March 2008 - December 2011.
 
 ## Employment
-- University of Sydney. August 2017 - . Postdoctoral researcher in Physics. Thinking about topological phases of matter.
+- Australian National University. February 2018 - . Postdoctoral fellow. Working on topological phases of matter and low dimensional categories.
+- University of Sydney. August 2017 - January 2018. Postdoctoral researcher in Physics. Thinking about topological phases of matter.
 - University of Michigan. September 2012 - May 2016. Graduate student instructor for calculus 1, 2 and 3. Taught classes with 20-30 students, three times a week. Held office hours. Helped students use Mathematica. Graded homework/exams.
 - University of Sydney. March 2011 - June 2012. Tutor for calculus 1 and 2. Supervised problem sessions and graded homework/exams.
 
