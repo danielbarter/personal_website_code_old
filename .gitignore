@@ -27,6 +27,8 @@ cvPDF
 ### ipython checkpoints
 .ipynb_checkpoints
 
+### elf files
+*.elf
 
 ### data files
 .cleaned_data*
