@@ -1,5 +1,3 @@
-void **parent(void **base, void **index);
-
 typedef struct {
   /* array is an array of pointers */
   void **array;
