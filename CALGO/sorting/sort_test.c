@@ -12,7 +12,6 @@ void test_sort (  void (*sort_pointer) (int *array, int length), int array_test_
 void print_array(int * array, int length);
 
 
-
 int main(void)
 {
   srand(time(NULL));  /*   initialize the seed for the pseudorandom generator   */
@@ -31,7 +30,6 @@ int main(void)
   test_sort(&merge_sort,10,100);
   test_sort(&merge_sort,50,10);
   printf("\n");
-
 
   return 0;
 }
@@ -85,3 +83,5 @@ void print_array(int *array, int length)
       printf("%d ",array[i]);
     }
 }
+
+

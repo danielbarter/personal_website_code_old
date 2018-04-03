@@ -1,3 +1,5 @@
+void **parent(void **base, void **index);
+
 typedef struct {
   /* array is an array of pointers */
   void **array;
@@ -13,6 +15,5 @@ typedef struct {
   int (*compare) (void *ptr1, void *ptr2);
 
 } max_binary_heap;
-
 
 
