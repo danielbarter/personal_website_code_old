@@ -83,7 +83,7 @@ buildSite =  hakyll $ do
           >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
           >>= relativizeUrls
 
-  match "CALGO/*.c" $ do
+  match "CALGO/*/*.c" $ do
     route $ idRoute
     compile copyFileCompiler
 

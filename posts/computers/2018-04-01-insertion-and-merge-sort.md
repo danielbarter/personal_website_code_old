@@ -5,7 +5,7 @@ date: 2018-04-01
 
 #Insertion and Merge Sort
 
-Sorting an array is one of the cornerstone problems in computer science. In this post, we explore some algorithms for this task. All the code in this post can be found [here](../../CALGO/array_sort.c). The algorithms are reproduced below. The linked source file also contains some code for testing the algorithms.
+Sorting an array is one of the cornerstone problems in computer science. In this post, we explore some algorithms for this task. All the code in this post can be found [here](../../CALGO/sorting). The algorithms are reproduced below. The linked directory also contains some code for testing the algorithms.
 
 ### Insertion Sort
 
