@@ -14,4 +14,23 @@ typedef struct {
 
 } max_binary_heap;
 
+/*
+  In CLRS, arrays are indexed from 1 upto length.
+  We want to use this convention here because it simplifies the tree ops.
+  To do this, we use getters and setters.
+*/
+
+inline void *get(max_binary_heap *h, int i);
+inline void *set(max_binary_heap *h,int i,void *ptr);
+
+inline void *get(max_binary_heap *h, int i)
+{
+  return *((h->array) + i - 1);
+}
+
+inline void *set(max_binary_heap *h,int i,void *ptr)
+{
+  return *((h->array) + i - 1) = ptr;
+}
+
 
