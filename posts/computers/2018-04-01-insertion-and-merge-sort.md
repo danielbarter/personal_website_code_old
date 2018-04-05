@@ -142,3 +142,7 @@ Therefore the time complexity of merge sort is $O(L \log L)$. The space complexi
 $$ S(L) \leq {\rm max} \{ S(L/2),cL \} $$
 because `merge` allocates a whole copy of the array on the stack. 
 This implies the stack grows by $O(L)$ during execution.
+
+### Boxing things up
+
+If you looked at the linked source code, you may have noticed that the procedures from the previous section are actually called `insertion_sort_unboxed` and `merge_sort_unboxed`. This is because they only work on lists of 32 bit integers. In practice, we want to sort more general types of arrays. We can achieve this by abstracting away the data which is contained in our array. This allows the algorithms to be used in more situations, but it also means they run slower than the unboxed versions.
