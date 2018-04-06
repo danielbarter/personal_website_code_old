@@ -69,6 +69,9 @@ void merge ( list *list, int low, int middle, int high)
 
   /*
     allocating some temporary arrays on the stack.
+    In the unboxed version, we used an infinity token.
+    In this case we can't do that because the infinity token is different for each
+    data type.
   */
   void *l[l1];
   void *r[l2];
@@ -92,9 +95,11 @@ void merge ( list *list, int low, int middle, int high)
   for (k = low; k <= high; k++)
     {
       if (i == l1 || j == l2)
+        /* once we reach the end of either array, we break out of the loop */
         break;
       else
         {
+          /* since the compare function computes <, we need to negate to get >= */
           if (! (*list->compare)(r[j],l[i]))
             {
               list->ptr[k] = l[i];
@@ -108,6 +113,7 @@ void merge ( list *list, int low, int middle, int high)
         }
     }
 
+  /* fill the list with the remaining elements */
   if (i == l1)
     {
       for (;k <= high; k++)
