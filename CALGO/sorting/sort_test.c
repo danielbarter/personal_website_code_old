@@ -41,8 +41,18 @@ int main(void)
   test_sort(&insertion_sort,50,10);
   printf("\n");
 
+  printf("testing merge sort: \n\n");
+  test_sort(&merge_sort,0,100);
+  test_sort(&merge_sort,1,100);
+  test_sort(&merge_sort,2,100);
+  test_sort(&merge_sort,10,100);
+  test_sort(&merge_sort,50,10);
+  printf("\n");
   return 0;
 }
+
+
+
 
 
 
