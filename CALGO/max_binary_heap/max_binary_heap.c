@@ -66,7 +66,7 @@ void max_heapify(heap *h, int i)
   int largest;
   void *temp;
 
-  /* determine which is larger out of A[i], A[l], A[r] */
+  /* determine which is larger out of A[i], A[l], A[r].  */
   if ((l <= h->heap_size) && ( (*h->compare)( get(h,i), get(h,l) ) ) )
     largest = l;
   else largest = i;

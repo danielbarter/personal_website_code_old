@@ -23,7 +23,7 @@ int main(void)
   test_build_max_heap(10,100);
   test_build_max_heap(50,10);
 
-  test_mergesort(0,100);
+  test_expressionsmergesort(0,100);
   test_mergesort(1,100);
   test_mergesort(10,100);
   test_mergesort(50,10);
