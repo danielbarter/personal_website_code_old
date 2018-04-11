@@ -75,7 +75,7 @@ void max_heapify(heap *h, int i)
     largest = r;
 
 
-
+  /* swap A[i] and A[largest] */
   if (largest != i)
     {
       temp = get(h,largest);
