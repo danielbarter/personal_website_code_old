@@ -22,19 +22,19 @@ p_s & f(s) = \lambda \\
 0 & {\rm otherwise}
 \end{cases}$$
 In words, when we record $\lambda$ we truncate the probability of any incompatible state to zero and then scale the resulting vector so it becomes a probability distribution. As you can see, measurement is much more interesting in statistical mechanics. Now lets talk about dynamics. In physics, we want the time evolution of our system to be deterministic. Therefore we can model the passage of time as a function
-$$E_t : \Delta \to \Delta$$
+$$T_t : \Delta \to \Delta$$
 Moreover, we want the system to be invariant under time translation which implies that
-$$E_{t+s} = E_t \circ E_s.$$
+$$T_{t+s} = T_t \circ T_s.$$
 From the laws of probability theory, we have
-$${\bf P}(E_t X = s') = \sum_s {\bf P}(E_t X = s' | X = s) p_s$$
+$${\bf P}(T_t X = s') = \sum_s {\bf P}(T_t X = s' | X = s) p_s$$
 which implies that
-$$E_t p = \sum_s p_s E_t \delta_s.$$
-where $\delta_s$ is the probability distribution concentrated at $s$. It follows that $E_t$ is linear. Any linear map which preserves $\Delta$ must have all positive real entries and columns summing to one. From Lie theory, we know that
-$$E_t = \exp(tH)$$
+$$T_t p = \sum_s p_s t_t \delta_s.$$
+where $\delta_s$ is the probability distribution concentrated at $s$. It follows that $T_t$ is linear. Any linear map which preserves $\Delta$ must have all positive real entries and columns summing to one. From Lie theory, we know that
+$$T_t = \exp(tH)$$
 where $H$ is a matrix whose off diagonal entries are positive with columns summing to zero. We call $H$ the Hamiltonian generator for the statistical mechanical system. One of the fundamental concepts in statistical mechanics is entropy:
 $$\Theta= \sum_s p_s \log p_s$$
 We would like to understand how $\Theta$ behaves under time evolution. We have
-$$E_t p = p + tHp + O(t^2)$$
+$$T_t p = p + tHp + O(t^2)$$
 which implies that the directional derivative is
 $$d\Theta(Hp).$$
 The exterior derivative is
@@ -43,11 +43,21 @@ which implies that
 $$d\Theta(Hp) = (\log p^T) H p.$$
 Regardless of $H$, this directional derivative is $0$ when $p$ is uniform. The uniform distribution is the maximum entropy distribution on a finite set, therefore we have proved that if the statistical mechanical system ever reaches maximum entropy, it remains there for the rest of time.
 
+### Energy constrained systems
+
+In the previous section, we discussed unconstrained statistical mechanical systems. In practice, we only want to study energy constrained systems. This means that we have an energy observable $E : S \to \mathbb{R}$ and we only want to consider states $p$ with a fixed expected energy $e(p) = \mathbb{E}_p(E) = E_0$. Since we have 
+$$de = \sum_s E_s dp_s$$
+the directional derivative for $e$ along time evolution is
+$$de(Hp) = E^T Hp$$
+so the only statistical Hamiltonians which preserve the expected energy are those with $E^T H=0$. In words, we need the columns of $H$ to be perpendicular to $E$. It is fun to check that the maximum entropy distribution with a fixed expected energy $E_0$ is exactly the Boltzmann distribution. Also, we have
+$$d \Theta\left(HZ e^{-E/k}\right) = \log \left(Z e^{-E/k}\right)^T H p = (\log Z - E/k)^T H p = 0$$
+So if time evolution preserves expected energy and we are in the Boltzmann state, we stay there for ever. This is one of the standard starting points for statistical mechanics.
+
 ### Quantum Mechanics in a finite set
 
-Somewhat surprisingly, the transition from classical mechanical systems to quantum mechanical systems requires little effort. Now the state of the system is encoded using a wave function. When $S$ is a finite set, the wave function $\chi$ lives in
+Somewhat surprisingly, the transition from statistical mechanical systems to quantum mechanical systems requires little effort. Now the state of the system is encoded using a wave function. When $S$ is a finite set, the wave function $\chi$ lives in
 $$\{ \chi \in {\rm maps}(S,\mathbb{C}) : \langle \chi,\chi \rangle = 1\}$$
-where $\langle \cdot,\cdot \rangle$ is the standard Hermitian form, and ${\rm maps}(S,\mathbb{C})$ is the vector space with basis $S$. We call $S$ the **computation basis** and denote the basis vectors by $|s\rangle$ as is traditional in quantum mechanics. If $f : S \to \mathbb{R}$ is an observable, when we measure $f$, we record the value $f(s)$ with probability $\lvert \chi_s \lvert^2$. If we actually measure $f$ and record $\lambda$, the wave function collapses according to Bayes rule. The time evolution operator $E_t$ must be unitary to preserve probability, so the infinitesimal generator $H$ is skew Hermitian. This implies that time evolution is invertible. As a result we can talk about generalized observables. Choose an orthonormal basis $\psi_i$ and let $U$ be the unitary operator which takes $\psi_i$ to a computation basis vector. Then we can perform the operation
+where $\langle \cdot,\cdot \rangle$ is the standard Hermitian form, and ${\rm maps}(S,\mathbb{C})$ is the vector space with basis $S$. We call $S$ the **computation basis** and denote the basis vectors by $|s\rangle$ as is traditional in quantum mechanics. If $f : S \to \mathbb{R}$ is an observable, when we measure $f$, we record the value $f(s)$ with probability $\lvert \chi_s \lvert^2$. If we actually measure $f$ and record $\lambda$, the wave function collapses according to Bayes rule. The time evolution operator $T_t$ must be unitary to preserve probability, so the infinitesimal generator $H$ is skew Hermitian. This implies that time evolution is invertible. As a result we can talk about generalized observables. Choose an orthonormal basis $\psi_i$ and let $U$ be the unitary operator which takes $\psi_i$ to a computation basis vector. Then we can perform the operation
 $$U^{-1} \circ {\rm measurement} \circ U$$
 The spectral theorem says that a hermitian operator can be diagonalized by a unitary matrix and has real eigenvalues. Therefore, we can identify generalized observables with hermitian operators. This is one of the fundamental principles of quantum mechanics.
 
