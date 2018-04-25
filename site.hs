@@ -87,6 +87,10 @@ buildSite =  hakyll $ do
     route $ idRoute
     compile copyFileCompiler
 
+  match "CALGO/*/*.asm" $ do
+    route $ idRoute
+    compile copyFileCompiler
+
   match "blog.md" $ do
     route $ setExtension "html"
     compile $ do
