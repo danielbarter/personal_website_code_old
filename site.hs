@@ -70,7 +70,7 @@ buildSite =  hakyll $ do
   match "CV.md" $ do
     route $ setExtension "html"
     compile $
-        pandocCompiler
+        pandocMathCompiler
         >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
         >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
         >>= relativizeUrls
