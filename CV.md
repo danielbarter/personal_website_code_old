@@ -20,7 +20,8 @@ title: CV
 - University of Sydney. March 2011 - June 2012. Tutor for calculus 1 and 2. Supervised problem sessions and graded homework/exams.
 
 
-## Preprints
+## Papers
+- Fusing Binary Interface Defects in Topological Phases: The ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$ case. Joint with Jacob Bridgeman and Corey Jones. [arXiv:1810.09469](https://arxiv.org/abs/1810.09469)
 - Domain walls in topological phases and the Brauer-Picard ring for ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$. Joint with Jacob Bridgeman and Corey Jones. [arXiv:1806.01279](https://arxiv.org/abs/1806.01279)
 - Deligne categories and representations of the infinite symmetric group. Joint with Inna Entova-Aizenbud and Thorsten Heidersdorf. [arXiv:1706.03645](https://arxiv.org/abs/1706.03645)
 - Eigenvalues of rotations and braids in spherical fusion categories. Joint with Corey Jones and Henry Tucker. [arXiv:1611.00071](https://arxiv.org/abs/1611.00071)
@@ -32,6 +33,7 @@ title: CV
 
 
 ## Invited Talks
+- University of Sydney quantum information seminar, 2018, *Binary interface defect fusion in Levin-Wen models*
 - University of Sydney algebra seminar, 2018, *Fusion categories and (2+1)-dimensional topological quantum field theory*.
 - University of Sydney quantum information seminar, 2018, *Fusion categories, 2D LRE topological phases and Brauer-Picard rings*.
 - Scott\'s Kioloa conference, *2017*, *One way Modular Tensor Categories arise in condensed matter physics*.
