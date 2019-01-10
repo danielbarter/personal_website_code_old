@@ -3,12 +3,16 @@
 import Clay
 import Prelude hiding (div, span)
 
+grayBackground :: Css
+grayBackground = backgroundColor $ rgb 215 215 215
+
 bodyStyle :: Css
 bodyStyle = body ? do
   fontFamily  ["Helvetica Neue","Helvetica","Arial"] [sansSerif]
   fontSize    (px 20)
   lineHeight  (px 28)
   padding     (px 28) (px 28) (px 28) (px 28)
+  grayBackground
 
 linkStyle :: Css
 linkStyle = a ? do
