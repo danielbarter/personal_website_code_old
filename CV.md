@@ -6,7 +6,6 @@ title: CV
 
 - website: [danielbarter.github.io](http://danielbarter.github.io/)
 - email: <danielbarter@gmail.com>
-- citizenship: Australia
 
 
 ## Education
@@ -21,6 +20,7 @@ title: CV
 
 
 ## Papers
+- Computing Defects Associated to Bounded Domain Wall Structures: The ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$ case. Joint with Jacob Bridgeman. [arXiv:1901.08069](https://arxiv.org/abs/1901.08069).
 - Fusing Binary Interface Defects in Topological Phases: The ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$ case. Joint with Jacob Bridgeman and Corey Jones. [arXiv:1810.09469](https://arxiv.org/abs/1810.09469).
 - Domain walls in topological phases and the Brauer-Picard ring for ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$. Joint with Jacob Bridgeman and Corey Jones. [arXiv:1806.01279](https://arxiv.org/abs/1806.01279). To appear in Communications in Mathematical Physics.
 - Deligne categories and representations of the infinite symmetric group. Joint with Inna Entova-Aizenbud and Thorsten Heidersdorf. [arXiv:1706.03645](https://arxiv.org/abs/1706.03645).
