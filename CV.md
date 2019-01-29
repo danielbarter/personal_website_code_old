@@ -22,9 +22,9 @@ title: CV
 ## Papers
 - Computing Defects Associated to Bounded Domain Wall Structures: The ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$ case. Joint with Jacob Bridgeman. [arXiv:1901.08069](https://arxiv.org/abs/1901.08069).
 - Fusing Binary Interface Defects in Topological Phases: The ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$ case. Joint with Jacob Bridgeman and Corey Jones. [arXiv:1810.09469](https://arxiv.org/abs/1810.09469).
-- Domain walls in topological phases and the Brauer-Picard ring for ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$. Joint with Jacob Bridgeman and Corey Jones. [arXiv:1806.01279](https://arxiv.org/abs/1806.01279). To appear in Communications in Mathematical Physics.
-- Deligne categories and representations of the infinite symmetric group. Joint with Inna Entova-Aizenbud and Thorsten Heidersdorf. [arXiv:1706.03645](https://arxiv.org/abs/1706.03645).
-- Eigenvalues of rotations and braids in spherical fusion categories. Joint with Corey Jones and Henry Tucker. [arXiv:1611.00071](https://arxiv.org/abs/1611.00071). To appear in Journal of Algebra.
+- Domain walls in topological phases and the Brauer-Picard ring for ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$. Joint with Jacob Bridgeman and Corey Jones. [arXiv:1806.01279](https://arxiv.org/abs/1806.01279). Published in Communications in Mathematical Physics.
+- Deligne categories and representations of the infinite symmetric group. Joint with Inna Entova-Aizenbud and Thorsten Heidersdorf. [arXiv:1706.03645](https://arxiv.org/abs/1706.03645). Published in Advances in Mathematics.
+- Eigenvalues of rotations and braids in spherical fusion categories. Joint with Corey Jones and Henry Tucker. [arXiv:1611.00071](https://arxiv.org/abs/1611.00071). Published in Journal of Algebra.
 - Computing the minimal model for the quantum symmetric algebra. [arXiv:1610.05204](https://arxiv.org/abs/1610.05204).
 - A remark about 6j symbols and young semi-normal form. [arXiv:1610.05248](https://arxiv.org/abs/1610.05248).
 - Noetherianity and rooted trees. [arXiv:1509.04228](http://arxiv.org/abs/1509.04228).
