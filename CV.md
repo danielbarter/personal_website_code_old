@@ -20,6 +20,7 @@ title: CV
 
 
 ## Papers
+- [arXiv:1907.06692](https://arxiv.org/abs/1907.06692). Computing data for Levin-Wen with defects. Joint with Jacob Bridgeman.
 - [arXiv:1901.08069](https://arxiv.org/abs/1901.08069). Computing Defects Associated to Bounded Domain Wall Structures: The ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$ case. Joint with Jacob Bridgeman. 
 - [arXiv:1810.09469](https://arxiv.org/abs/1810.09469). Fusing Binary Interface Defects in Topological Phases: The ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$ case. Joint with Jacob Bridgeman and Corey Jones. 
 - [arXiv:1806.01279](https://arxiv.org/abs/1806.01279). Domain walls in topological phases and the Brauer-Picard ring for ${\bf Vec}(\mathbb{Z}/p\mathbb{Z})$. Joint with Jacob Bridgeman and Corey Jones. Published in Communications in Mathematical Physics.
