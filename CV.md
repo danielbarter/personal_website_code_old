@@ -8,16 +8,16 @@ title: CV
 - email: <danielbarter@gmail.com>
 
 
-## Education
-- PhD, Pure Mathematics, University of Michigan. September 2012 - May 2017. Specialized in category theory and representation theory. Thesis: [Some Remarks about the Interaction between Quantum Algebra and Representation Stability.](https://danielbarter.github.io/pdf/thesis.pdf)
-- B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney. March 2008 - December 2011.
-
 ## Employment
-- Australian National University. February 2018 - . Postdoctoral fellow. Working on topological phases of matter and low dimensional categories.
+- University of California, Santa Barbara. September 2019 - . Lecturer and Postdoctoral Fellow. Thinking about topological phases of matter. Lecturer and course coordinator for [Calculus 4](https://danielbarter.github.io/pdf/calc_4).
+- Australian National University. February 2018 - August 2019. Postdoctoral fellow. Thinking about topological phases of matter and low dimensional categories.
 - University of Sydney. August 2017 - January 2018. Postdoctoral researcher in Physics. Thinking about topological phases of matter.
 - University of Michigan. September 2012 - May 2016. Graduate student instructor for calculus 1, 2 and 3. Taught classes with 20-30 students, three times a week. Held office hours. Helped students use Mathematica. Graded homework/exams.
 - University of Sydney. March 2011 - June 2012. Tutor for calculus 1 and 2. Supervised problem sessions and graded homework/exams.
 
+## Education
+- PhD, Pure Mathematics, University of Michigan. September 2012 - May 2017. Specialized in category theory and representation theory. Thesis: [Some Remarks about the Interaction between Quantum Algebra and Representation Stability.](https://danielbarter.github.io/pdf/thesis.pdf)
+- B.Sc with First Class Honours and University Medal, Pure Mathematics, University of Sydney. March 2008 - December 2011.
 
 ## Papers
 - [arXiv:1907.06692](https://arxiv.org/abs/1907.06692). Computing data for Levin-Wen with defects. Joint with Jacob Bridgeman.

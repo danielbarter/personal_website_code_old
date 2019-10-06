@@ -50,6 +50,10 @@ buildSite =  hakyll $ do
     route $ idRoute
     compile copyFileCompiler
 
+  match "pdf/calc_4/*.pdf" $ do
+    route $ idRoute
+    compile copyFileCompiler
+
   match "mix.md" $ do
     route $ setExtension "html"
     compile $
