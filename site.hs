@@ -45,7 +45,7 @@ buildSite =  hakyll $ do
   match "tableau.js" $ do
     route $ idRoute
     compile copyFileCompiler
-
+  
   match "pdf/*.pdf" $ do
     route $ idRoute
     compile copyFileCompiler
