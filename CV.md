@@ -9,7 +9,7 @@ title: CV
 
 
 ## Employment
-- University of California, Santa Barbara. September 2019 - . Lecturer and Postdoctoral Fellow. Thinking about topological phases of matter. Lecturer and course coordinator for [Calculus 4](https://danielbarter.github.io/pdf/calc_4).
+- University of California, Santa Barbara. September 2019 - . Lecturer and Postdoctoral Fellow. Thinking about topological phases of matter. Lecturer and course coordinator for [Calculus 4](https://danielbarter.github.io/pdf/calc_4_slides.pdf).
 - Australian National University. February 2018 - August 2019. Postdoctoral fellow. Thinking about topological phases of matter and low dimensional categories.
 - University of Sydney. August 2017 - January 2018. Postdoctoral researcher in Physics. Thinking about topological phases of matter.
 - University of Michigan. September 2012 - May 2016. Graduate student instructor for calculus 1, 2 and 3. Taught classes with 20-30 students, three times a week. Held office hours. Helped students use Mathematica. Graded homework/exams.

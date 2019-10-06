@@ -46,10 +46,6 @@ buildSite =  hakyll $ do
     route $ idRoute
     compile copyFileCompiler
 
-  match "pdf/calc_4/*.pdf" $ do
-    route $ idRoute
-    compile copyFileCompiler
-
   match "pdf/*.pdf" $ do
     route $ idRoute
     compile copyFileCompiler
