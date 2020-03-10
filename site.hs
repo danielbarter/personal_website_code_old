@@ -38,6 +38,10 @@ buildSite =  hakyll $ do
     route $ idRoute
     compile copyFileCompiler
 
+  match "smoothed_noise_gifs/*" $ do
+    route $ idRoute
+    compile copyFileCompiler
+
   match "mix.js" $ do
     route $ idRoute
     compile copyFileCompiler
