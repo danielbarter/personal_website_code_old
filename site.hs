@@ -21,7 +21,7 @@ buildSite =  hakyll $ do
   match "home.md" $ do
     route   $ constRoute "index.html"
     compile $
-        pandocCompiler
+        pandocEmojiCompiler
         >>= loadAndApplyTemplate "html_templates/nav_bar.html" defaultContext
         >>= loadAndApplyTemplate "html_templates/default.html" defaultContext
         >>= relativizeUrls
@@ -111,12 +111,6 @@ buildSite =  hakyll $ do
         >>= relativizeUrls
 
 
------------------------------------------------------------------------------------------------------
-----------------------------------------pandocMathCompiler-------------------------------------------
------------------------------------------------------------------------------------------------------
-------------------------------------http://travis.athougies.net/-------------------------------------
------------------------------------------------------------------------------------------------------
-
 
 pandocMathCompiler =
     let mathExtensions = [Ext_tex_math_dollars, Ext_tex_math_double_backslash,
@@ -128,3 +122,9 @@ pandocMathCompiler =
                           writerHTMLMathMethod = MathJax ""
                         }
     in pandocCompilerWith defaultHakyllReaderOptions writerOptions
+
+pandocEmojiCompiler = pandocCompilerWith defaultHakyllReaderOptions
+  defaultHakyllWriterOptions
+  {
+  writerExtensions = insert Ext_emoji $ writerExtensions defaultHakyllWriterOptions
+  }
